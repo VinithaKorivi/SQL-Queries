@@ -1,0 +1,330 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.01 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| class              |
+| emp                |
++--------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    70 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  1 | Vinitha  | IT        |  50000.00 |  30 |
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  4 | Charitha | IT        |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  6 | Vidya    | IT        |  10000.00 |  26 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
++----+----------+-----------+-----------+-----+
+7 rows in set (0.00 sec)
+
+mysql> select name, dept from emp;  //Data Query Language//
++----------+-----------+
+| name     | dept      |
++----------+-----------+
+| Vinitha  | IT        |
+| Kiran    | HR        |
+| Ravi     | Finance   |
+| Charitha | IT        |
+| Bhargavi | Accounts  |
+| Vidya    | IT        |
+| Navya    | Compuetrs |
++----------+-----------+
+7 rows in set (0.00 sec)
+
+    -> ^C
+mysql> set pages 200 lines 200
+    -> ^C
+mysql> select * from tab;
+ERROR 1146 (42S02): Table 'employee.tab' doesn't exist
+mysql> select name,joindate,cname from class;
++----------+------------+-----------+
+| name     | joindate   | cname     |
++----------+------------+-----------+
+| Rahul    | 2025-12-02 | 2nd class |
+| Hema     | 2023-05-25 | 3rd class |
+| Hari     | 2022-02-02 | 4rd class |
+| Kalyani  | 2001-08-30 | 7rd class |
+| Thanooja | 2000-01-12 | LKG       |
+| Mounika  | 2003-05-30 | 9th class |
++----------+------------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  1 | Vinitha  | IT        |  50000.00 |  30 |
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  4 | Charitha | IT        |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  6 | Vidya    | IT        |  10000.00 |  26 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
++----+----------+-----------+-----------+-----+
+7 rows in set (0.00 sec)
+
+mysql> select * from dept where table=emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table=emp' at line 1
+mysql> select dept from emp;
++-----------+
+| dept      |
++-----------+
+| IT        |
+| HR        |
+| Finance   |
+| IT        |
+| Accounts  |
+| IT        |
+| Compuetrs |
++-----------+
+7 rows in set (0.00 sec)
+
+mysql> select name, sal+100 from emp;
++----------+-----------+
+| name     | sal+100   |
++----------+-----------+
+| Vinitha  |  50100.00 |
+| Kiran    |  45100.00 |
+| Ravi     |  55100.00 |
+| Charitha |  50100.00 |
+| Bhargavi | 100100.00 |
+| Vidya    |  10100.00 |
+| Navya    |  15100.00 |
++----------+-----------+
+7 rows in set (0.01 sec)
+
+mysql> select sal*12 from emp;
++------------+
+| sal*12     |
++------------+
+|  600000.00 |
+|  540000.00 |
+|  660000.00 |
+|  600000.00 |
+| 1200000.00 |
+|  120000.00 |
+|  180000.00 |
++------------+
+7 rows in set (0.00 sec)
+
+mysql> select name, sal/2 from emp;
++----------+--------------+
+| name     | sal/2        |
++----------+--------------+
+| Vinitha  | 25000.000000 |
+| Kiran    | 22500.000000 |
+| Ravi     | 27500.000000 |
+| Charitha | 25000.000000 |
+| Bhargavi | 50000.000000 |
+| Vidya    |  5000.000000 |
+| Navya    |  7500.000000 |
++----------+--------------+
+7 rows in set (0.00 sec)
+
+mysql> select name, sal+sal*30/100 from emp;
++----------+----------------+
+| name     | sal+sal*30/100 |
++----------+----------------+
+| Vinitha  |   65000.000000 |
+| Kiran    |   58500.000000 |
+| Ravi     |   71500.000000 |
+| Charitha |   65000.000000 |
+| Bhargavi |  130000.000000 |
+| Vidya    |   13000.000000 |
+| Navya    |   19500.000000 |
++----------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from emp where name='Kiran';
++----+-------+------+----------+-----+
+| id | name  | dept | sal      | age |
++----+-------+------+----------+-----+
+|  2 | Kiran | HR   | 45000.00 |  50 |
++----+-------+------+----------+-----+
+1 row in set (0.01 sec)
+
+mysql> select * from emp where sal=sal/2=25000;
+Empty set (0.00 sec)
+
+mysql> select * from emp where sal=select * from emp where sal=15000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select * from emp where sal=15000' at line 1
+mysql>  select * from emp where sal=15000;
++----+-------+-----------+----------+-----+
+| id | name  | dept      | sal      | age |
++----+-------+-----------+----------+-----+
+|  7 | Navya | Compuetrs | 15000.00 |  25 |
++----+-------+-----------+----------+-----+
+1 row in set (0.00 sec)
+
+mysql> select name, id, dept from emp where job='IT';
+ERROR 1054 (42S22): Unknown column 'job' in 'where clause'
+mysql> select name, id, dept from emp where age=30;
++----------+----+------+
+| name     | id | dept |
++----------+----+------+
+| Vinitha  |  1 | IT   |
+| Charitha |  4 | IT   |
++----------+----+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from class where joindate>2001-08-30;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    70 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set, 1 warning (0.01 sec)
+
+mysql> select * from emp;
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  1 | Vinitha  | IT        |  50000.00 |  30 |
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  4 | Charitha | IT        |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  6 | Vidya    | IT        |  10000.00 |  26 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
++----+----------+-----------+-----------+-----+
+7 rows in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  1 | Vinitha  | IT        |  50000.00 |  30 |
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  4 | Charitha | IT        |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  6 | Vidya    | IT        |  10000.00 |  26 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
++----+----------+-----------+-----------+-----+
+7 rows in set (0.00 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    70 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from class where not joindate=2001-08-30;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    70 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set, 1 warning (0.00 sec)
+
+mysql> select * from class where cname='LKG';
++--------+----------+------------+-------+-----------+-------+
+| rollno | name     | joindate   | marks | location  | cname |
++--------+----------+------------+-------+-----------+-------+
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG   |
++--------+----------+------------+-------+-----------+-------+
+1 row in set (0.00 sec)
+
+mysql> slect * from emp union select * from class;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'slect * from emp union select * from class' at line 1
+mysql> select id from emp union select rollno from class;
++----+
+| id |
++----+
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|  5 |
+|  6 |
+|  7 |
++----+
+7 rows in set (0.01 sec)
+
+mysql> select id from emp unionall select rollno from class;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select rollno from class' at line 1
+mysql> select id from emp union all select rollno from class;
++----+
+| id |
++----+
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|  5 |
+|  6 |
+|  7 |
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|  5 |
+|  6 |
++----+
+13 rows in set (0.00 sec)
+
+mysql> select id from emp intersect select rollno from class;
++----+
+| id |
++----+
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|  5 |
+|  6 |
++----+
+6 rows in set (0.00 sec)
