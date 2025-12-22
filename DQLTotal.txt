@@ -1,0 +1,766 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.18 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| class              |
+| emp                |
++--------------------+
+2 rows in set (0.03 sec)
+
+mysql> select * from emp;
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  1 | Vinitha  | IT        |  50000.00 |  30 |
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  4 | Charitha | IT        |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  6 | Vidya    | IT        |  10000.00 |  26 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
++----+----------+-----------+-----------+-----+
+7 rows in set (0.03 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    70 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set (0.01 sec)
+
+mysql> select concat(name+'is having the salary of'+sal) from emp;
++--------------------------------------------+
+| concat(name+'is having the salary of'+sal) |
++--------------------------------------------+
+| 50000                                      |
+| 45000                                      |
+| 55000                                      |
+| 50000                                      |
+| 100000                                     |
+| 10000                                      |
+| 15000                                      |
++--------------------------------------------+
+7 rows in set, 14 warnings (0.00 sec)
+
+mysql> select CONCAT(name, 'is having the salary of',sal) AS details from emp;
++------------------------------------------+
+| details                                  |
++------------------------------------------+
+| Vinithais having the salary of50000.00   |
+| Kiranis having the salary of45000.00     |
+| Raviis having the salary of55000.00      |
+| Charithais having the salary of50000.00  |
+| Bhargaviis having the salary of100000.00 |
+| Vidyais having the salary of10000.00     |
+| Navyais having the salary of15000.00     |
++------------------------------------------+
+7 rows in set (0.00 sec)
+
+mysql> select 'thanooja' from class;
++----------+
+| thanooja |
++----------+
+| thanooja |
+| thanooja |
+| thanooja |
+| thanooja |
+| thanooja |
+| thanooja |
++----------+
+6 rows in set (0.00 sec)
+
+mysql> select 50000 from emp;
++-------+
+| 50000 |
++-------+
+| 50000 |
+| 50000 |
+| 50000 |
+| 50000 |
+| 50000 |
+| 50000 |
+| 50000 |
++-------+
+7 rows in set (0.00 sec)
+
+mysql> select '2025-12-02' from emp;
++------------+
+| 2025-12-02 |
++------------+
+| 2025-12-02 |
+| 2025-12-02 |
+| 2025-12-02 |
+| 2025-12-02 |
+| 2025-12-02 |
+| 2025-12-02 |
+| 2025-12-02 |
++------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from class where joindate>'2025-12-02';
+Empty set (0.01 sec)
+
+mysql> select * from class where joindate>'2001-08-30';
++--------+---------+------------+-------+-----------+-----------+
+| rollno | name    | joindate   | marks | location  | cname     |
++--------+---------+------------+-------+-----------+-----------+
+|      1 | Rahul   | 2025-12-02 |    70 | NEWYORK   | 2nd class |
+|      2 | Hema    | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari    | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      6 | Mounika | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+---------+------------+-------+-----------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from class where not joindate='2025-12-02';
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp where dept='IT';
++----+----------+------+----------+-----+
+| id | name     | dept | sal      | age |
++----+----------+------+----------+-----+
+|  1 | Vinitha  | IT   | 50000.00 |  30 |
+|  4 | Charitha | IT   | 50000.00 |  30 |
+|  6 | Vidya    | IT   | 10000.00 |  26 |
++----+----------+------+----------+-----+
+3 rows in set (0.00 sec)
+
+mysql> select * from class where name='Hema'or name='Rahul' or nae='Hari';
+ERROR 1054 (42S22): Unknown column 'nae' in 'where clause'
+mysql> select * from class where name='Hema'or name='Rahul' or name='Hari';
++--------+-------+------------+-------+-----------+-----------+
+| rollno | name  | joindate   | marks | location  | cname     |
++--------+-------+------------+-------+-----------+-----------+
+|      1 | Rahul | 2025-12-02 |    70 | NEWYORK   | 2nd class |
+|      2 | Hema  | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari  | 2022-02-02 |    60 | Chittoor  | 4rd class |
++--------+-------+------------+-------+-----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp where not sal>50000;
++----+----------+-----------+----------+-----+
+| id | name     | dept      | sal      | age |
++----+----------+-----------+----------+-----+
+|  1 | Vinitha  | IT        | 50000.00 |  30 |
+|  2 | Kiran    | HR        | 45000.00 |  50 |
+|  4 | Charitha | IT        | 50000.00 |  30 |
+|  6 | Vidya    | IT        | 10000.00 |  26 |
+|  7 | Navya    | Compuetrs | 15000.00 |  25 |
++----+----------+-----------+----------+-----+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp where name='Kiran' and sal=45000;
++----+-------+------+----------+-----+
+| id | name  | dept | sal      | age |
++----+-------+------+----------+-----+
+|  2 | Kiran | HR   | 45000.00 |  50 |
++----+-------+------+----------+-----+
+1 row in set (0.00 sec)
+
+mysql> select name, sal from emp where name='Kiran' or name='Charitha';
++----------+----------+
+| name     | sal      |
++----------+----------+
+| Kiran    | 45000.00 |
+| Charitha | 50000.00 |
++----------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where dept='IT' or sal=50000;
++----+----------+------+----------+-----+
+| id | name     | dept | sal      | age |
++----+----------+------+----------+-----+
+|  1 | Vinitha  | IT   | 50000.00 |  30 |
+|  4 | Charitha | IT   | 50000.00 |  30 |
+|  6 | Vidya    | IT   | 10000.00 |  26 |
++----+----------+------+----------+-----+
+3 rows in set (0.00 sec)
+
+mysql> select dept from emp where not age=30;
++-----------+
+| dept      |
++-----------+
+| HR        |
+| Finance   |
+| Accounts  |
+| IT        |
+| Compuetrs |
++-----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp where sal>2500;
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  1 | Vinitha  | IT        |  50000.00 |  30 |
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  4 | Charitha | IT        |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  6 | Vidya    | IT        |  10000.00 |  26 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
++----+----------+-----------+-----------+-----+
+7 rows in set (0.00 sec)
+
+mysql> select * from emp where sal>=50000;
++----+----------+----------+-----------+-----+
+| id | name     | dept     | sal       | age |
++----+----------+----------+-----------+-----+
+|  1 | Vinitha  | IT       |  50000.00 |  30 |
+|  3 | Ravi     | Finance  |  55000.00 |  45 |
+|  4 | Charitha | IT       |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts | 100000.00 |  35 |
++----+----------+----------+-----------+-----+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where not dept='IT';
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
++----+----------+-----------+-----------+-----+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where dept!='IT';
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
++----+----------+-----------+-----------+-----+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where sal=50000;
++----+----------+------+----------+-----+
+| id | name     | dept | sal      | age |
++----+----------+------+----------+-----+
+|  1 | Vinitha  | IT   | 50000.00 |  30 |
+|  4 | Charitha | IT   | 50000.00 |  30 |
++----+----------+------+----------+-----+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where sal<45000;
++----+-------+-----------+----------+-----+
+| id | name  | dept      | sal      | age |
++----+-------+-----------+----------+-----+
+|  6 | Vidya | IT        | 10000.00 |  26 |
+|  7 | Navya | Compuetrs | 15000.00 |  25 |
++----+-------+-----------+----------+-----+
+2 rows in set (0.00 sec)
+
+mysql> select name,sal,dept from emp where id>5;
++-------+----------+-----------+
+| name  | sal      | dept      |
++-------+----------+-----------+
+| Vidya | 10000.00 | IT        |
+| Navya | 15000.00 | Compuetrs |
++-------+----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql>   select * from emp where name like 'B%';
++----+----------+----------+-----------+-----+
+| id | name     | dept     | sal       | age |
++----+----------+----------+-----------+-----+
+|  5 | Bhargavi | Accounts | 100000.00 |  35 |
++----+----------+----------+-----------+-----+
+1 row in set (0.01 sec)
+
+mysql> select  * from emp where name like '%a';
++----+----------+-----------+----------+-----+
+| id | name     | dept      | sal      | age |
++----+----------+-----------+----------+-----+
+|  1 | Vinitha  | IT        | 50000.00 |  30 |
+|  4 | Charitha | IT        | 50000.00 |  30 |
+|  6 | Vidya    | IT        | 10000.00 |  26 |
+|  7 | Navya    | Compuetrs | 15000.00 |  25 |
++----+----------+-----------+----------+-----+
+4 rows in set (0.00 sec)
+
+mysql> select name, id,sal from emp where dept like 'C%s';
++-------+----+----------+
+| name  | id | sal      |
++-------+----+----------+
+| Navya |  7 | 15000.00 |
++-------+----+----------+
+1 row in set (0.00 sec)
+
+mysql> select * emp where name like '_a%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'emp where name like '_a%'' at line 1
+mysql> select * from emp where name like '_h%';
++----+----------+----------+-----------+-----+
+| id | name     | dept     | sal       | age |
++----+----------+----------+-----------+-----+
+|  4 | Charitha | IT       |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts | 100000.00 |  35 |
++----+----------+----------+-----------+-----+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where name like '%i%i%';
++----+---------+------+----------+-----+
+| id | name    | dept | sal      | age |
++----+---------+------+----------+-----+
+|  1 | Vinitha | IT   | 50000.00 |  30 |
++----+---------+------+----------+-----+
+1 row in set (0.00 sec)
+
+mysql> select * from  emp where name like 'B___g%i';
++----+----------+----------+-----------+-----+
+| id | name     | dept     | sal       | age |
++----+----------+----------+-----------+-----+
+|  5 | Bhargavi | Accounts | 100000.00 |  35 |
++----+----------+----------+-----------+-----+
+1 row in set (0.00 sec)
+
+mysql> select * fom emp where sal between 50000 and 10000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fom emp where sal between 50000 and 10000' at line 1
+mysql> select * from emp where sal between 50000 and 10000;
+Empty set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  1 | Vinitha  | IT        |  50000.00 |  30 |
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  4 | Charitha | IT        |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  6 | Vidya    | IT        |  10000.00 |  26 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
++----+----------+-----------+-----------+-----+
+7 rows in set (0.00 sec)
+
+mysql> select * from emp where name between 'B' and 'i';
++----+----------+----------+-----------+-----+
+| id | name     | dept     | sal       | age |
++----+----------+----------+-----------+-----+
+|  4 | Charitha | IT       |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts | 100000.00 |  35 |
++----+----------+----------+-----------+-----+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where sal between 10000 and 50000;
++----+----------+-----------+----------+-----+
+| id | name     | dept      | sal      | age |
++----+----------+-----------+----------+-----+
+|  1 | Vinitha  | IT        | 50000.00 |  30 |
+|  2 | Kiran    | HR        | 45000.00 |  50 |
+|  4 | Charitha | IT        | 50000.00 |  30 |
+|  6 | Vidya    | IT        | 10000.00 |  26 |
+|  7 | Navya    | Compuetrs | 15000.00 |  25 |
++----+----------+-----------+----------+-----+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp where id between 4 and 6;
++----+----------+----------+-----------+-----+
+| id | name     | dept     | sal       | age |
++----+----------+----------+-----------+-----+
+|  4 | Charitha | IT       |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts | 100000.00 |  35 |
+|  6 | Vidya    | IT       |  10000.00 |  26 |
++----+----------+----------+-----------+-----+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp where age between 20 and 30;
++----+----------+-----------+----------+-----+
+| id | name     | dept      | sal      | age |
++----+----------+-----------+----------+-----+
+|  1 | Vinitha  | IT        | 50000.00 |  30 |
+|  4 | Charitha | IT        | 50000.00 |  30 |
+|  6 | Vidya    | IT        | 10000.00 |  26 |
+|  7 | Navya    | Compuetrs | 15000.00 |  25 |
++----+----------+-----------+----------+-----+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where name between 'k' and 'v';
++----+-------+-----------+----------+-----+
+| id | name  | dept      | sal      | age |
++----+-------+-----------+----------+-----+
+|  2 | Kiran | HR        | 45000.00 |  50 |
+|  3 | Ravi  | Finance   | 55000.00 |  45 |
+|  7 | Navya | Compuetrs | 15000.00 |  25 |
++----+-------+-----------+----------+-----+
+3 rows in set (0.00 sec)
+
+mysql> insert into emp values(8,'Sandhya','IT', , 40);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', 40)' at line 1
+mysql> insert into emp values(8,'Sandhya','IT',12000,40);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * from emp;
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  1 | Vinitha  | IT        |  50000.00 |  30 |
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  4 | Charitha | IT        |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  6 | Vidya    | IT        |  10000.00 |  26 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
+|  8 | Sandhya  | IT        |  12000.00 |  40 |
++----+----------+-----------+-----------+-----+
+8 rows in set (0.00 sec)
+
+mysql> select * from emp where age is null;
+Empty set (0.00 sec)
+
+mysql> select * from  emp where not age is null;
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  1 | Vinitha  | IT        |  50000.00 |  30 |
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  4 | Charitha | IT        |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  6 | Vidya    | IT        |  10000.00 |  26 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
+|  8 | Sandhya  | IT        |  12000.00 |  40 |
++----+----------+-----------+-----------+-----+
+8 rows in set (0.00 sec)
+
+mysql> select * from emp where sal is null;
+Empty set (0.00 sec)
+
+mysql> select * from emp where sal not null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'null' at line 1
+mysql> select * from emp where not sal is null;
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  1 | Vinitha  | IT        |  50000.00 |  30 |
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  4 | Charitha | IT        |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  6 | Vidya    | IT        |  10000.00 |  26 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
+|  8 | Sandhya  | IT        |  12000.00 |  40 |
++----+----------+-----------+-----------+-----+
+8 rows in set (0.00 sec)
+
+mysql> select name from emp where name in('Navya','Ravi', 'Sandhya');
++---------+
+| name    |
++---------+
+| Ravi    |
+| Navya   |
+| Sandhya |
++---------+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp where name in ('Navya','Ravi', 'Sandhya');
++----+---------+-----------+----------+-----+
+| id | name    | dept      | sal      | age |
++----+---------+-----------+----------+-----+
+|  3 | Ravi    | Finance   | 55000.00 |  45 |
+|  7 | Navya   | Compuetrs | 15000.00 |  25 |
+|  8 | Sandhya | IT        | 12000.00 |  40 |
++----+---------+-----------+----------+-----+
+3 rows in set (0.00 sec)
+
+mysql> select name, dept from emp where id in(4,7,2);
++----------+-----------+
+| name     | dept      |
++----------+-----------+
+| Kiran    | HR        |
+| Charitha | IT        |
+| Navya    | Compuetrs |
++----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp where dept in('IT', 'Computers');
++----+----------+------+----------+-----+
+| id | name     | dept | sal      | age |
++----+----------+------+----------+-----+
+|  1 | Vinitha  | IT   | 50000.00 |  30 |
+|  4 | Charitha | IT   | 50000.00 |  30 |
+|  6 | Vidya    | IT   | 10000.00 |  26 |
+|  8 | Sandhya  | IT   | 12000.00 |  40 |
++----+----------+------+----------+-----+
+4 rows in set (0.00 sec)
+
+mysql> select dept Department,sal Income,id EMPID from emp;
++------------+-----------+-------+
+| Department | Income    | EMPID |
++------------+-----------+-------+
+| IT         |  50000.00 |     1 |
+| HR         |  45000.00 |     2 |
+| Finance    |  55000.00 |     3 |
+| IT         |  50000.00 |     4 |
+| Accounts   | 100000.00 |     5 |
+| IT         |  10000.00 |     6 |
+| Compuetrs  |  15000.00 |     7 |
+| IT         |  12000.00 |     8 |
++------------+-----------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  1 | Vinitha  | IT        |  50000.00 |  30 |
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  4 | Charitha | IT        |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  6 | Vidya    | IT        |  10000.00 |  26 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
+|  8 | Sandhya  | IT        |  12000.00 |  40 |
++----+----------+-----------+-----------+-----+
+8 rows in set (0.00 sec)
+
+mysql> select dept from emp union select cname from class;
++-----------+
+| dept      |
++-----------+
+| IT        |
+| HR        |
+| Finance   |
+| Accounts  |
+| Compuetrs |
+| 2nd class |
+| 3rd class |
+| 4rd class |
+| 7rd class |
+| LKG       |
+| 9th class |
++-----------+
+11 rows in set (0.01 sec)
+
+mysql>  select dept from emp union all select cname from class;
++-----------+
+| dept      |
++-----------+
+| IT        |
+| HR        |
+| Finance   |
+| IT        |
+| Accounts  |
+| IT        |
+| Compuetrs |
+| IT        |
+| 2nd class |
+| 3rd class |
+| 4rd class |
+| 7rd class |
+| LKG       |
+| 9th class |
++-----------+
+14 rows in set (0.00 sec)
+
+mysql> select id from emp intersect select rollno from class;
++----+
+| id |
++----+
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|  5 |
+|  6 |
++----+
+6 rows in set (0.00 sec)
+
+mysql> select id from emp minus select rollno from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select rollno from emp' at line 1
+mysql> select id from emp where id not in(select rollno from class);
++----+
+| id |
++----+
+|  7 |
+|  8 |
++----+
+2 rows in set (0.01 sec)
+
+mysql> select * rom emp where dept='IT' and age = and sal=50000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rom emp where dept='IT' and age = and sal=50000' at line 1
+mysql> select * from emp where dept='IT' and age=30 and sal=50000;
++----+----------+------+----------+-----+
+| id | name     | dept | sal      | age |
++----+----------+------+----------+-----+
+|  1 | Vinitha  | IT   | 50000.00 |  30 |
+|  4 | Charitha | IT   | 50000.00 |  30 |
++----+----------+------+----------+-----+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where dept='Accounts' and id=5;
++----+----------+----------+-----------+-----+
+| id | name     | dept     | sal       | age |
++----+----------+----------+-----------+-----+
+|  5 | Bhargavi | Accounts | 100000.00 |  35 |
++----+----------+----------+-----------+-----+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where name not like 'S%' or 'A%';
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  1 | Vinitha  | IT        |  50000.00 |  30 |
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  4 | Charitha | IT        |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  6 | Vidya    | IT        |  10000.00 |  26 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
++----+----------+-----------+-----------+-----+
+7 rows in set, 1 warning (0.01 sec)
+
+mysql> select * from emp where name not like 'S%' or 'C%';
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  1 | Vinitha  | IT        |  50000.00 |  30 |
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  4 | Charitha | IT        |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  6 | Vidya    | IT        |  10000.00 |  26 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
++----+----------+-----------+-----------+-----+
+7 rows in set, 1 warning (0.00 sec)
+
+mysql> select * from emp where name not like 'S%' and 'C%';
+Empty set, 1 warning (0.00 sec)
+
+mysql> select * from emp;
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  1 | Vinitha  | IT        |  50000.00 |  30 |
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  4 | Charitha | IT        |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  6 | Vidya    | IT        |  10000.00 |  26 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
+|  8 | Sandhya  | IT        |  12000.00 |  40 |
++----+----------+-----------+-----------+-----+
+8 rows in set (0.00 sec)
+
+mysql> select * from emp where name not like 'S%' and name not like 'C%';
++----+----------+-----------+-----------+-----+
+| id | name     | dept      | sal       | age |
++----+----------+-----------+-----------+-----+
+|  1 | Vinitha  | IT        |  50000.00 |  30 |
+|  2 | Kiran    | HR        |  45000.00 |  50 |
+|  3 | Ravi     | Finance   |  55000.00 |  45 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 |
+|  6 | Vidya    | IT        |  10000.00 |  26 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 |
++----+----------+-----------+-----------+-----+
+6 rows in set (0.00 sec)
+
+mysql> select * from emp where not sal=100000 and dept='IT';
++----+----------+------+----------+-----+
+| id | name     | dept | sal      | age |
++----+----------+------+----------+-----+
+|  1 | Vinitha  | IT   | 50000.00 |  30 |
+|  4 | Charitha | IT   | 50000.00 |  30 |
+|  6 | Vidya    | IT   | 10000.00 |  26 |
+|  8 | Sandhya  | IT   | 12000.00 |  40 |
++----+----------+------+----------+-----+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where sal is not null and dept in('IT','Accounts');
++----+----------+----------+-----------+-----+
+| id | name     | dept     | sal       | age |
++----+----------+----------+-----------+-----+
+|  1 | Vinitha  | IT       |  50000.00 |  30 |
+|  4 | Charitha | IT       |  50000.00 |  30 |
+|  5 | Bhargavi | Accounts | 100000.00 |  35 |
+|  6 | Vidya    | IT       |  10000.00 |  26 |
+|  8 | Sandhya  | IT       |  12000.00 |  40 |
++----+----------+----------+-----------+-----+
+5 rows in set (0.00 sec)
+
+mysql> select sal*12 from emp where id=7;
++-----------+
+| sal*12    |
++-----------+
+| 180000.00 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where dept='Accounts' and name like '%i' and sal like '_____';
+Empty set (0.00 sec)
+
+mysql> select * from emp where dept='Accounts' and name like '%i' and sal like '______';
+Empty set (0.00 sec)
+
+mysql> select * from emp where dept='IT' and age=30 and sal between 10000 and 50000;
++----+----------+------+----------+-----+
+| id | name     | dept | sal      | age |
++----+----------+------+----------+-----+
+|  1 | Vinitha  | IT   | 50000.00 |  30 |
+|  4 | Charitha | IT   | 50000.00 |  30 |
++----+----------+------+----------+-----+
+2 rows in set (0.00 sec)
+
+mysql> select * from class where joindate>' 2022-02-02'
+    -> ^C
+mysql>  select * from class where joindate>'2022-02-02';
++--------+-------+------------+-------+-----------+-----------+
+| rollno | name  | joindate   | marks | location  | cname     |
++--------+-------+------------+-------+-----------+-----------+
+|      1 | Rahul | 2025-12-02 |    70 | NEWYORK   | 2nd class |
+|      2 | Hema  | 2023-05-25 |    50 | Tirupathi | 3rd class |
++--------+-------+------------+-------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from class where joindate like '%02%';
++--------+-------+------------+-------+-----------+-----------+
+| rollno | name  | joindate   | marks | location  | cname     |
++--------+-------+------------+-------+-----------+-----------+
+|      1 | Rahul | 2025-12-02 |    70 | NEWYORK   | 2nd class |
+|      2 | Hema  | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari  | 2022-02-02 |    60 | Chittoor  | 4rd class |
++--------+-------+------------+-------+-----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql>  select * from emp where dept='Accounts' and name like '%i' and sal like '_________';
++----+----------+----------+-----------+-----+
+| id | name     | dept     | sal       | age |
++----+----------+----------+-----------+-----+
+|  5 | Bhargavi | Accounts | 100000.00 |  35 |
++----+----------+----------+-----------+-----+
+1 row in set (0.00 sec)
