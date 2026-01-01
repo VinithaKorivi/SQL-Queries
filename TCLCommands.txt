@@ -1,0 +1,325 @@
+mysql> shw databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'shw databases' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.13 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| emp                |
++--------------------+
+3 rows in set (0.03 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | income     | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 10 | Amrutha  | Maths      |  200000.00 |  36 | NULL  |
+| 11 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+10 rows in set (0.01 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set (0.01 sec)
+
+mysql> select * from product;
+ERROR 1146 (42S02): Table 'employee.product' doesn't exist
+mysql> select * from book;
++----+-------+
+| id | price |
++----+-------+
+|  1 |   250 |
+|  2 |   201 |
++----+-------+
+2 rows in set (0.01 sec)
+
+mysql> rename book to book1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'book to book1' at line 1
+mysql> rename table book to book1;
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> select * from book1;
++----+-------+
+| id | price |
++----+-------+
+|  1 |   250 |
+|  2 |   201 |
++----+-------+
+2 rows in set (0.01 sec)
+
+mysql> truncate table book1;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> select * from book1;
+Empty set (0.00 sec)
+
+mysql> insert into book1 values(1,300),(2,300),(3,600);
+ERROR 3819 (HY000): Check constraint 'book1_chk_1' is violated.
+mysql> insert into book1 values(1,300),(2,300);
+ERROR 3819 (HY000): Check constraint 'book1_chk_1' is violated.
+mysql> desc book1;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | NO   | PRI | NULL    |       |
+| price | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> SHOW CREATE TABLE book1;
++-------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table | Create Table                                                                                                                                                                                                        |
++-------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| book1 | CREATE TABLE `book1` (
+  `id` int NOT NULL,
+  `price` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `book1_chk_1` CHECK ((`price` < 300))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++-------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> select * from book1;
+Empty set (0.00 sec)
+
+mysql> insert into book1 values(1,200),(2,180),(3,100);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from book1;
++----+-------+
+| id | price |
++----+-------+
+|  1 |   200 |
+|  2 |   180 |
+|  3 |   100 |
++----+-------+
+3 rows in set (0.00 sec)
+
+mysql> create table vini(name varchar(50) primary key,quali varchar(50),status varchar(50),age int);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> rename table vini info;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'info' at line 1
+mysql> rename table vini to info;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into table info values('Vinitha','MCA','UnMarried',24);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table info values('Vinitha','MCA','UnMarried',24)' at line 1
+mysql> insert into info values('Vinitha','MCA','UnMarried',24);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from info;
++---------+-------+-----------+------+
+| name    | quali | status    | age  |
++---------+-------+-----------+------+
+| Vinitha | MCA   | UnMarried |   24 |
++---------+-------+-----------+------+
+1 row in set (0.00 sec)
+
+mysql>  insert into info values('RAM','BSC','Married',23),('SITA','BSC','Married',20), ('Narayan','BTech','UnMarried',20), ('Lakshmi','BTech','UnMarried',18);
+Query OK, 4 rows affected (0.02 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from info;
++---------+-------+-----------+------+
+| name    | quali | status    | age  |
++---------+-------+-----------+------+
+| Lakshmi | BTech | UnMarried |   18 |
+| Narayan | BTech | UnMarried |   20 |
+| RAM     | BSC   | Married   |   23 |
+| SITA    | BSC   | Married   |   20 |
+| Vinitha | MCA   | UnMarried |   24 |
++---------+-------+-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> spool D:\SQL COMMANDS
+ERROR:
+Unknown command '\S'.
+    -> ^\c
+    -> ^C
+mysql> insert into info values('RAM','BSC','Married',23),('SITA','BSC','Married',20), ('Narayan','BTech','UnMarried',20), ('Lakshmi','BTech','UnMarried',18);
+ERROR 1062 (23000): Duplicate entry 'RAM' for key 'info.PRIMARY'
+mysql> insert into info values('Pandu','BSC','Married',23),('Satya','BSC','Married',20), ('Jalandhar','BTech','UnMarried',20), ('Vrinda','BTech','UnMarried',18);
+Query OK, 4 rows affected (0.02 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| Jalandhar | BTech | UnMarried |   20 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| Satya     | BSC   | Married   |   20 |
+| SITA      | BSC   | Married   |   20 |
+| Vinitha   | MCA   | UnMarried |   24 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+9 rows in set (0.01 sec)
+
+mysql> insert into info values('Karna','BSC','Married',23),('Vaishali','BSC','Married',20), ('DharmaRaj','BTech','UnMarried',20), ('Draupathi','BTech','UnMarried',18);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Karna     | BSC   | Married   |   23 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| Satya     | BSC   | Married   |   20 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vinitha   | MCA   | UnMarried |   24 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+13 rows in set (0.00 sec)
+
+mysql> delete from info where name='Vinitha';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> savepoint A;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into info values('Hareesh','BSC','Married',23),('Hema','BSC','Married',20), ('Naveen','BTech','UnMarried',20), ('Navya','BTech','UnMarried',18);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Hareesh   | BSC   | Married   |   23 |
+| Hema      | BSC   | Married   |   20 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Karna     | BSC   | Married   |   23 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Naveen    | BTech | UnMarried |   20 |
+| Navya     | BTech | UnMarried |   18 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| Satya     | BSC   | Married   |   20 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+16 rows in set (0.00 sec)
+
+mysql> rollback to A;
+ERROR 1305 (42000): SAVEPOINT A does not exist
+mysql> SET autocommit = 0;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> START TRANSACTION;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SAVEPOINT A;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delete from info where name in(name='Hema',name='Hareesh');
+ERROR 1292 (22007): Truncated incorrect DOUBLE value: 'DharmaRaj'
+mysql> delete from info where name in('Hema', 'Hareesh');
+Query OK, 2 rows affected (0.00 sec)
+
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Karna     | BSC   | Married   |   23 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Naveen    | BTech | UnMarried |   20 |
+| Navya     | BTech | UnMarried |   18 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| Satya     | BSC   | Married   |   20 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+14 rows in set (0.00 sec)
+
+mysql> insert into info values('Hareesh','BSC','Married',23),('Hema','BSC','Married',20);
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> rollback to A;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Hareesh   | BSC   | Married   |   23 |
+| Hema      | BSC   | Married   |   20 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Karna     | BSC   | Married   |   23 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Naveen    | BTech | UnMarried |   20 |
+| Navya     | BTech | UnMarried |   18 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| Satya     | BSC   | Married   |   20 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+16 rows in set (0.00 sec)
