@@ -1,0 +1,345 @@
+mysql> select sqrt(25);
++----------+
+| sqrt(25) |
++----------+
+|        5 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sqrt(sal) from emp;
++--------------------+
+| sqrt(sal)          |
++--------------------+
+| 1581.1388300841897 |
+| 212.13203435596427 |
+|  234.5207879911715 |
+| 223.60679774997897 |
+| 316.22776601683796 |
+| 122.47448713915891 |
+| 109.54451150103323 |
+|  141.4213562373095 |
+| 170.29386365926402 |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> select sqrt(id) from emp;
++--------------------+
+| sqrt(id)           |
++--------------------+
+|                  1 |
+| 1.4142135623730951 |
+| 1.7320508075688772 |
+|                  2 |
+|   2.23606797749979 |
+| 2.6457513110645907 |
+| 2.8284271247461903 |
+|                  3 |
+|    3.3166247903554 |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> select sqrt(256,78,50,25);
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'sqrt'
+mysql> select sqrt(255);
++--------------------+
+| sqrt(255)          |
++--------------------+
+| 15.968719422671311 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select sqrt(169);
++-----------+
+| sqrt(169) |
++-----------+
+|        13 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select sqrt(324);
++-----------+
+| sqrt(324) |
++-----------+
+|        18 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select sqrt(200);
++--------------------+
+| sqrt(200)          |
++--------------------+
+| 14.142135623730951 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select floor(sal) from emp;
++------------+
+| floor(sal) |
++------------+
+|    2500000 |
+|      45000 |
+|      55000 |
+|      50000 |
+|     100000 |
+|      15000 |
+|      12000 |
+|      20000 |
+|      29000 |
++------------+
+9 rows in set (0.01 sec)
+
+mysql> select floor(234398.89098);
++---------------------+
+| floor(234398.89098) |
++---------------------+
+|              234398 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select floor(5434.989);
++-----------------+
+| floor(5434.989) |
++-----------------+
+|            5434 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 11 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.00 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from book;
++----+-------+
+| id | price |
++----+-------+
+|  1 |     2 |
+|  2 |     2 |
+|  3 |     3 |
+|  4 |     4 |
+|  5 |     5 |
+|  6 |    11 |
+|  7 |    22 |
+|  8 |    33 |
+|  9 |    44 |
+| 10 |    55 |
++----+-------+
+10 rows in set (0.00 sec)
+
+mysql> select ceil(3454.9);
++--------------+
+| ceil(3454.9) |
++--------------+
+|         3455 |
++--------------+
+1 row in set (0.01 sec)
+
+mysql> select ceil(9.9);
++-----------+
+| ceil(9.9) |
++-----------+
+|        10 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select ceil(7.7);
++-----------+
+| ceil(7.7) |
++-----------+
+|         8 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select ceil(4.4);
++-----------+
+| ceil(4.4) |
++-----------+
+|         5 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select ceil(6.6);
++-----------+
+| ceil(6.6) |
++-----------+
+|         7 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select floor(sal) from emp;
++------------+
+| floor(sal) |
++------------+
+|    2500000 |
+|      45000 |
+|      55000 |
+|      50000 |
+|     100000 |
+|      15000 |
+|      12000 |
+|      20000 |
+|      29000 |
++------------+
+9 rows in set (0.00 sec)
+
+mysql> select round(5.5);
++------------+
+| round(5.5) |
++------------+
+|          6 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select round(6.4);
++------------+
+| round(6.4) |
++------------+
+|          6 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select round(8.9);
++------------+
+| round(8.9) |
++------------+
+|          9 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> create table double(id Primary key, value double(50));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'double(id Primary key, value double(50))' at line 1
+mysql> create table Vini(id int Primary key, value double);
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> insert into Vini values(1,7889.1),(2,7889.2),(3,6789.3),(4,7889.3), (5,7889.4), (6,7889.5),(7,7889.6), (8,7889.7), (9,7889.8), (10,7889.9), (11,7889.10), (12,7889.12),(13,7889.13);
+Query OK, 13 rows affected (0.03 sec)
+Records: 13  Duplicates: 0  Warnings: 0
+
+mysql> select * from Vini;
++----+---------+
+| id | value   |
++----+---------+
+|  1 |  7889.1 |
+|  2 |  7889.2 |
+|  3 |  6789.3 |
+|  4 |  7889.3 |
+|  5 |  7889.4 |
+|  6 |  7889.5 |
+|  7 |  7889.6 |
+|  8 |  7889.7 |
+|  9 |  7889.8 |
+| 10 |  7889.9 |
+| 11 |  7889.1 |
+| 12 | 7889.12 |
+| 13 | 7889.13 |
++----+---------+
+13 rows in set (0.00 sec)
+
+mysql> rename table Vini to vini;
+ERROR 1050 (42S01): Table 'vini' already exists
+mysql> rename table Vini to ujn;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select * from ujn;
++----+---------+
+| id | value   |
++----+---------+
+|  1 |  7889.1 |
+|  2 |  7889.2 |
+|  3 |  6789.3 |
+|  4 |  7889.3 |
+|  5 |  7889.4 |
+|  6 |  7889.5 |
+|  7 |  7889.6 |
+|  8 |  7889.7 |
+|  9 |  7889.8 |
+| 10 |  7889.9 |
+| 11 |  7889.1 |
+| 12 | 7889.12 |
+| 13 | 7889.13 |
++----+---------+
+13 rows in set (0.00 sec)
+
+mysql> select round(value) from ujn;
++--------------+
+| round(value) |
++--------------+
+|         7889 |
+|         7889 |
+|         6789 |
+|         7889 |
+|         7889 |
+|         7890 |
+|         7890 |
+|         7890 |
+|         7890 |
+|         7890 |
+|         7889 |
+|         7889 |
+|         7889 |
++--------------+
+13 rows in set (0.01 sec)
+
+mysql> select ceil(value) from ujn;
++-------------+
+| ceil(value) |
++-------------+
+|        7890 |
+|        7890 |
+|        6790 |
+|        7890 |
+|        7890 |
+|        7890 |
+|        7890 |
+|        7890 |
+|        7890 |
+|        7890 |
+|        7890 |
+|        7890 |
+|        7890 |
++-------------+
+13 rows in set (0.00 sec)
+
+mysql> select floor(value) from ujn;
++--------------+
+| floor(value) |
++--------------+
+|         7889 |
+|         7889 |
+|         6789 |
+|         7889 |
+|         7889 |
+|         7889 |
+|         7889 |
+|         7889 |
+|         7889 |
+|         7889 |
+|         7889 |
+|         7889 |
+|         7889 |
++--------------+
+13 rows in set (0.00 sec)
