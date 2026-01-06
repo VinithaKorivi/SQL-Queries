@@ -1,0 +1,466 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.17 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| emp                |
+| info               |
+| ujn                |
++--------------------+
+5 rows in set (0.03 sec)
+
+mysql> select * from book;
++----+-------+
+| id | price |
++----+-------+
+|  1 |     2 |
+|  2 |     2 |
+|  3 |     3 |
+|  4 |     4 |
+|  5 |     5 |
+|  6 |    11 |
+|  7 |    22 |
+|  8 |    33 |
+|  9 |    44 |
+| 10 |    55 |
++----+-------+
+10 rows in set (0.01 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set (0.01 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 11 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.01 sec)
+
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Hareesh   | BSC   | Married   |   23 |
+| Hema      | BSC   | Married   |   20 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Karna     | BSC   | Married   |   23 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Naveen    | BTech | UnMarried |   20 |
+| Navya     | BTech | UnMarried |   18 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| Satya     | BSC   | Married   |   20 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+16 rows in set (0.01 sec)
+
+mysql> select concat (name, 'and is having the sal of',sal)as details from emp;
++-------------------------------------------+
+| details                                   |
++-------------------------------------------+
+| Vinithaand is having the sal of2500000.00 |
+| Kiranand is having the sal of45000.00     |
+| Raviand is having the sal of55000.00      |
+| Charithaand is having the sal of50000.00  |
+| Bhargaviand is having the sal of100000.00 |
+| Navyaand is having the sal of15000.00     |
+| Sandhyaand is having the sal of12000.00   |
+| Lohithaand is having the sal of20000.00   |
+| Narayanand is having the sal of29000.00   |
++-------------------------------------------+
+9 rows in set (0.01 sec)
+
+mysql> select length(name) from emp;
++--------------+
+| length(name) |
++--------------+
+|            7 |
+|            5 |
+|            4 |
+|            8 |
+|            8 |
+|            5 |
+|            7 |
+|            7 |
+|            7 |
++--------------+
+9 rows in set (0.00 sec)
+
+mysql> select length("developer");
++---------------------+
+| length("developer") |
++---------------------+
+|                   9 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select length("Vinitha");
++-------------------+
+| length("Vinitha") |
++-------------------+
+|                 7 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select lenght(dept) from emp;
+ERROR 1305 (42000): FUNCTION employee.lenght does not exist
+mysql> select * from emp;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 11 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.00 sec)
+
+mysql> select length(dept) from emp;
++--------------+
+| length(dept) |
++--------------+
+|            2 |
+|            2 |
+|            7 |
+|            2 |
+|            8 |
+|            9 |
+|            2 |
+|           10 |
+|            7 |
++--------------+
+9 rows in set (0.00 sec)
+
+mysql> select length(hired) from emp;
++---------------+
+| length(hired) |
++---------------+
+|          NULL |
+|          NULL |
+|          NULL |
+|          NULL |
+|          NULL |
+|          NULL |
+|          NULL |
+|          NULL |
+|          NULL |
++---------------+
+9 rows in set (0.00 sec)
+
+mysql> select upper(name) from emp;
++-------------+
+| upper(name) |
++-------------+
+| VINITHA     |
+| KIRAN       |
+| RAVI        |
+| CHARITHA    |
+| BHARGAVI    |
+| NAVYA       |
+| SANDHYA     |
+| LOHITHA     |
+| NARAYAN     |
++-------------+
+9 rows in set (0.00 sec)
+
+mysql> select upper(name) from class;
++-------------+
+| upper(name) |
++-------------+
+| RAHUL       |
+| HEMA        |
+| HARI        |
+| KALYANI     |
+| THANOOJA    |
+| MOUNIKA     |
++-------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Hareesh   | BSC   | Married   |   23 |
+| Hema      | BSC   | Married   |   20 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Karna     | BSC   | Married   |   23 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Naveen    | BTech | UnMarried |   20 |
+| Navya     | BTech | UnMarried |   18 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| Satya     | BSC   | Married   |   20 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+16 rows in set (0.00 sec)
+
+mysql> select upper(status) from info;
++---------------+
+| upper(status) |
++---------------+
+| UNMARRIED     |
+| UNMARRIED     |
+| MARRIED       |
+| MARRIED       |
+| UNMARRIED     |
+| MARRIED       |
+| UNMARRIED     |
+| UNMARRIED     |
+| UNMARRIED     |
+| UNMARRIED     |
+| MARRIED       |
+| MARRIED       |
+| MARRIED       |
+| MARRIED       |
+| MARRIED       |
+| UNMARRIED     |
++---------------+
+16 rows in set (0.00 sec)
+
+mysql> select upper(name) from info;
++-------------+
+| upper(name) |
++-------------+
+| DHARMARAJ   |
+| DRAUPATHI   |
+| HAREESH     |
+| HEMA        |
+| JALANDHAR   |
+| KARNA       |
+| LAKSHMI     |
+| NARAYAN     |
+| NAVEEN      |
+| NAVYA       |
+| PANDU       |
+| RAM         |
+| SATYA       |
+| SITA        |
+| VAISHALI    |
+| VRINDA      |
++-------------+
+16 rows in set (0.00 sec)
+
+mysql> select upper(quali) from info;
++--------------+
+| upper(quali) |
++--------------+
+| BTECH        |
+| BTECH        |
+| BSC          |
+| BSC          |
+| BTECH        |
+| BSC          |
+| BTECH        |
+| BTECH        |
+| BTECH        |
+| BTECH        |
+| BSC          |
+| BSC          |
+| BSC          |
+| BSC          |
+| BSC          |
+| BTECH        |
++--------------+
+16 rows in set (0.00 sec)
+
+mysql> select lower(name) from emp;
++-------------+
+| lower(name) |
++-------------+
+| vinitha     |
+| kiran       |
+| ravi        |
+| charitha    |
+| bhargavi    |
+| navya       |
+| sandhya     |
+| lohitha     |
+| narayan     |
++-------------+
+9 rows in set (0.00 sec)
+
+mysql> select lower(name) from class;
++-------------+
+| lower(name) |
++-------------+
+| rahul       |
+| hema        |
+| hari        |
+| kalyani     |
+| thanooja    |
+| mounika     |
++-------------+
+6 rows in set (0.00 sec)
+
+mysql> select lower("MY NAME IS VINITHA AND I AM GOING TO BE A JAVA DEVELOPER");
++-------------------------------------------------------------------+
+| lower("MY NAME IS VINITHA AND I AM GOING TO BE A JAVA DEVELOPER") |
++-------------------------------------------------------------------+
+| my name is vinitha and i am going to be a java developer          |
++-------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM EMP;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 11 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM CLASS;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT LOWER(LOCATION) FROM CLASS;
++-----------------+
+| LOWER(LOCATION) |
++-----------------+
+| newyork         |
+| tirupathi       |
+| chittoor        |
+| bangalore       |
+| tirupathi       |
+| chicago         |
++-----------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT UPPER(CNAMAE) FROM CLASS;
+ERROR 1054 (42S22): Unknown column 'CNAMAE' in 'field list'
+mysql> select substring(name,1,3) from emp;
++---------------------+
+| substring(name,1,3) |
++---------------------+
+| Vin                 |
+| Kir                 |
+| Rav                 |
+| Cha                 |
+| Bha                 |
+| Nav                 |
+| San                 |
+| Loh                 |
+| Nar                 |
++---------------------+
+9 rows in set (0.00 sec)
+
+mysql> select substring(name,3,5) from class;
++---------------------+
+| substring(name,3,5) |
++---------------------+
+| hul                 |
+| ma                  |
+| ri                  |
+| lyani               |
+| anooj               |
+| unika               |
++---------------------+
+6 rows in set (0.00 sec)
+
+mysql> select subsring(location,1,4) from class;
+ERROR 1305 (42000): FUNCTION employee.subsring does not exist
+mysql> select substring(location,1,4) from class;
++-------------------------+
+| substring(location,1,4) |
++-------------------------+
+| NEWY                    |
+| Tiru                    |
+| Chit                    |
+| Bang                    |
+| Tiru                    |
+| Chic                    |
++-------------------------+
+6 rows in set (0.00 sec)
+
+mysql> select substring(name,1,3) from info;
++---------------------+
+| substring(name,1,3) |
++---------------------+
+| Dha                 |
+| Dra                 |
+| Har                 |
+| Hem                 |
+| Jal                 |
+| Kar                 |
+| Lak                 |
+| Nar                 |
+| Nav                 |
+| Nav                 |
+| Pan                 |
+| RAM                 |
+| Sat                 |
+| SIT                 |
+| Vai                 |
+| Vri                 |
++---------------------+
+16 rows in set (0.00 sec)
