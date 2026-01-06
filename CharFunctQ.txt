@@ -1,0 +1,646 @@
+mysql> select * from emp;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 11 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.00 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Hareesh   | BSC   | Married   |   23 |
+| Hema      | BSC   | Married   |   20 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Karna     | BSC   | Married   |   23 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Naveen    | BTech | UnMarried |   20 |
+| Navya     | BTech | UnMarried |   18 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| Satya     | BSC   | Married   |   20 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+16 rows in set (0.00 sec)
+
+mysql> select * from book;
++----+-------+
+| id | price |
++----+-------+
+|  1 |     2 |
+|  2 |     2 |
+|  3 |     3 |
+|  4 |     4 |
+|  5 |     5 |
+|  6 |    11 |
+|  7 |    22 |
+|  8 |    33 |
+|  9 |    44 |
+| 10 |    55 |
++----+-------+
+10 rows in set (0.00 sec)
+
+mysql> select replace(name, vivi) from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') from emp' at line 1
+mysql> replace ('name','nini') from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('name','nini') from emp' at line 1
+mysql> select replace('java', 'ja');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> select replace('vinitha','vini
+    '> ^C
+mysql> select replace('vinitha','vini');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> select replace('vinitha','vini','nini');
++----------------------------------+
+| replace('vinitha','vini','nini') |
++----------------------------------+
+| ninitha                          |
++----------------------------------+
+1 row in set (0.01 sec)
+
+mysql> select replace('java','java','sql');
++------------------------------+
+| replace('java','java','sql') |
++------------------------------+
+| sql                          |
++------------------------------+
+1 row in set (0.00 sec)
+
+mysql> replace('Vinitha','Vinitha','Vini');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('Vinitha','Vinitha','Vini')' at line 1
+mysql> select replace('Vinitha','Vinitha','Vini');
++-------------------------------------+
+| replace('Vinitha','Vinitha','Vini') |
++-------------------------------------+
+| Vini                                |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select reverse(name) from emp;
++---------------+
+| reverse(name) |
++---------------+
+| ahtiniV       |
+| nariK         |
+| ivaR          |
+| ahtirahC      |
+| ivagrahB      |
+| ayvaN         |
+| ayhdnaS       |
+| ahtihoL       |
+| nayaraN       |
++---------------+
+9 rows in set (0.00 sec)
+
+mysql> select reverse("java developer");
++---------------------------+
+| reverse("java developer") |
++---------------------------+
+| repoleved avaj            |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select initcap(name) from emp;
+ERROR 1305 (42000): FUNCTION employee.initcap does not exist
+mysql> select upper(name) from emp;
++-------------+
+| upper(name) |
++-------------+
+| VINITHA     |
+| KIRAN       |
+| RAVI        |
+| CHARITHA    |
+| BHARGAVI    |
+| NAVYA       |
+| SANDHYA     |
+| LOHITHA     |
+| NARAYAN     |
++-------------+
+9 rows in set (0.00 sec)
+
+mysql> select initcap(name) from emp;
+ERROR 1305 (42000): FUNCTION employee.initcap does not exist
+mysql> select concat(upper(left(name,1)),lower(substring(name,2)))as initcap_name from emp;
++--------------+
+| initcap_name |
++--------------+
+| Vinitha      |
+| Kiran        |
+| Ravi         |
+| Charitha     |
+| Bhargavi     |
+| Navya        |
+| Sandhya      |
+| Lohitha      |
+| Narayan      |
++--------------+
+9 rows in set (0.01 sec)
+
+mysql> select concat(upper(left(name,1)),lower(substring(name,2))) as init_cap from emp;
++----------+
+| init_cap |
++----------+
+| Vinitha  |
+| Kiran    |
+| Ravi     |
+| Charitha |
+| Bhargavi |
+| Navya    |
+| Sandhya  |
+| Lohitha  |
+| Narayan  |
++----------+
+9 rows in set (0.00 sec)
+
+mysql> select concat(upper(left(name,1)),lower(substring(name,2))) as init_cap from class;
++----------+
+| init_cap |
++----------+
+| Rahul    |
+| Hema     |
+| Hari     |
+| Kalyani  |
+| Thanooja |
+| Mounika  |
++----------+
+6 rows in set (0.00 sec)
+
+mysql> select instr("developer",'d',1,6);
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'instr'
+mysql> select instr('developer', 'd');
++-------------------------+
+| instr('developer', 'd') |
++-------------------------+
+|                       1 |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select instr("this is the first time in eeeeeee",'e');
++------------------------------------------------+
+| instr("this is the first time in eeeeeee",'e') |
++------------------------------------------------+
+|                                             11 |
++------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select ascii('a');
++------------+
+| ascii('a') |
++------------+
+|         97 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select ascii(rollno) from class;
++---------------+
+| ascii(rollno) |
++---------------+
+|            49 |
+|            50 |
+|            51 |
+|            52 |
+|            53 |
+|            54 |
++---------------+
+6 rows in set (0.00 sec)
+
+mysql> select ascii(name) from emp;
++-------------+
+| ascii(name) |
++-------------+
+|          86 |
+|          75 |
+|          82 |
+|          67 |
+|          66 |
+|          78 |
+|          83 |
+|          76 |
+|          78 |
++-------------+
+9 rows in set (0.00 sec)
+
+mysql> select 8 from emp;
++---+
+| 8 |
++---+
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
++---+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 11 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where (sal/2)!=0;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 11 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.01 sec)
+
+mysql> update emp set id=10 where id=11;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where(sal/2!=0);
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where (sal,2)!=0;
+ERROR 1241 (21000): Operand should contain 2 column(s)
+mysql> select * from emp where sal!=round(sal,2);
+Empty set (0.02 sec)
+
+mysql> select mod(sal,2)!=0 from emp;
++---------------+
+| mod(sal,2)!=0 |
++---------------+
+|             0 |
+|             0 |
+|             0 |
+|             0 |
+|             0 |
+|             0 |
+|             0 |
+|             0 |
+|             0 |
++---------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where mod(sal,2)=0;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.00 sec)
+
+mysql> select mod(sal,2)==0;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '==0' at line 1
+mysql> select mod(sal,2)==0 from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '==0 from emp' at line 1
+mysql> select name from emp where mod(sal,2)!=0;
+Empty set (0.00 sec)
+
+mysql> select age from emp where mod(sal,2)!=0;
+Empty set (0.00 sec)
+
+mysql> select mod(sal,2) = 0 from emp;
++----------------+
+| mod(sal,2) = 0 |
++----------------+
+|              1 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
+|              1 |
++----------------+
+9 rows in set (0.00 sec)
+
+mysql> select mod(sal,2) != 0 from emp;
++-----------------+
+| mod(sal,2) != 0 |
++-----------------+
+|               0 |
+|               0 |
+|               0 |
+|               0 |
+|               0 |
+|               0 |
+|               0 |
+|               0 |
+|               0 |
++-----------------+
+9 rows in set (0.00 sec)
+
+mysql> select mod(age,2) != 0 from emp;
++-----------------+
+| mod(age,2) != 0 |
++-----------------+
+|               0 |
+|               0 |
+|               1 |
+|               0 |
+|               1 |
+|               1 |
+|               0 |
+|               0 |
+|               1 |
++-----------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where(name,4);
+ERROR 1241 (21000): Operand should contain 1 column(s)
+mysql> select substring(name,1,4) from emp;
++---------------------+
+| substring(name,1,4) |
++---------------------+
+| Vini                |
+| Kira                |
+| Ravi                |
+| Char                |
+| Bhar                |
+| Navy                |
+| Sand                |
+| Lohi                |
+| Nara                |
++---------------------+
+9 rows in set (0.00 sec)
+
+mysql> select substring(name,4) from emp;
++-------------------+
+| substring(name,4) |
++-------------------+
+| itha              |
+| an                |
+| i                 |
+| ritha             |
+| rgavi             |
+| ya                |
+| dhya              |
+| itha              |
+| ayan              |
++-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where length(name)=4;
++----+------+---------+----------+-----+-------+
+| id | name | dept    | sal      | age | hired |
++----+------+---------+----------+-----+-------+
+|  3 | Ravi | Finance | 55000.00 |  45 | NULL  |
++----+------+---------+----------+-----+-------+
+1 row in set (0.00 sec)
+
+mysql> selct * from emp where length(name)=8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selct * from emp where length(name)=8' at line 1
+mysql> select * from emp where length(name)=8;
++----+----------+----------+-----------+-----+-------+
+| id | name     | dept     | sal       | age | hired |
++----+----------+----------+-----------+-----+-------+
+|  4 | Charitha | IT       |  50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts | 100000.00 |  35 | NULL  |
++----+----------+----------+-----------+-----+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where length(dept)=7;
++----+---------+---------+----------+-----+-------+
+| id | name    | dept    | sal      | age | hired |
++----+---------+---------+----------+-----+-------+
+|  3 | Ravi    | Finance | 55000.00 |  45 | NULL  |
+| 10 | Narayan | Biology | 29000.00 |  31 | NULL  |
++----+---------+---------+----------+-----+-------+
+2 rows in set (0.00 sec)
+
+mysql> select substring(name,4) from emp;
++-------------------+
+| substring(name,4) |
++-------------------+
+| itha              |
+| an                |
+| i                 |
+| ritha             |
+| rgavi             |
+| ya                |
+| dhya              |
+| itha              |
+| ayan              |
++-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select substring(name,1,4) from emp;
++---------------------+
+| substring(name,1,4) |
++---------------------+
+| Vini                |
+| Kira                |
+| Ravi                |
+| Char                |
+| Bhar                |
+| Navy                |
+| Sand                |
+| Lohi                |
+| Nara                |
++---------------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where (dept,4) from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from emp' at line 1
+mysql> select substring(dept,4) from  emp;
++-------------------+
+| substring(dept,4) |
++-------------------+
+|                   |
+|                   |
+| ance              |
+|                   |
+| ounts             |
+| puetrs            |
+|                   |
+| ctrical           |
+| logy              |
++-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select substring(dept,-4) from emp;
++--------------------+
+| substring(dept,-4) |
++--------------------+
+|                    |
+|                    |
+| ance               |
+|                    |
+| unts               |
+| etrs               |
+|                    |
+| ical               |
+| logy               |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> select substring(name,-4) from emp;
++--------------------+
+| substring(name,-4) |
++--------------------+
+| itha               |
+| iran               |
+| Ravi               |
+| itha               |
+| gavi               |
+| avya               |
+| dhya               |
+| itha               |
+| ayan               |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where substring(name,1,5)='arg';
+Empty set (0.00 sec)
+
+mysql> select * from emp where substring(name,1,3)='Vin';
++----+---------+------+------------+-----+-------+
+| id | name    | dept | sal        | age | hired |
++----+---------+------+------------+-----+-------+
+|  1 | Vinitha | IT   | 2500000.00 |  30 | NULL  |
++----+---------+------+------------+-----+-------+
+1 row in set (0.00 sec)
+
+mysql> select replace("developer","developer","development");
++------------------------------------------------+
+| replace("developer","developer","development") |
++------------------------------------------------+
+| development                                    |
++------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select replace("developer","er","ment");
++----------------------------------+
+| replace("developer","er","ment") |
++----------------------------------+
+| development                      |
++----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select lower(substring(dept,-5)) from emp;
++---------------------------+
+| lower(substring(dept,-5)) |
++---------------------------+
+|                           |
+|                           |
+| nance                     |
+|                           |
+| ounts                     |
+| uetrs                     |
+|                           |
+| rical                     |
+| ology                     |
++---------------------------+
+9 rows in set (0.00 sec)
+
+mysql> select upper(substring(name,1,4)) from emp;
++----------------------------+
+| upper(substring(name,1,4)) |
++----------------------------+
+| VINI                       |
+| KIRA                       |
+| RAVI                       |
+| CHAR                       |
+| BHAR                       |
+| NAVY                       |
+| SAND                       |
+| LOHI                       |
+| NARA                       |
++----------------------------+
+9 rows in set (0.00 sec)
