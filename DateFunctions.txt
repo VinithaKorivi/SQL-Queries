@@ -1,0 +1,399 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.10 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables from emp;
+ERROR 1049 (42000): Unknown database 'emp'
+mysql> show tables from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| emp                |
+| info               |
+| ujn                |
++--------------------+
+5 rows in set (0.03 sec)
+
+mysql> select 8 from emp;
++---+
+| 8 |
++---+
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
++---+
+9 rows in set (0.02 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.01 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set (0.01 sec)
+
+mysql> select  * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Hareesh   | BSC   | Married   |   23 |
+| Hema      | BSC   | Married   |   20 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Karna     | BSC   | Married   |   23 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Naveen    | BTech | UnMarried |   20 |
+| Navya     | BTech | UnMarried |   18 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| Satya     | BSC   | Married   |   20 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+16 rows in set (0.00 sec)
+
+mysql> select * from book;
++----+-------+
+| id | price |
++----+-------+
+|  1 |     2 |
+|  2 |     2 |
+|  3 |     3 |
+|  4 |     4 |
+|  5 |     5 |
+|  6 |    11 |
+|  7 |    22 |
+|  8 |    33 |
+|  9 |    44 |
+| 10 |    55 |
++----+-------+
+10 rows in set (0.01 sec)
+
+mysql> select current-date;
+ERROR 1054 (42S22): Unknown column 'current' in 'field list'
+mysql> SELECT CURRENT_DATE;
++--------------+
+| CURRENT_DATE |
++--------------+
+| 2026-01-07   |
++--------------+
+1 row in set (0.01 sec)
+
+mysql> select current_date;
++--------------+
+| current_date |
++--------------+
+| 2026-01-07   |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select sysdate;
+ERROR 1054 (42S22): Unknown column 'sysdate' in 'field list'
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2026-01-07 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select currrent_time;
+ERROR 1054 (42S22): Unknown column 'currrent_time' in 'field list'
+mysql> select current_time;
++--------------+
+| current_time |
++--------------+
+| 20:51:52     |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 20:52:03  |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-01-07 20:53:11 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2026-01-07 20:53:32 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-01-07 20:53:43 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2026-01-07 20:54:54 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select current_date();
++----------------+
+| current_date() |
++----------------+
+| 2026-01-07     |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2026-01-07 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select current_time();
++----------------+
+| current_time() |
++----------------+
+| 20:55:32       |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 20:55:43  |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select year(curdate());
++-----------------+
+| year(curdate()) |
++-----------------+
+|            2026 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select month(curdate());
++------------------+
+| month(curdate()) |
++------------------+
+|                1 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select date();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> select day(curdate());
++----------------+
+| day(curdate()) |
++----------------+
+|              7 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select dayname(curdate());
++--------------------+
+| dayname(curdate()) |
++--------------------+
+| Wednesday          |
++--------------------+
+1 row in set (0.01 sec)
+
+mysql> select monthname(curdate());
++----------------------+
+| monthname(curdate()) |
++----------------------+
+| January              |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select maketime(10,30,45);
++--------------------+
+| maketime(10,30,45) |
++--------------------+
+| 10:30:45           |
++--------------------+
+1 row in set (0.01 sec)
+
+mysql> select makedate(2034,4);
++------------------+
+| makedate(2034,4) |
++------------------+
+| 2034-01-04       |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select makedate(3445,4,4);
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'makedate'
+mysql> select makedate(2035,4);
++------------------+
+| makedate(2035,4) |
++------------------+
+| 2035-01-04       |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select maketime(33,3,4);
++------------------+
+| maketime(33,3,4) |
++------------------+
+| 33:03:04         |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select makedate(3034,2);
++------------------+
+| makedate(3034,2) |
++------------------+
+| 3034-01-02       |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT ADDDATE(CURDATE(), 7);
++-----------------------+
+| ADDDATE(CURDATE(), 7) |
++-----------------------+
+| 2026-01-14            |
++-----------------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT SUBDATE(CURDATE(), 7);
++-----------------------+
+| SUBDATE(CURDATE(), 7) |
++-----------------------+
+| 2025-12-31            |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT TIMEDIFF('10:00:00', '08:30:00');
++----------------------------------+
+| TIMEDIFF('10:00:00', '08:30:00') |
++----------------------------------+
+| 01:30:00                         |
++----------------------------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT DATEDIFF('2026-01-10', '2026-01-07');
++--------------------------------------+
+| DATEDIFF('2026-01-10', '2026-01-07') |
++--------------------------------------+
+|                                    3 |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DATE_SUB(CURDATE(), INTERVAL 5 DAY);
++-------------------------------------+
+| DATE_SUB(CURDATE(), INTERVAL 5 DAY) |
++-------------------------------------+
+| 2026-01-02                          |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DATE_ADD(CURDATE(), INTERVAL 10 DAY);
++--------------------------------------+
+| DATE_ADD(CURDATE(), INTERVAL 10 DAY) |
++--------------------------------------+
+| 2026-01-17                           |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DATE_ADD(CURDATE(), INTERVAL 2 MONTH);
++---------------------------------------+
+| DATE_ADD(CURDATE(), INTERVAL 2 MONTH) |
++---------------------------------------+
+| 2026-03-07                            |
++---------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT LAST_DAY('2026-02-10');
++------------------------+
+| LAST_DAY('2026-02-10') |
++------------------------+
+| 2026-02-28             |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT WEEK(CURDATE());
++-----------------+
+| WEEK(CURDATE()) |
++-----------------+
+|               1 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT WEEKDAY(CURDATE());
++--------------------+
+| WEEKDAY(CURDATE()) |
++--------------------+
+|                  2 |
++--------------------+
+1 row in set (0.01 sec)
+
+mysql> SELECT WEEKDAY(CURDATE());
++--------------------+
+| WEEKDAY(CURDATE()) |
++--------------------+
+|                  2 |
++--------------------+
+1 row in set (0.00 sec)
