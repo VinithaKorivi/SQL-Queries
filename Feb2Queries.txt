@@ -1,0 +1,349 @@
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.20 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| emp                |
+| info               |
+| ujn                |
+| vini               |
++--------------------+
+6 rows in set (0.03 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.06 sec)
+
+mysql> select name,sal from emp;
++----------+------------+
+| name     | sal        |
++----------+------------+
+| Vineetha | 2500000.00 |
+| Kiran    |   45000.00 |
+| Ravi     |   55000.00 |
+| Charitha |   50000.00 |
+| Bhargavi |  100000.00 |
+| Navya    |   15000.00 |
+| Sandhya  |   12000.00 |
+| Lohitha  |   20000.00 |
+| Narayan  |   29000.00 |
++----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select name,dept,hired from emp;
++----------+------------+-------+
+| name     | dept       | hired |
++----------+------------+-------+
+| Vineetha | IT         | NULL  |
+| Kiran    | HR         | NULL  |
+| Ravi     | Finance    | NULL  |
+| Charitha | IT         | NULL  |
+| Bhargavi | Accounts   | NULL  |
+| Navya    | Compuetrs  | NULL  |
+| Sandhya  | IT         | NULL  |
+| Lohitha  | Electrical | NULL  |
+| Narayan  | Biology    | NULL  |
++----------+------------+-------+
+9 rows in set (0.00 sec)
+
+mysql> select dept from emp;
++------------+
+| dept       |
++------------+
+| IT         |
+| HR         |
+| Finance    |
+| IT         |
+| Accounts   |
+| Compuetrs  |
+| IT         |
+| Electrical |
+| Biology    |
++------------+
+9 rows in set (0.00 sec)
+
+mysql> desc emp;
++-------+---------------+------+-----+---------+----------------+
+| Field | Type          | Null | Key | Default | Extra          |
++-------+---------------+------+-----+---------+----------------+
+| id    | int           | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(50)   | YES  |     | NULL    |                |
+| dept  | varchar(30)   | YES  |     | NULL    |                |
+| sal   | decimal(10,2) | YES  |     | NULL    |                |
+| age   | int           | NO   |     | NULL    |                |
+| hired | varchar(30)   | YES  |     | NULL    |                |
++-------+---------------+------+-----+---------+----------------+
+6 rows in set (0.02 sec)
+
+mysql> select name,sal+300 from  emp;
++----------+------------+
+| name     | sal+300    |
++----------+------------+
+| Vineetha | 2500300.00 |
+| Kiran    |   45300.00 |
+| Ravi     |   55300.00 |
+| Charitha |   50300.00 |
+| Bhargavi |  100300.00 |
+| Navya    |   15300.00 |
+| Sandhya  |   12300.00 |
+| Lohitha  |   20300.00 |
+| Narayan  |   29300.00 |
++----------+------------+
+9 rows in set (0.01 sec)
+
+mysql> select sal*12 from emp;
++-------------+
+| sal*12      |
++-------------+
+| 30000000.00 |
+|   540000.00 |
+|   660000.00 |
+|   600000.00 |
+|  1200000.00 |
+|   180000.00 |
+|   144000.00 |
+|   240000.00 |
+|   348000.00 |
++-------------+
+9 rows in set (0.00 sec)
+
+mysql> select name,sal/2 from emp;
++----------+----------------+
+| name     | sal/2          |
++----------+----------------+
+| Vineetha | 1250000.000000 |
+| Kiran    |   22500.000000 |
+| Ravi     |   27500.000000 |
+| Charitha |   25000.000000 |
+| Bhargavi |   50000.000000 |
+| Navya    |    7500.000000 |
+| Sandhya  |    6000.000000 |
+| Lohitha  |   10000.000000 |
+| Narayan  |   14500.000000 |
++----------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> select name,dept,sal-300 from emp;
++----------+------------+------------+
+| name     | dept       | sal-300    |
++----------+------------+------------+
+| Vineetha | IT         | 2499700.00 |
+| Kiran    | HR         |   44700.00 |
+| Ravi     | Finance    |   54700.00 |
+| Charitha | IT         |   49700.00 |
+| Bhargavi | Accounts   |   99700.00 |
+| Navya    | Compuetrs  |   14700.00 |
+| Sandhya  | IT         |   11700.00 |
+| Lohitha  | Electrical |   19700.00 |
+| Narayan  | Biology    |   28700.00 |
++----------+------------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select name,hired,sal*30/100;
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+mysql> select name,hired,sal*30/100 from emp;
++----------+-------+---------------+
+| name     | hired | sal*30/100    |
++----------+-------+---------------+
+| Vineetha | NULL  | 750000.000000 |
+| Kiran    | NULL  |  13500.000000 |
+| Ravi     | NULL  |  16500.000000 |
+| Charitha | NULL  |  15000.000000 |
+| Bhargavi | NULL  |  30000.000000 |
+| Navya    | NULL  |   4500.000000 |
+| Sandhya  | NULL  |   3600.000000 |
+| Lohitha  | NULL  |   6000.000000 |
+| Narayan  | NULL  |   8700.000000 |
++----------+-------+---------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where name='Vinitha';
+Empty set (0.01 sec)
+
+mysql> select * from emp where name='Vineetha';
++----+----------+------+------------+-----+-------+
+| id | name     | dept | sal        | age | hired |
++----+----------+------+------------+-----+-------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | NULL  |
++----+----------+------+------------+-----+-------+
+1 row in set (0.00 sec)
+
+mysql> select name,id,dept from emp;
++----------+----+------------+
+| name     | id | dept       |
++----------+----+------------+
+| Vineetha |  1 | IT         |
+| Kiran    |  2 | HR         |
+| Ravi     |  3 | Finance    |
+| Charitha |  4 | IT         |
+| Bhargavi |  5 | Accounts   |
+| Navya    |  7 | Compuetrs  |
+| Sandhya  |  8 | IT         |
+| Lohitha  |  9 | Electrical |
+| Narayan  | 10 | Biology    |
++----------+----+------------+
+9 rows in set (0.00 sec)
+
+mysql> select name,id,dept where dept='Finance';
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+mysql> select name,id,dept where dept='Finance' from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from emp' at line 1
+mysql> select name,id where dept ='Finance' from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from emp' at line 1
+mysql> select name,id from emp where dept='Finance';
++------+----+
+| name | id |
++------+----+
+| Ravi |  3 |
++------+----+
+1 row in set (0.00 sec)
+
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Hareesh   | BSC   | Married   |   23 |
+| Hema      | BSC   | Married   |   20 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Karna     | BSC   | Married   |   23 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Naveen    | BTech | UnMarried |   20 |
+| Navya     | BTech | UnMarried |   18 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| Satya     | BSC   | Married   |   20 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+16 rows in set (0.02 sec)
+
+mysql> select * from product;
+ERROR 1146 (42S02): Table 'employee.product' doesn't exist
+mysql> shoe tables from employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'shoe tables from employee' at line 1
+mysql> show tables from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| emp                |
+| info               |
+| ujn                |
+| vini               |
++--------------------+
+6 rows in set (0.01 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set (0.03 sec)
+
+mysql> select concat(sal,name) as details from emp;
++--------------------+
+| details            |
++--------------------+
+| 2500000.00Vineetha |
+| 45000.00Kiran      |
+| 55000.00Ravi       |
+| 50000.00Charitha   |
+| 100000.00Bhargavi  |
+| 15000.00Navya      |
+| 12000.00Sandhya    |
+| 20000.00Lohitha    |
+| 29000.00Narayan    |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> select concat(name,'is having the marks of',marks) as details from class;
++----------------------------------+
+| details                          |
++----------------------------------+
+| Rahulis having the marks of80    |
+| Hemais having the marks of50     |
+| Hariis having the marks of60     |
+| Kalyaniis having the marks of90  |
+| Thanoojais having the marks of95 |
+| Mounikais having the marks of95  |
++----------------------------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from emp where name='Vineetha' and id=1;
++----+----------+------+------------+-----+-------+
+| id | name     | dept | sal        | age | hired |
++----+----------+------+------------+-----+-------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | NULL  |
++----+----------+------+------------+-----+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where name='Vineetha' or name='Sowmya' or name='Kiran';
++----+----------+------+------------+-----+-------+
+| id | name     | dept | sal        | age | hired |
++----+----------+------+------------+-----+-------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR   |   45000.00 |  50 | NULL  |
++----+----------+------+------------+-----+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where sal not=234567890;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=234567890' at line 1
+mysql> select * from emp where not sal=23456789;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.00 sec)
