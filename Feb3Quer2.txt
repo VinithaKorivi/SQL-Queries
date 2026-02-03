@@ -1,0 +1,505 @@
+t * from nandu;
++-----------+---------+
+| dob       | name    |
++-----------+---------+
+| 2025/2/23 | Baby    |
+| 2025/2/22 | vinitha |
++-----------+---------+
+2 rows in set (0.00 sec)
+
+mysql> insert into nandu values('2025/2/24','Lalitha');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from nandu;
++-----------+---------+
+| dob       | name    |
++-----------+---------+
+| 2025/2/23 | Baby    |
+| 2025/2/24 | Lalitha |
+| 2025/2/22 | vinitha |
++-----------+---------+
+3 rows in set (0.00 sec)
+
+mysql> update nandu set name='kavya' where name='baby';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from nandu;
++-----------+---------+
+| dob       | name    |
++-----------+---------+
+| 2025/2/23 | kavya   |
+| 2025/2/24 | Lalitha |
+| 2025/2/22 | vinitha |
++-----------+---------+
+3 rows in set (0.00 sec)
+
+mysql> update nandu set name='vineetha' where name='vinitha';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from nandu;
++-----------+----------+
+| dob       | name     |
++-----------+----------+
+| 2025/2/23 | kavya    |
+| 2025/2/24 | Lalitha  |
+| 2025/2/22 | vineetha |
++-----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> delete from nandu where name='kavya';
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from nandu;
++-----------+----------+
+| dob       | name     |
++-----------+----------+
+| 2025/2/24 | Lalitha  |
+| 2025/2/22 | vineetha |
++-----------+----------+
+2 rows in set (0.00 sec)
+
+mysql> delete from nandu where name='lalitha';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from nandu;
++-----------+----------+
+| dob       | name     |
++-----------+----------+
+| 2025/2/22 | vineetha |
++-----------+----------+
+1 row in set (0.00 sec)
+
+mysql> alter table nandu add(SNo number(10),unique);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'number(10),unique)' at line 1
+mysql> alter table nandu add(SNo number(10) unique);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'number(10) unique)' at line 1
+mysql> alter nandu add sno number(10) unique;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'nandu add sno number(10) unique' at line 1
+mysql>  alter table nandu add sno int(10) unique;
+Query OK, 0 rows affected, 1 warning (0.25 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> alter table nandu add count int unique;
+Query OK, 0 rows affected (0.19 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from nandu;
++-----------+----------+------+-------+
+| dob       | name     | sno  | count |
++-----------+----------+------+-------+
+| 2025/2/22 | vineetha | NULL |  NULL |
++-----------+----------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> insert into nandu values('2025/2/25'.'Narayan',1,1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.'Narayan',1,1)' at line 1
+mysql> insert into nandu values('2025/2/25','Narayan',1,1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from nandu;
++-----------+----------+------+-------+
+| dob       | name     | sno  | count |
++-----------+----------+------+-------+
+| 2025/2/22 | vineetha | NULL |  NULL |
+| 2025/2/25 | Narayan  |    1 |     1 |
++-----------+----------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> update nandu set sno=2 where sno=null;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select * from nandu;
++-----------+----------+------+-------+
+| dob       | name     | sno  | count |
++-----------+----------+------+-------+
+| 2025/2/22 | vineetha | NULL |  NULL |
+| 2025/2/25 | Narayan  |    1 |     1 |
++-----------+----------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> update nandu set sno=2 where name='vinieetha';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select * from nandu;
++-----------+----------+------+-------+
+| dob       | name     | sno  | count |
++-----------+----------+------+-------+
+| 2025/2/22 | vineetha | NULL |  NULL |
+| 2025/2/25 | Narayan  |    1 |     1 |
++-----------+----------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> update nandu set sno=2 where name='vineetha';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from nandu;
++-----------+----------+------+-------+
+| dob       | name     | sno  | count |
++-----------+----------+------+-------+
+| 2025/2/22 | vineetha |    2 |  NULL |
+| 2025/2/25 | Narayan  |    1 |     1 |
++-----------+----------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> update nandu set count =2 where name='vineetha';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from nandu;
++-----------+----------+------+-------+
+| dob       | name     | sno  | count |
++-----------+----------+------+-------+
+| 2025/2/22 | vineetha |    2 |     2 |
+| 2025/2/25 | Narayan  |    1 |     1 |
++-----------+----------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table nandu rename nandu to nanda;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to nanda' at line 1
+mysql> alter table nandu rename 'nandu' to 'Nanda';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''nandu' to 'Nanda'' at line 1
+mysql> alter table nandu rename to nanda;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select * from nanda;
++-----------+----------+------+-------+
+| dob       | name     | sno  | count |
++-----------+----------+------+-------+
+| 2025/2/22 | vineetha |    2 |     2 |
+| 2025/2/25 | Narayan  |    1 |     1 |
++-----------+----------+------+-------+
+2 rows in set (0.01 sec)
+
+mysql> select * from nandu;
+ERROR 1146 (42S02): Table 'employee.nandu' doesn't exist
+mysql> select * from nanda;
++-----------+----------+------+-------+
+| dob       | name     | sno  | count |
++-----------+----------+------+-------+
+| 2025/2/22 | vineetha |    2 |     2 |
+| 2025/2/25 | Narayan  |    1 |     1 |
++-----------+----------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table nanda drop column sno;
+Query OK, 0 rows affected (0.15 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from nanda;
++-----------+----------+-------+
+| dob       | name     | count |
++-----------+----------+-------+
+| 2025/2/22 | vineetha |     2 |
+| 2025/2/25 | Narayan  |     1 |
++-----------+----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table nandu add column sno varchar(20) unique;
+ERROR 1146 (42S02): Table 'employee.nandu' doesn't exist
+mysql> alter table nanda add column sno varchar(20) unique;
+Query OK, 0 rows affected (0.16 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from nanda;
++-----------+----------+-------+------+
+| dob       | name     | count | sno  |
++-----------+----------+-------+------+
+| 2025/2/22 | vineetha |     2 | NULL |
+| 2025/2/25 | Narayan  |     1 | NULL |
++-----------+----------+-------+------+
+2 rows in set (0.00 sec)
+
+mysql> update nanda set sno=1 where count=2 and set sno=2 where count=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'set sno=2 where count=1' at line 1
+mysql> update nanda set sno=1 where count=2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update nanda set sno=2 where count=1;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from nanda;
++-----------+----------+-------+------+
+| dob       | name     | count | sno  |
++-----------+----------+-------+------+
+| 2025/2/22 | vineetha |     2 | 1    |
+| 2025/2/25 | Narayan  |     1 | 2    |
++-----------+----------+-------+------+
+2 rows in set (0.00 sec)
+
+mysql> alter table nanda rename column sno to no;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from nanda;
++-----------+----------+-------+------+
+| dob       | name     | count | no   |
++-----------+----------+-------+------+
+| 2025/2/22 | vineetha |     2 | 1    |
+| 2025/2/25 | Narayan  |     1 | 2    |
++-----------+----------+-------+------+
+2 rows in set (0.00 sec)
+
+mysql> alter table nanda drop column count;
+Query OK, 0 rows affected (0.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from nanda;
++-----------+----------+------+
+| dob       | name     | no   |
++-----------+----------+------+
+| 2025/2/22 | vineetha | 1    |
+| 2025/2/25 | Narayan  | 2    |
++-----------+----------+------+
+2 rows in set (0.00 sec)
+
+mysql> alter table nanda modify no varchar(20) unique;
+Query OK, 0 rows affected, 1 warning (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> select * from nanda;
++-----------+----------+------+
+| dob       | name     | no   |
++-----------+----------+------+
+| 2025/2/22 | vineetha | 1    |
+| 2025/2/25 | Narayan  | 2    |
++-----------+----------+------+
+2 rows in set (0.00 sec)
+
+mysql> desc nanda;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| dob   | varchar(20) | NO   | PRI | NULL    |       |
+| name  | varchar(10) | YES  | UNI | NULL    |       |
+| no    | varchar(20) | YES  | UNI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.03 sec)
+
+mysql> alter table nanda modify no int unique;
+Query OK, 2 rows affected, 1 warning (0.14 sec)
+Records: 2  Duplicates: 0  Warnings: 1
+
+mysql> desc nanda;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| dob   | varchar(20) | NO   | PRI | NULL    |       |
+| name  | varchar(10) | YES  | UNI | NULL    |       |
+| no    | int         | YES  | UNI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> show recyclbin;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'recyclbin' at line 1
+mysql> rename nanda to nandu;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'nanda to nandu' at line 1
+mysql> rename nanda to nandu;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'nanda to nandu' at line 1
+mysql> create table rough(id int(10)primary key,name varchar(10) unique,cost int not null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create table rough(id int(10)primary key,name varchar(10) unique,cost int(10) not null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create table rough(id int primary key,name varchar(20) unique, cost int not null);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into rought values(1,'shampoo',12);
+ERROR 1146 (42S02): Table 'employee.rought' doesn't exist
+mysql> insert into rough values(1,'shampoo',12);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from rough;
++----+---------+------+
+| id | name    | cost |
++----+---------+------+
+|  1 | shampoo |   12 |
++----+---------+------+
+1 row in set (0.00 sec)
+
+mysql> altet table rough add exp int check(int>25);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'altet table rough add exp int check(int>25)' at line 1
+mysql> altet table rough add exp int check(exp>25);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'altet table rough add exp int check(exp>25)' at line 1
+mysql> alter table rough add exp int check(int>25);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int>25)' at line 1
+mysql> alter table rough add exp int check(exp>25);
+Query OK, 1 row affected (0.13 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> select * from rough;
++----+---------+------+------+
+| id | name    | cost | exp  |
++----+---------+------+------+
+|  1 | shampoo |   12 | NULL |
++----+---------+------+------+
+1 row in set (0.00 sec)
+
+mysql> alter table rough rename rough to rou;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to rou' at line 1
+mysql> alter table rough rename to rou;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from rou;
++----+---------+------+------+
+| id | name    | cost | exp  |
++----+---------+------+------+
+|  1 | shampoo |   12 | NULL |
++----+---------+------+------+
+1 row in set (0.01 sec)
+
+mysql> rename rou to ro;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rou to ro' at line 1
+mysql> alter table rou rename column exp to xp;
+ERROR 3959 (HY000): Check constraint 'rou_chk_1' uses column 'exp', hence column cannot be dropped or renamed.
+mysql> alter table rou rename cost to price;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to price' at line 1
+mysql> alter table rou rename column cost to price;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> selec * from rou;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selec * from rou' at line 1
+mysql> select * from rou;
++----+---------+-------+------+
+| id | name    | price | exp  |
++----+---------+-------+------+
+|  1 | shampoo |    12 | NULL |
++----+---------+-------+------+
+1 row in set (0.00 sec)
+
+mysql> alter table rou drop column exp;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from rou;
++----+---------+-------+
+| id | name    | price |
++----+---------+-------+
+|  1 | shampoo |    12 |
++----+---------+-------+
+1 row in set (0.00 sec)
+
+mysql> desc rou;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| name  | varchar(20) | YES  | UNI | NULL    |       |
+| price | int         | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> alter table rou modify price varchar(20) unique;
+Query OK, 1 row affected (0.12 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> desc rou;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| name  | varchar(20) | YES  | UNI | NULL    |       |
+| price | varchar(20) | YES  | UNI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc rou;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| name  | varchar(20) | YES  | UNI | NULL    |       |
+| price | varchar(20) | YES  | UNI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table rou add column type varchar(20) default;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql>  alter table rou add column type varchar(20) default 'normal';
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc rou;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| name  | varchar(20) | YES  | UNI | NULL    |       |
+| price | varchar(20) | YES  | UNI | NULL    |       |
+| type  | varchar(20) | YES  |     | normal  |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select * from rou;
++----+---------+-------+--------+
+| id | name    | price | type   |
++----+---------+-------+--------+
+|  1 | shampoo | 12    | normal |
++----+---------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> insert into rou values(2,'Soap',20);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into rou (id,name,price) values(2,'Soap',20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from rou;
++----+---------+-------+--------+
+| id | name    | price | type   |
++----+---------+-------+--------+
+|  1 | shampoo | 12    | normal |
+|  2 | Soap    | 20    | normal |
++----+---------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> insert into rou values(3,'Brush',78,'customized');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from rou;
++----+---------+-------+------------+
+| id | name    | price | type       |
++----+---------+-------+------------+
+|  1 | shampoo | 12    | normal     |
+|  2 | Soap    | 20    | normal     |
+|  3 | Brush   | 78    | customized |
++----+---------+-------+------------+
+3 rows in set (0.00 sec)
+
+mysql> truncate table rou;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> select * from rou;
+Empty set (0.00 sec)
+
+mysql> insert into rou values(3,'Brush',78,'customized');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into rou (id,name,price) values(2,'Soap',20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from rou;
++----+-------+-------+------------+
+| id | name  | price | type       |
++----+-------+-------+------------+
+|  2 | Soap  | 20    | normal     |
+|  3 | Brush | 78    | customized |
++----+-------+-------+------------+
+2 rows in set (0.00 sec)
+
+mysql> alter table rou rename to rough;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from rough;
++----+-------+-------+------------+
+| id | name  | price | type       |
++----+-------+-------+------------+
+|  2 | Soap  | 20    | normal     |
+|  3 | Brush | 78    | customized |
++----+-------+-------+------------+
+2 rows in set (0.00 sec)
