@@ -1,0 +1,327 @@
+mysql> select length(sal) from emp;
++-------------+
+| length(sal) |
++-------------+
+|          10 |
+|           8 |
+|           8 |
+|           8 |
+|           9 |
+|           8 |
+|           8 |
+|           8 |
+|           8 |
++-------------+
+9 rows in set (0.01 sec)
+
+mysql> select length('Developers');
++----------------------+
+| length('Developers') |
++----------------------+
+|                   10 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select length(name) from emp;
++--------------+
+| length(name) |
++--------------+
+|            8 |
+|            5 |
+|            4 |
+|            8 |
+|            8 |
+|            5 |
+|            7 |
+|            7 |
+|            7 |
++--------------+
+9 rows in set (0.01 sec)
+
+mysql> select length(963214785217852178527
+    -> ^C
+mysql> select length('9632147852178521785278565234567890234567890rtyu87634567');
++-------------------------------------------------------------------+
+| length('9632147852178521785278565234567890234567890rtyu87634567') |
++-------------------------------------------------------------------+
+|                                                                55 |
++-------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select upper(name) from emp;
++-------------+
+| upper(name) |
++-------------+
+| VINEETHA    |
+| KIRAN       |
+| RAVI        |
+| CHARITHA    |
+| BHARGAVI    |
+| NAVYA       |
+| SANDHYA     |
+| LOHITHA     |
+| NARAYAN     |
++-------------+
+9 rows in set (0.02 sec)
+
+mysql> select lower
+    -> (^C
+mysql> select lower(name) from emp;
++-------------+
+| lower(name) |
++-------------+
+| vineetha    |
+| kiran       |
+| ravi        |
+| charitha    |
+| bhargavi    |
+| navya       |
+| sandhya     |
+| lohitha     |
+| narayan     |
++-------------+
+9 rows in set (0.00 sec)
+
+mysql> select substring(sal,4) from emp;
++------------------+
+| substring(sal,4) |
++------------------+
+| 0000.00          |
+| 00.00            |
+| 00.00            |
+| 00.00            |
+| 000.00           |
+| 00.00            |
+| 00.00            |
+| 00.00            |
+| 00.00            |
++------------------+
+9 rows in set (0.01 sec)
+
+mysql> select substring(name,6) from emp;
++-------------------+
+| substring(name,6) |
++-------------------+
+| tha               |
+|                   |
+|                   |
+| tha               |
+| avi               |
+|                   |
+| ya                |
+| ha                |
+| an                |
++-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select substring(name,0,5) from emp;
++---------------------+
+| substring(name,0,5) |
++---------------------+
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
++---------------------+
+9 rows in set (0.00 sec)
+
+mysql> select substring(name,2) from emp;
++-------------------+
+| substring(name,2) |
++-------------------+
+| ineetha           |
+| iran              |
+| avi               |
+| haritha           |
+| hargavi           |
+| avya              |
+| andhya            |
+| ohitha            |
+| arayan            |
++-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select substring(name,1,5) from emp;
++---------------------+
+| substring(name,1,5) |
++---------------------+
+| Vinee               |
+| Kiran               |
+| Ravi                |
+| Chari               |
+| Bharg               |
+| Navya               |
+| Sandh               |
+| Lohit               |
+| Naray               |
++---------------------+
+9 rows in set (0.00 sec)
+
+mysql> select replace('java','ja','ma');
++---------------------------+
+| replace('java','ja','ma') |
++---------------------------+
+| mava                      |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select replace('java','java','Developers');
++-------------------------------------+
+| replace('java','java','Developers') |
++-------------------------------------+
+| Developers                          |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select reverse(name) from emp;
++---------------+
+| reverse(name) |
++---------------+
+| ahteeniV      |
+| nariK         |
+| ivaR          |
+| ahtirahC      |
+| ivagrahB      |
+| ayvaN         |
+| ayhdnaS       |
+| ahtihoL       |
+| nayaraN       |
++---------------+
+9 rows in set (0.00 sec)
+
+mysql> select reverse(name) from class;
++---------------+
+| reverse(name) |
++---------------+
+| luhaR         |
+| ameH          |
+| iraH          |
+| inaylaK       |
+| ajoonahT      |
+| akinuoM       |
++---------------+
+6 rows in set (0.01 sec)
+
+mysql> select init(name) from emp;
+ERROR 1305 (42000): FUNCTION employee.init does not exist
+mysql> select initcap(name) from emp;
+ERROR 1305 (42000): FUNCTION employee.initcap does not exist
+mysql> select init cap(name) from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(name) from emp' at line 1
+mysql> SELECT CONCAT(UCASE(LEFT(name,1)), LCASE(SUBSTRING(name,2))) FROM emp;
++-------------------------------------------------------+
+| CONCAT(UCASE(LEFT(name,1)), LCASE(SUBSTRING(name,2))) |
++-------------------------------------------------------+
+| Vineetha                                              |
+| Kiran                                                 |
+| Ravi                                                  |
+| Charitha                                              |
+| Bhargavi                                              |
+| Navya                                                 |
+| Sandhya                                               |
+| Lohitha                                               |
+| Narayan                                               |
++-------------------------------------------------------+
+9 rows in set (0.01 sec)
+
+mysql> select concat(ucase(left(name,1)),lcase(substring(name,2))) from emp;
++------------------------------------------------------+
+| concat(ucase(left(name,1)),lcase(substring(name,2))) |
++------------------------------------------------------+
+| Vineetha                                             |
+| Kiran                                                |
+| Ravi                                                 |
+| Charitha                                             |
+| Bhargavi                                             |
+| Navya                                                |
+| Sandhya                                              |
+| Lohitha                                              |
+| Narayan                                              |
++------------------------------------------------------+
+9 rows in set (0.00 sec)
+
+mysql> select concat(ucase(left(name,1)),lcase(substring(name,2))) from class;
++------------------------------------------------------+
+| concat(ucase(left(name,1)),lcase(substring(name,2))) |
++------------------------------------------------------+
+| Rahul                                                |
+| Hema                                                 |
+| Hari                                                 |
+| Kalyani                                              |
+| Thanooja                                             |
+| Mounika                                              |
++------------------------------------------------------+
+6 rows in set (0.00 sec)
+
+mysql> select length('Developers are the genious');
++--------------------------------------+
+| length('Developers are the genious') |
++--------------------------------------+
+|                                   26 |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select instr('Developers are the genious','k',1,26);
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'instr'
+mysql> select trim('Developers are the genious');
++------------------------------------+
+| trim('Developers are the genious') |
++------------------------------------+
+| Developers are the genious         |
++------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> select trim('Developers are the genious     ');
++-----------------------------------------+
+| trim('Developers are the genious     ') |
++-----------------------------------------+
+| Developers are the genious              |
++-----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select instr(name,'a',1,4) from emp;
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'instr'
+mysql> SELECT INSTR('Developers are the genious','genious');
++-----------------------------------------------+
+| INSTR('Developers are the genious','genious') |
++-----------------------------------------------+
+|                                            20 |
++-----------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select ascii(name) from emp;
++-------------+
+| ascii(name) |
++-------------+
+|          86 |
+|          75 |
+|          82 |
+|          67 |
+|          66 |
+|          78 |
+|          83 |
+|          76 |
+|          78 |
++-------------+
+9 rows in set (0.01 sec)
+
+mysql> select ascii('A');
++------------+
+| ascii('A') |
++------------+
+|         65 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select ascii('name');
++---------------+
+| ascii('name') |
++---------------+
+|           110 |
++---------------+
+1 row in set (0.00 sec)
