@@ -1,0 +1,558 @@
+mysql> select * from nanda;
++-----------+----------+------+
+| dob       | sname    | no   |
++-----------+----------+------+
+| 2025/2/22 | vineetha |    1 |
+| 2025/2/25 | Narayan  |    2 |
++-----------+----------+------+
+2 rows in set (0.00 sec)
+
+mysql> update nanda set sname='Bavya' where no=1;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from nanda;
++-----------+---------+------+
+| dob       | sname   | no   |
++-----------+---------+------+
+| 2025/2/22 | Bavya   |    1 |
+| 2025/2/25 | Narayan |    2 |
++-----------+---------+------+
+2 rows in set (0.00 sec)
+
+mysql> alter table nanda rename to nandu;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select * from nandu;
++-----------+---------+------+
+| dob       | sname   | no   |
++-----------+---------+------+
+| 2025/2/22 | Bavya   |    1 |
+| 2025/2/25 | Narayan |    2 |
++-----------+---------+------+
+2 rows in set (0.01 sec)
+
+mysql> update nandu set no=no+1 where sname='Bavya';
+ERROR 1062 (23000): Duplicate entry '2' for key 'nandu.sno'
+mysql>  update nandu set no=no+2 where sname='Bavya';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delete from nandu where sname='Bavya';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from nandu;
++-----------+---------+------+
+| dob       | sname   | no   |
++-----------+---------+------+
+| 2025/2/25 | Narayan |    2 |
++-----------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> update nandu set no=no+10 where sname='Narayan';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from nandu;
++-----------+---------+------+
+| dob       | sname   | no   |
++-----------+---------+------+
+| 2025/2/25 | Narayan |   12 |
++-----------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT @@autocommit;
++--------------+
+| @@autocommit |
++--------------+
+|            1 |
++--------------+
+1 row in set (0.01 sec)
+
+mysql> SET autocommit = 0;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select @@autocommit;
++--------------+
+| @@autocommit |
++--------------+
+|            0 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> set autocommit=1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SET autocommit = 0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> update nandu set no=no-4 where sname='Narayan';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> commit;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from nandu;
++-----------+---------+------+
+| dob       | sname   | no   |
++-----------+---------+------+
+| 2025/2/25 | Narayan |    8 |
++-----------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> update nandu set no=no-4 where sname='Narayan';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> rollback;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from nandu;
++-----------+---------+------+
+| dob       | sname   | no   |
++-----------+---------+------+
+| 2025/2/25 | Narayan |    8 |
++-----------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES(2025/4/11,'Kiran',45000);
+ERROR 1406 (22001): Data too long for column 'dob' at row 1
+mysql> INSERT INTO nandu VALUES(2025/4/11,'Kiran',45);
+ERROR 1406 (22001): Data too long for column 'dob' at row 1
+mysql> INSERT INTO nandu VALUES('2025/4/11',iran',45);
+    '> ^C
+mysql> desc nandu;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| dob   | varchar(20) | NO   | PRI | NULL    |       |
+| sname | varchar(10) | YES  | UNI | NULL    |       |
+| no    | int         | YES  | UNI | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql>  INSERT INTO nandu VALUES('2025/4/11','iran',45);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from nandu;
++-----------+---------+------+
+| dob       | sname   | no   |
++-----------+---------+------+
+| 2025/2/25 | Narayan |    8 |
+| 2025/4/11 | iran    |   45 |
++-----------+---------+------+
+2 rows in set (0.00 sec)
+
+mysql> savepoint A;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2025/5/12','miran',4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from nandu;
++-----------+---------+------+
+| dob       | sname   | no   |
++-----------+---------+------+
+| 2025/2/25 | Narayan |    8 |
+| 2025/4/11 | iran    |   45 |
+| 2025/5/12 | miran   |    4 |
++-----------+---------+------+
+3 rows in set (0.00 sec)
+
+mysql> rollback to A;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from nandu;
++-----------+---------+------+
+| dob       | sname   | no   |
++-----------+---------+------+
+| 2025/2/25 | Narayan |    8 |
+| 2025/4/11 | iran    |   45 |
++-----------+---------+------+
+2 rows in set (0.00 sec)
+
+mysql> select autocommit=1;
+ERROR 1054 (42S22): Unknown column 'autocommit' in 'field list'
+mysql> set autocommit=1;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select @@autocommit;
++--------------+
+| @@autocommit |
++--------------+
+|            1 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2025/5/15','immimiran',14);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from nandu;
++-----------+-----------+------+
+| dob       | sname     | no   |
++-----------+-----------+------+
+| 2025/2/25 | Narayan   |    8 |
+| 2025/4/11 | iran      |   45 |
+| 2025/5/15 | immimiran |   14 |
++-----------+-----------+------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2026/5/16','Amaran',14);
+ERROR 1062 (23000): Duplicate entry '14' for key 'nandu.sno'
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from nandu;
++-----------+-----------+------+
+| dob       | sname     | no   |
++-----------+-----------+------+
+| 2025/2/25 | Narayan   |    8 |
+| 2025/4/11 | iran      |   45 |
+| 2025/5/15 | immimiran |   14 |
++-----------+-----------+------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2026/5/16','Amaran',14);
+ERROR 1062 (23000): Duplicate entry '14' for key 'nandu.sno'
+mysql> select * from nandu;
++-----------+-----------+------+
+| dob       | sname     | no   |
++-----------+-----------+------+
+| 2025/2/25 | Narayan   |    8 |
+| 2025/4/11 | iran      |   45 |
+| 2025/5/15 | immimiran |   14 |
++-----------+-----------+------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2026/5/1','Amaranam',15);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from nandu;
++-----------+-----------+------+
+| dob       | sname     | no   |
++-----------+-----------+------+
+| 2025/2/25 | Narayan   |    8 |
+| 2025/4/11 | iran      |   45 |
+| 2025/5/15 | immimiran |   14 |
+| 2026/5/1  | Amaranam  |   15 |
++-----------+-----------+------+
+4 rows in set (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2026/5/2','Amarnath lingam',2);
+ERROR 1406 (22001): Data too long for column 'sname' at row 1
+mysql> INSERT INTO nandu VALUES('2026/5/2','Shiva',2);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2026/5/3','Ohmshiva',3);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint N;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2026/5/4','Vinayaka',4);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2026/5/5','JaiShreeram',5);
+ERROR 1406 (22001): Data too long for column 'sname' at row 1
+mysql> alter table nandu modify sname varchar(50) unique;
+Query OK, 0 rows affected, 1 warning (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> INSERT INTO nandu VALUES('2026/5/5','JaiShreeram',5);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from nandu;
++-----------+-------------+------+
+| dob       | sname       | no   |
++-----------+-------------+------+
+| 2025/2/25 | Narayan     |    8 |
+| 2025/4/11 | iran        |   45 |
+| 2025/5/15 | immimiran   |   14 |
+| 2026/5/1  | Amaranam    |   15 |
+| 2026/5/2  | Shiva       |    2 |
+| 2026/5/3  | Ohmshiva    |    3 |
+| 2026/5/4  | Vinayaka    |    4 |
+| 2026/5/5  | JaiShreeram |    5 |
++-----------+-------------+------+
+8 rows in set (0.00 sec)
+
+mysql> rollback N;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'N' at line 1
+mysql> rollback to N;
+ERROR 1305 (42000): SAVEPOINT N does not exist
+mysql> INSERT INTO nandu VALUES('2026/5/6','Shreeram',6);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint D;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2026/5/7','Janakiram',7);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> rollback to D;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from nandu;
++-----------+-------------+------+
+| dob       | sname       | no   |
++-----------+-------------+------+
+| 2025/2/25 | Narayan     |    8 |
+| 2025/4/11 | iran        |   45 |
+| 2025/5/15 | immimiran   |   14 |
+| 2026/5/1  | Amaranam    |   15 |
+| 2026/5/2  | Shiva       |    2 |
+| 2026/5/3  | Ohmshiva    |    3 |
+| 2026/5/4  | Vinayaka    |    4 |
+| 2026/5/5  | JaiShreeram |    5 |
+| 2026/5/6  | Shreeram    |    6 |
++-----------+-------------+------+
+9 rows in set (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2026/5/7','Janakiram',7);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint Y;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from nandu;
++-----------+-------------+------+
+| dob       | sname       | no   |
++-----------+-------------+------+
+| 2025/2/25 | Narayan     |    8 |
+| 2025/4/11 | iran        |   45 |
+| 2025/5/15 | immimiran   |   14 |
+| 2026/5/1  | Amaranam    |   15 |
+| 2026/5/2  | Shiva       |    2 |
+| 2026/5/3  | Ohmshiva    |    3 |
+| 2026/5/4  | Vinayaka    |    4 |
+| 2026/5/5  | JaiShreeram |    5 |
+| 2026/5/6  | Shreeram    |    6 |
+| 2026/5/7  | Janakiram   |    7 |
++-----------+-------------+------+
+10 rows in set (0.00 sec)
+
+mysql> rollback to Y;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from nandu;
++-----------+-------------+------+
+| dob       | sname       | no   |
++-----------+-------------+------+
+| 2025/2/25 | Narayan     |    8 |
+| 2025/4/11 | iran        |   45 |
+| 2025/5/15 | immimiran   |   14 |
+| 2026/5/1  | Amaranam    |   15 |
+| 2026/5/2  | Shiva       |    2 |
+| 2026/5/3  | Ohmshiva    |    3 |
+| 2026/5/4  | Vinayaka    |    4 |
+| 2026/5/5  | JaiShreeram |    5 |
+| 2026/5/6  | Shreeram    |    6 |
+| 2026/5/7  | Janakiram   |    7 |
++-----------+-------------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from nandu;
++-----------+-------------+------+
+| dob       | sname       | no   |
++-----------+-------------+------+
+| 2025/2/25 | Narayan     |    8 |
+| 2025/4/11 | iran        |   45 |
+| 2025/5/15 | immimiran   |   14 |
+| 2026/5/1  | Amaranam    |   15 |
+| 2026/5/2  | Shiva       |    2 |
+| 2026/5/3  | Ohmshiva    |    3 |
+| 2026/5/4  | Vinayaka    |    4 |
+| 2026/5/5  | JaiShreeram |    5 |
+| 2026/5/6  | Shreeram    |    6 |
+| 2026/5/7  | Janakiram   |    7 |
++-----------+-------------+------+
+10 rows in set (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2026/5/8','Mukunda',8);
+ERROR 1062 (23000): Duplicate entry '8' for key 'nandu.sno'
+mysql> INSERT INTO nandu VALUES('2026/5/9','Mukunda',9);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint D;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from nandu;
++-----------+-------------+------+
+| dob       | sname       | no   |
++-----------+-------------+------+
+| 2025/2/25 | Narayan     |    8 |
+| 2025/4/11 | iran        |   45 |
+| 2025/5/15 | immimiran   |   14 |
+| 2026/5/1  | Amaranam    |   15 |
+| 2026/5/2  | Shiva       |    2 |
+| 2026/5/3  | Ohmshiva    |    3 |
+| 2026/5/4  | Vinayaka    |    4 |
+| 2026/5/5  | JaiShreeram |    5 |
+| 2026/5/6  | Shreeram    |    6 |
+| 2026/5/7  | Janakiram   |    7 |
+| 2026/5/9  | Mukunda     |    9 |
++-----------+-------------+------+
+11 rows in set (0.00 sec)
+
+mysql> rollback to D;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from nandu;
++-----------+-------------+------+
+| dob       | sname       | no   |
++-----------+-------------+------+
+| 2025/2/25 | Narayan     |    8 |
+| 2025/4/11 | iran        |   45 |
+| 2025/5/15 | immimiran   |   14 |
+| 2026/5/1  | Amaranam    |   15 |
+| 2026/5/2  | Shiva       |    2 |
+| 2026/5/3  | Ohmshiva    |    3 |
+| 2026/5/4  | Vinayaka    |    4 |
+| 2026/5/5  | JaiShreeram |    5 |
+| 2026/5/6  | Shreeram    |    6 |
+| 2026/5/7  | Janakiram   |    7 |
+| 2026/5/9  | Mukunda     |    9 |
++-----------+-------------+------+
+11 rows in set (0.00 sec)
+
+mysql> select @@autocommit;
++--------------+
+| @@autocommit |
++--------------+
+|            0 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2026/5/10','Madava',10);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint R;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>  INSERT INTO nandu VALUES('2026/5/11','Keshava',11);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select 8 from nandu;
++---+
+| 8 |
++---+
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
+| 8 |
++---+
+13 rows in set (0.00 sec)
+
+mysql> select * from nandu;
++-----------+-------------+------+
+| dob       | sname       | no   |
++-----------+-------------+------+
+| 2025/2/25 | Narayan     |    8 |
+| 2025/4/11 | iran        |   45 |
+| 2025/5/15 | immimiran   |   14 |
+| 2026/5/1  | Amaranam    |   15 |
+| 2026/5/10 | Madava      |   10 |
+| 2026/5/11 | Keshava     |   11 |
+| 2026/5/2  | Shiva       |    2 |
+| 2026/5/3  | Ohmshiva    |    3 |
+| 2026/5/4  | Vinayaka    |    4 |
+| 2026/5/5  | JaiShreeram |    5 |
+| 2026/5/6  | Shreeram    |    6 |
+| 2026/5/7  | Janakiram   |    7 |
+| 2026/5/9  | Mukunda     |    9 |
++-----------+-------------+------+
+13 rows in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from nandu;
++-----------+-------------+------+
+| dob       | sname       | no   |
++-----------+-------------+------+
+| 2025/2/25 | Narayan     |    8 |
+| 2025/4/11 | iran        |   45 |
+| 2025/5/15 | immimiran   |   14 |
+| 2026/5/1  | Amaranam    |   15 |
+| 2026/5/10 | Madava      |   10 |
+| 2026/5/11 | Keshava     |   11 |
+| 2026/5/2  | Shiva       |    2 |
+| 2026/5/3  | Ohmshiva    |    3 |
+| 2026/5/4  | Vinayaka    |    4 |
+| 2026/5/5  | JaiShreeram |    5 |
+| 2026/5/6  | Shreeram    |    6 |
+| 2026/5/7  | Janakiram   |    7 |
+| 2026/5/9  | Mukunda     |    9 |
++-----------+-------------+------+
+13 rows in set (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2026/5/11','Keshava',11);
+ERROR 1062 (23000): Duplicate entry '2026/5/11' for key 'nandu.PRIMARY'
+mysql> rollback to R;
+ERROR 1305 (42000): SAVEPOINT R does not exist
+mysql> INSERT INTO nandu VALUES('2026/5/30','Madava',112);
+ERROR 1062 (23000): Duplicate entry 'Madava' for key 'nandu.name'
+mysql> INSERT INTO nandu VALUES('2026/5/30','Madusudana',112);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2026/5/31','Nandanandana',123);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint G;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO nandu VALUES('2026/5/01','Ohmkar',125);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from nandu;
++-----------+--------------+------+
+| dob       | sname        | no   |
++-----------+--------------+------+
+| 2025/2/25 | Narayan      |    8 |
+| 2025/4/11 | iran         |   45 |
+| 2025/5/15 | immimiran    |   14 |
+| 2026/5/01 | Ohmkar       |  125 |
+| 2026/5/1  | Amaranam     |   15 |
+| 2026/5/10 | Madava       |   10 |
+| 2026/5/11 | Keshava      |   11 |
+| 2026/5/2  | Shiva        |    2 |
+| 2026/5/3  | Ohmshiva     |    3 |
+| 2026/5/30 | Madusudana   |  112 |
+| 2026/5/31 | Nandanandana |  123 |
+| 2026/5/4  | Vinayaka     |    4 |
+| 2026/5/5  | JaiShreeram  |    5 |
+| 2026/5/6  | Shreeram     |    6 |
+| 2026/5/7  | Janakiram    |    7 |
+| 2026/5/9  | Mukunda      |    9 |
++-----------+--------------+------+
+16 rows in set (0.00 sec)
+
+mys
