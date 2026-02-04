@@ -1,0 +1,921 @@
+select current_time;
++--------------+
+| current_time |
++--------------+
+| 11:01:08     |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:01:14 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2026-02-04 11:01:31 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:22:52 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:22:58 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:23:04 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:23:14 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:23:20 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:23:25 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:23:28 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:23:30 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:23:33 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:23:37 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:23:41 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:23:45 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:23:50 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2026-02-04 11:24:02 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select current_date();
++----------------+
+| current_date() |
++----------------+
+| 2026-02-04     |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> selct current_date;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selct current_date' at line 1
+mysql> select current_date();
++----------------+
+| current_date() |
++----------------+
+| 2026-02-04     |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select ststem_date;
+ERROR 1054 (42S22): Unknown column 'ststem_date' in 'field list'
+mysql> select system_date;
+ERROR 1054 (42S22): Unknown column 'system_date' in 'field list'
+mysql> select system_date();
+ERROR 1305 (42000): FUNCTION employee.system_date does not exist
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2026-02-04 11:25:12 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> selcet current_time();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selcet current_time()' at line 1
+mysql> select current_time();
++----------------+
+| current_time() |
++----------------+
+| 11:25:45       |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select current_day();
+ERROR 1305 (42000): FUNCTION employee.current_day does not exist
+mysql> select day(curday());
+ERROR 1305 (42000): FUNCTION employee.curday does not exist
+mysql> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 11:26:42  |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2026-02-04 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:26:59 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 11:27:07  |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2026-02-04 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select year(curdate());
++-----------------+
+| year(curdate()) |
++-----------------+
+|            2026 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select year();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> select month(curdate());
++------------------+
+| month(curdate()) |
++------------------+
+|                2 |
++------------------+
+1 row in set (0.01 sec)
+
+mysql> select day(curdate());
++----------------+
+| day(curdate()) |
++----------------+
+|              4 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select month(curdate());
++------------------+
+| month(curdate()) |
++------------------+
+|                2 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select day(curdate());
++----------------+
+| day(curdate()) |
++----------------+
+|              4 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select dayname(curdate());
++--------------------+
+| dayname(curdate()) |
++--------------------+
+| Wednesday          |
++--------------------+
+1 row in set (0.01 sec)
+
+mysql> select monthname(curdate());
++----------------------+
+| monthname(curdate()) |
++----------------------+
+| February             |
++----------------------+
+1 row in set (0.01 sec)
+
+mysql> select yearname(curdate());
+ERROR 1305 (42000): FUNCTION employee.yearname does not exist
+mysql> select maketime(2025,2,52);
++---------------------+
+| maketime(2025,2,52) |
++---------------------+
+| 838:59:59           |
++---------------------+
+1 row in set, 1 warning (0.01 sec)
+
+mysql> select maketime(22,522,5);
++--------------------+
+| maketime(22,522,5) |
++--------------------+
+| NULL               |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select maketime(22,2,52);
++-------------------+
+| maketime(22,2,52) |
++-------------------+
+| 22:02:52          |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select adddate(curdate(),3);
++----------------------+
+| adddate(curdate(),3) |
++----------------------+
+| 2026-02-07           |
++----------------------+
+1 row in set (0.01 sec)
+
+mysql> select last_day(curdate());
++---------------------+
+| last_day(curdate()) |
++---------------------+
+| 2026-02-28          |
++---------------------+
+1 row in set (0.01 sec)
+
+mysql> select first_day(curdate());
+ERROR 1305 (42000): FUNCTION employee.first_day does not exist
+mysql> SELECT DATE_ADD(CURDATE(), INTERVAL 2 MONTH);
++---------------------------------------+
+| DATE_ADD(CURDATE(), INTERVAL 2 MONTH) |
++---------------------------------------+
+| 2026-04-04                            |
++---------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select months_between('2022-2-25','2022-5-25');
+ERROR 1305 (42000): FUNCTION employee.months_between does not exist
+mysql> SELECT TIMESTAMPDIFF(MONTH,'2022-02-25','2022-05-25');
++------------------------------------------------+
+| TIMESTAMPDIFF(MONTH,'2022-02-25','2022-05-25') |
++------------------------------------------------+
+|                                              3 |
++------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_add(curdate(),interval 2 month);
++--------------------------------------+
+| date_add(curdate(),interval 2 month) |
++--------------------------------------+
+| 2026-04-04                           |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_add(curdate(),interval 2 day);
++------------------------------------+
+| date_add(curdate(),interval 2 day) |
++------------------------------------+
+| 2026-02-06                         |
++------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set (0.02 sec)
+
+mysql> select to
+    -> _^C
+mysql> select to_date(joindate) from emp;
+ERROR 1305 (42000): FUNCTION employee.to_date does not exist
+mysql> select add_date(curdate(),interval 2 month) from class where joindate='2025-12-02';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') from class where joindate='2025-12-02'' at line 1
+mysql> select adddate(curdate(),interval 2 month) from class where joindate='2025-12-02';
++-------------------------------------+
+| adddate(curdate(),interval 2 month) |
++-------------------------------------+
+| 2026-04-04                          |
++-------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> select name,joindate, adddate(curdate(),interval 2 month) from class;
++----------+------------+-------------------------------------+
+| name     | joindate   | adddate(curdate(),interval 2 month) |
++----------+------------+-------------------------------------+
+| Rahul    | 2025-12-02 | 2026-04-04                          |
+| Hema     | 2023-05-25 | 2026-04-04                          |
+| Hari     | 2022-02-02 | 2026-04-04                          |
+| Kalyani  | 2001-08-30 | 2026-04-04                          |
+| Thanooja | 2000-01-12 | 2026-04-04                          |
+| Mounika  | 2003-05-30 | 2026-04-04                          |
++----------+------------+-------------------------------------+
+6 rows in set (0.00 sec)
+
+mysql> select current_date();
++----------------+
+| current_date() |
++----------------+
+| 2026-02-04     |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select current_time();
++----------------+
+| current_time() |
++----------------+
+| 11:52:49       |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 11:52:53 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select system_date;
+ERROR 1054 (42S22): Unknown column 'system_date' in 'field list'
+mysql> select system_date();
+ERROR 1305 (42000): FUNCTION employee.system_date does not exist
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2026-02-04 11:53:22 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select day(curdate());
++----------------+
+| day(curdate()) |
++----------------+
+|              4 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select dayname(curdate());
++--------------------+
+| dayname(curdate()) |
++--------------------+
+| Wednesday          |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select month(curdate());
++------------------+
+| month(curdate()) |
++------------------+
+|                2 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select monthname(curdate());
++----------------------+
+| monthname(curdate()) |
++----------------------+
+| February             |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select add_date(curdate(),8);
+ERROR 1305 (42000): FUNCTION employee.add_date does not exist
+mysql> select adddate(curdate(),8);
++----------------------+
+| adddate(curdate(),8) |
++----------------------+
+| 2026-02-12           |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select makedate(2028-2-2);
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'makedate'
+mysql> select makedate('2028-2-2');
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'makedate'
+mysql> select maketime(22,2,52);
++-------------------+
+| maketime(22,2,52) |
++-------------------+
+| 22:02:52          |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select timestampdiff(curdate(),'2026-5-25');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'curdate(),'2026-5-25')' at line 1
+mysql> select timestampdiff(month,curdate(),'2026-5-25');
++--------------------------------------------+
+| timestampdiff(month,curdate(),'2026-5-25') |
++--------------------------------------------+
+|                                          3 |
++--------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT @@session.time_zone;
++---------------------+
+| @@session.time_zone |
++---------------------+
+| SYSTEM              |
++---------------------+
+1 row in set (0.02 sec)
+
+mysql> select @@autocommit;
++--------------+
+| @@autocommit |
++--------------+
+|            1 |
++--------------+
+1 row in set (0.01 sec)
+
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select @@autocommit;
++--------------+
+| @@autocommit |
++--------------+
+|            0 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql>  set autocommit=1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT @@session.time_zone;
++---------------------+
+| @@session.time_zone |
++---------------------+
+| SYSTEM              |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT @@global.time_zone;
++--------------------+
+| @@global.time_zone |
++--------------------+
+| SYSTEM             |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select @@system time_zone;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'system time_zone' at line 1
+mysql> SELECT @@system_time_zone;
++---------------------+
+| @@system_time_zone  |
++---------------------+
+| India Standard Time |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-04 12:01:29 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> CAST(value AS datatype)
+    -> ^C
+mysql> SELECT CAST('123' AS SIGNED);
++-----------------------+
+| CAST('123' AS SIGNED) |
++-----------------------+
+|                   123 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select cast(curtime() as date);
++-------------------------+
+| cast(curtime() as date) |
++-------------------------+
+| 2026-02-04              |
++-------------------------+
+1 row in set (0.01 sec)
+
+mysql> select cast(curdate() as time);
++-------------------------+
+| cast(curdate() as time) |
++-------------------------+
+| 00:00:00                |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select cast('2026-02-04' as date);
++----------------------------+
+| cast('2026-02-04' as date) |
++----------------------------+
+| 2026-02-04                 |
++----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select cast(sysdate,'mm-dd-yy');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ','mm-dd-yy')' at line 1
+mysql> SELECT DATE_FORMAT(SYSDATE(), '%m-%d-%y');
++------------------------------------+
+| DATE_FORMAT(SYSDATE(), '%m-%d-%y') |
++------------------------------------+
+| 02-04-26                           |
++------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> select date_format(curdate(),'%d-%m-%y');
++-----------------------------------+
+| date_format(curdate(),'%d-%m-%y') |
++-----------------------------------+
+| 04-02-26                          |
++-----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select max(sal) from emp;
++------------+
+| max(sal)   |
++------------+
+| 2500000.00 |
++------------+
+1 row in set (0.02 sec)
+
+mysql> select min(sal) from emp;
++----------+
+| min(sal) |
++----------+
+| 12000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select avg(sal) from emp;
++---------------+
+| avg(sal)      |
++---------------+
+| 314000.000000 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(sal) from emp;
++------------+
+| sum(sal)   |
++------------+
+| 2826000.00 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select count(sal) from emp;
++------------+
+| count(sal) |
++------------+
+|          9 |
++------------+
+1 row in set (0.01 sec)
+
+mysql> select count(name 0 from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0 from emp' at line 1
+mysql> select count(name) from emp;
++-------------+
+| count(name) |
++-------------+
+|           9 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(id) from emp;
++-----------+
+| count(id) |
++-----------+
+|         9 |
++-----------+
+1 row in set (0.05 sec)
+
+mysql> select * from ep;
+ERROR 1146 (42S02): Table 'employee.ep' doesn't exist
+mysql> select * from emp;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.00 sec)
+
+mysql> select count(id) from emp;
++-----------+
+| count(id) |
++-----------+
+|         9 |
++-----------+
+1 row in set (0.02 sec)
+
+mysql> select nvl(hired,'2025-2-2');
+ERROR 1305 (42000): FUNCTION employee.nvl does not exist
+mysql> SELECT IFNULL(hired,'2025-02-02') FROM emp;
++----------------------------+
+| IFNULL(hired,'2025-02-02') |
++----------------------------+
+| 2025-02-02                 |
+| 2025-02-02                 |
+| 2025-02-02                 |
+| 2025-02-02                 |
+| 2025-02-02                 |
+| 2025-02-02                 |
+| 2025-02-02                 |
+| 2025-02-02                 |
+| 2025-02-02                 |
++----------------------------+
+9 rows in set (0.01 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT COALESCE(hired,'2025-02-02') FROM emp;
++------------------------------+
+| COALESCE(hired,'2025-02-02') |
++------------------------------+
+| 2025-02-02                   |
+| 2025-02-02                   |
+| 2025-02-02                   |
+| 2025-02-02                   |
+| 2025-02-02                   |
+| 2025-02-02                   |
+| 2025-02-02                   |
+| 2025-02-02                   |
+| 2025-02-02                   |
++------------------------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT nvl(hired,'2025-02-02') FROM emp;
+ERROR 1305 (42000): FUNCTION employee.nvl does not exist
+mysql> SELECT nvl(hired) FROM emp;
+ERROR 1305 (42000): FUNCTION employee.nvl does not exist
+mysql> select hired from emp;
++-------+
+| hired |
++-------+
+| NULL  |
+| NULL  |
+| NULL  |
+| NULL  |
+| NULL  |
+| NULL  |
+| NULL  |
+| NULL  |
+| NULL  |
++-------+
+9 rows in set (0.00 sec)
+
+mysql> select ifnull(hired, curdate()) from emp where id=1;
++--------------------------+
+| ifnull(hired, curdate()) |
++--------------------------+
+| 2026-02-04               |
++--------------------------+
+1 row in set (0.01 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | sal        | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+9 rows in set (0.00 sec)
+
+mysql> update emp set(null='2026-2-2') where id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(null='2026-2-2') where id=1' at line 1
+mysql> update emp set(hired='2026-2-2') where id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(hired='2026-2-2') where id=1' at line 1
+mysql> update emp set hired='2026-2-2' where id=1;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+
+| id | name     | dept       | sal        | age | hired    |
++----+----------+------------+------------+-----+----------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL     |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     |
++----+----------+------------+------------+-----+----------+
+9 rows in set (0.00 sec)
+
+mysql> select 8 from emp where hired=null;
+Empty set (0.00 sec)
+
+mysql> select * from emp where hired=null;
+Empty set (0.00 sec)
+
+mysql> select * from emp where hired is null;
++----+----------+------------+-----------+-----+-------+
+| id | name     | dept       | sal       | age | hired |
++----+----------+------------+-----------+-----+-------+
+|  2 | Kiran    | HR         |  45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |  55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |  50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   | 100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |  15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |  12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |  20000.00 |  30 | NULL  |
+| 10 | Narayan  | Biology    |  29000.00 |  31 | NULL  |
++----+----------+------------+-----------+-----+-------+
+8 rows in set (0.00 sec)
+
+mysql> select * from emp where hired is not null;
++----+----------+------+------------+-----+----------+
+| id | name     | dept | sal        | age | hired    |
++----+----------+------+------------+-----+----------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 |
++----+----------+------+------------+-----+----------+
+1 row in set (0.00 sec)
+
+mysql> update emp set hired='2025-2-3' where id=2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+
+| id | name     | dept       | sal        | age | hired    |
++----+----------+------------+------------+-----+----------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     |
++----+----------+------------+------------+-----+----------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp wherehired is null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'is null' at line 1
+mysql> select * from emp where hired is null;
++----+----------+------------+-----------+-----+-------+
+| id | name     | dept       | sal       | age | hired |
++----+----------+------------+-----------+-----+-------+
+|  3 | Ravi     | Finance    |  55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |  50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   | 100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |  15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |  12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |  20000.00 |  30 | NULL  |
+| 10 | Narayan  | Biology    |  29000.00 |  31 | NULL  |
++----+----------+------------+-----------+-----+-------+
+7 rows in set (0.00 sec)
+
+mysql> select * from emp where hired is not null;
++----+----------+------+------------+-----+----------+
+| id | name     | dept | sal        | age | hired    |
++----+----------+------+------------+-----+----------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR   |   45000.00 |  50 | 2025-2-3 |
++----+----------+------+------------+-----+----------+
+2 rows in set (0.00 sec)
+
+mysql> select coalesce(hired,curdate()) from emp;
++---------------------------+
+| coalesce(hired,curdate()) |
++---------------------------+
+| 2026-2-2                  |
+| 2025-2-3                  |
+| 2026-02-04                |
+| 2026-02-04                |
+| 2026-02-04                |
+| 2026-02-04                |
+| 2026-02-04                |
+| 2026-02-04                |
+| 2026-02-04                |
++---------------------------+
+9 rows in set (0.00 sec)
+
+mysql> select trim('_wertyuiop__');
++----------------------+
+| trim('_wertyuiop__') |
++----------------------+
+| _wertyuiop__         |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT TRIM('   hello   ');
++---------------------+
+| TRIM('   hello   ') |
++---------------------+
+| hello               |
++---------------------+
+1 row in set (0.00 sec)
