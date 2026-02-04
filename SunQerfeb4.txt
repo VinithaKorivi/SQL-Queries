@@ -1,0 +1,134 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.20 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| emp                |
+| info               |
+| nandu              |
+| rough              |
+| ujn                |
+| vini               |
++--------------------+
+8 rows in set (0.05 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+
+| id | name     | dept       | sal        | age | hired    |
++----+----------+------------+------------+-----+----------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     |
++----+----------+------------+------------+-----+----------+
+9 rows in set (0.01 sec)
+
+mysql> select * from emp where sal=(select max(sal) from emp);
++----+----------+------+------------+-----+----------+
+| id | name     | dept | sal        | age | hired    |
++----+----------+------+------------+-----+----------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 |
++----+----------+------+------------+-----+----------+
+1 row in set (0.01 sec)
+
+mysql> select * from emp where sal=(select min(sal) from emp);
++----+---------+------+----------+-----+-------+
+| id | name    | dept | sal      | age | hired |
++----+---------+------+----------+-----+-------+
+|  8 | Sandhya | IT   | 12000.00 |  40 | NULL  |
++----+---------+------+----------+-----+-------+
+1 row in set (0.00 sec)
+
+mysql> select * from dept where id=(select id from emp where name='Kavya');
+ERROR 1146 (42S02): Table 'employee.dept' doesn't exist
+mysql> select * from emp where id=(select id from emp where name='Kavya');
+Empty set (0.01 sec)
+
+mysql> select * from emp where id=(select id from emp where name in'kavya');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''kavya')' at line 1
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+
+| id | name     | dept       | sal        | age | hired    |
++----+----------+------------+------------+-----+----------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     |
++----+----------+------------+------------+-----+----------+
+9 rows in set (0.00 sec)
+
+mysql> select * from dept where id=(select id from emp where name='Ravi');
+ERROR 1146 (42S02): Table 'employee.dept' doesn't exist
+mysql> select * from emp where id=(select id from emp where name='Ravi');
++----+------+---------+----------+-----+-------+
+| id | name | dept    | sal      | age | hired |
++----+------+---------+----------+-----+-------+
+|  3 | Ravi | Finance | 55000.00 |  45 | NULL  |
++----+------+---------+----------+-----+-------+
+1 row in set (0.01 sec)
+
+mysql> select * from emp where id=(select id from emp where name in('Bhargavi','Navya');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> Navya^C
+mysql> select * from emp where id in(select id from emp where name in('Bhargavi','Navya'));
++----+----------+-----------+-----------+-----+-------+
+| id | name     | dept      | sal       | age | hired |
++----+----------+-----------+-----------+-----+-------+
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 | NULL  |
++----+----------+-----------+-----------+-----+-------+
+2 rows in set (0.01 sec)
+
+mysql> select * from emp where dept =(select dept from emp where name='Ravi');
++----+------+---------+----------+-----+-------+
+| id | name | dept    | sal      | age | hired |
++----+------+---------+----------+-----+-------+
+|  3 | Ravi | Finance | 55000.00 |  45 | NULL  |
++----+------+---------+----------+-----+-------+
+1 row in set (0.00 sec)
+
+mysql> select name,sal from emp where sal=(select sal from emp where id=2);
++-------+----------+
+| name  | sal      |
++-------+----------+
+| Kiran | 45000.00 |
++-------+----------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where dept=(select dept from emp where dept like '%l');
++----+---------+------------+----------+-----+-------+
+| id | name    | dept       | sal      | age | hired |
++----+---------+------------+----------+-----+-------+
+|  9 | Lohitha | Electrical | 20000.00 |  30 | NULL  |
++----+---------+------------+----------+-----+-------+
+1 row in set (0.01 sec)
