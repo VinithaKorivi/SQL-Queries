@@ -1,0 +1,146 @@
+mysql> SELECT IFNULL(hired, '2026-02-02') from emp;
++-----------------------------+
+| IFNULL(hired, '2026-02-02') |
++-----------------------------+
+| 2026-2-2                    |
+| 2025-2-3                    |
+| 2026-02-02                  |
+| 2026-02-02                  |
+| 2026-02-02                  |
+| 2026-02-02                  |
+| 2026-02-02                  |
+| 2026-02-02                  |
+| 2026-02-02                  |
++-----------------------------+
+9 rows in set (0.01 sec)
+
+mysql> SELECT name, NVL(salary, 0) from emp;
+ERROR 1305 (42000): FUNCTION employee.NVL does not exist
+mysql> SELECT NVL(NULL, 100);
+ERROR 1305 (42000): FUNCTION employee.NVL does not exist
+mysql> select * from emp where sal=(select max(sal) from emp);
++----+----------+------+------------+-----+----------+
+| id | name     | dept | sal        | age | hired    |
++----+----------+------+------------+-----+----------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 |
++----+----------+------+------------+-----+----------+
+1 row in set (0.02 sec)
+
+mysql> select max(sal) from emp;
++------------+
+| max(sal)   |
++------------+
+| 2500000.00 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where max(sal) from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from emp' at line 1
+mysql> select * from emp where min(sal) from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from emp' at line 1
+mysql> select * from emp where sa=(select min(sal) from emp);
+ERROR 1054 (42S22): Unknown column 'sa' in 'where clause'
+mysql> select * from emp where sal=(select min(sal) from emp);
++----+---------+------+----------+-----+-------+
+| id | name    | dept | sal      | age | hired |
++----+---------+------+----------+-----+-------+
+|  8 | Sandhya | IT   | 12000.00 |  40 | NULL  |
++----+---------+------+----------+-----+-------+
+1 row in set (0.00 sec)
+
+mysql> select dept from emp where name='Vineetha';
++------+
+| dept |
++------+
+| IT   |
++------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where dept=(select dept from emp where name='Vineetha');
++----+----------+------+------------+-----+----------+
+| id | name     | dept | sal        | age | hired    |
++----+----------+------+------------+-----+----------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 |
+|  4 | Charitha | IT   |   50000.00 |  30 | NULL     |
+|  8 | Sandhya  | IT   |   12000.00 |  40 | NULL     |
++----+----------+------+------------+-----+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp where id=(select id from emp where name='Vineetha');
++----+----------+------+------------+-----+----------+
+| id | name     | dept | sal        | age | hired    |
++----+----------+------+------------+-----+----------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 |
++----+----------+------+------------+-----+----------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where dept='IT' and dept='Accounts';
+Empty set (0.01 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+
+| id | name     | dept       | sal        | age | hired    |
++----+----------+------------+------------+-----+----------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     |
++----+----------+------------+------------+-----+----------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where dept='IT' and dept='Accounts';
+Empty set (0.00 sec)
+
+mysql> select * from emp where dept in('IT','Accounts');
++----+----------+----------+------------+-----+----------+
+| id | name     | dept     | sal        | age | hired    |
++----+----------+----------+------------+-----+----------+
+|  1 | Vineetha | IT       | 2500000.00 |  30 | 2026-2-2 |
+|  4 | Charitha | IT       |   50000.00 |  30 | NULL     |
+|  5 | Bhargavi | Accounts |  100000.00 |  35 | NULL     |
+|  8 | Sandhya  | IT       |   12000.00 |  40 | NULL     |
++----+----------+----------+------------+-----+----------+
+4 rows in set (0.01 sec)
+
+mysql> select * from emp where id=(select id from emp where name='Charitha');
++----+----------+------+----------+-----+-------+
+| id | name     | dept | sal      | age | hired |
++----+----------+------+----------+-----+-------+
+|  4 | Charitha | IT   | 50000.00 |  30 | NULL  |
++----+----------+------+----------+-----+-------+
+1 row in set (0.01 sec)
+
+mysql> select sal from emp where id=(select dept from emp where dept in('IT','Accounts'));
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select sal from emp where id in(select dept from emp where dept in('IT','Accounts'));
+Empty set (0.04 sec)
+
+mysql> select sal from emp where deptno=(select id from emp where dept='HR');
+ERROR 1054 (42S22): Unknown column 'deptno' in 'where clause'
+mysql> select sal from emp where dept=(select id from emp where dept='HR');
+Empty set, 5 warnings (0.01 sec)
+
+mysql> ^C
+mysql> select sal from emp where id=(select id from emp where dept='HR');
++----------+
+| sal      |
++----------+
+| 45000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where dept=(select id from emp where dept='HR');
+Empty set, 5 warnings (0.00 sec)
+
+mysql> select * from emp where id=(select id from emp where dept='HR');
++----+-------+------+----------+-----+----------+
+| id | name  | dept | sal      | age | hired    |
++----+-------+------+----------+-----+----------+
+|  2 | Kiran | HR   | 45000.00 |  50 | 2025-2-3 |
++----+-------+------+----------+-----+----------+
+1 row in set (0.00 sec)
