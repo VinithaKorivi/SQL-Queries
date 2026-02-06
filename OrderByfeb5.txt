@@ -1,0 +1,598 @@
+t Windows [Version 10.0.26200.7623]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\kvine>mysql -u root -p
+Enter password: *******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 8.0.44 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ^C
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.11 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| emp                |
+| info               |
+| nandu              |
+| rough              |
+| ujn                |
+| vini               |
++--------------------+
+8 rows in set (0.03 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+
+| id | name     | dept       | sal        | age | hired    |
++----+----------+------------+------------+-----+----------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     |
++----+----------+------------+------------+-----+----------+
+9 rows in set (0.01 sec)
+
+mysql> select dept from emp where sal=(select max(sal) from emp);
++------+
+| dept |
++------+
+| IT   |
++------+
+1 row in set (0.01 sec)
+
+mysql> select name,dept from emp where sal=(select max(sal) from emp where dept='accounts');
++----------+----------+
+| name     | dept     |
++----------+----------+
+| Bhargavi | Accounts |
++----------+----------+
+1 row in set (0.00 sec)
+
+mysql> select count(dept) from emp;
++-------------+
+| count(dept) |
++-------------+
+|           9 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(dept) from emp where dept='it';
++-------------+
+| count(dept) |
++-------------+
+|           3 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select dept from emp where id in(select id from emp where dept like'it' and(select sal from emp where sal between 1500 and 40000));^C
+mysql> select sal from emp where sal between 1500 and 40000;
++----------+
+| sal      |
++----------+
+| 15000.00 |
+| 12000.00 |
+| 20000.00 |
+| 29000.00 |
++----------+
+4 rows in set (0.01 sec)
+
+mysql> select id from emp where dept like'it';
++----+
+| id |
++----+
+|  1 |
+|  4 |
+|  8 |
++----+
+3 rows in set (0.01 sec)
+
+mysql> select dept from emp where id in(select id from emp where dept like'it' and(select sal from emp where sal between 1500 and 40000));
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select dept from emp where id in(select id from emp where dept like'it' and ^C
+mysql> select dept from emp where id in(select id from emp where dept like'it' and  sal between 1500 and 40000));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> select dept from emp where id in(select id from emp where dept not like'b%');
++------------+
+| dept       |
++------------+
+| IT         |
+| HR         |
+| Finance    |
+| IT         |
+| Accounts   |
+| Compuetrs  |
+| IT         |
+| Electrical |
++------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+
+| id | name     | dept       | sal        | age | hired    |
++----+----------+------------+------------+-----+----------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     |
++----+----------+------------+------------+-----+----------+
+9 rows in set (0.00 sec)
+
+mysql> select dept from emp where sal not like 's%' and sal between 1500 to 40000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to 40000' at line 1
+mysql> select dept from emp where name not like 's%' and sal between 1500 to 40000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to 40000' at line 1
+mysql> select dept from emp where name not like 's%' and sal between 1500 and 40000;
++------------+
+| dept       |
++------------+
+| Compuetrs  |
+| Electrical |
+| Biology    |
++------------+
+3 rows in set (0.00 sec)
+
+mysql> select dept from emp where sal in(select min(sal) from emp where sal>2000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select dept from emp where sal in(select min(sal) from emp where sal in(select sal from emp where sal>2000));
++------+
+| dept |
++------+
+| IT   |
++------+
+1 row in set (0.02 sec)
+
+mysql> select dept from emp where sal in(select min(sal) from emp where sal in(select sal from emp where sal>55000));
++----------+
+| dept     |
++----------+
+| Accounts |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select dept,sal from emp where sal in(select min(sal) from emp where sal in(select sal from emp where sal>55000));
++----------+-----------+
+| dept     | sal       |
++----------+-----------+
+| Accounts | 100000.00 |
++----------+-----------+
+1 row in set (0.00 sec)
+
+mysql>  select min(sal) from emp where sal<(select min(sal) from emp where sal<(select min(sal) from emp));
++----------+
+| min(sal) |
++----------+
+|     NULL |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select min(sal) from emp where sal>(select min(sal) from emp where sal>(select min(sal) from emp));
++----------+
+| min(sal) |
++----------+
+| 20000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+
+| id | name     | dept       | sal        | age | hired    |
++----+----------+------------+------------+-----+----------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     |
++----+----------+------------+------------+-----+----------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where dept in(select dept from emp where hired between '2025-2-3' and '2026-2-3');
++----+----------+------+------------+-----+----------+
+| id | name     | dept | sal        | age | hired    |
++----+----------+------+------------+-----+----------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR   |   45000.00 |  50 | 2025-2-3 |
+|  4 | Charitha | IT   |   50000.00 |  30 | NULL     |
+|  8 | Sandhya  | IT   |   12000.00 |  40 | NULL     |
++----+----------+------+------------+-----+----------+
+4 rows in set (0.01 sec)
+
+mysql> select * from emp where dept in(select dept from emp where hired between '2025-2-3' and '2026-2-3' and hired is not null);
++----+----------+------+------------+-----+----------+
+| id | name     | dept | sal        | age | hired    |
++----+----------+------+------------+-----+----------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR   |   45000.00 |  50 | 2025-2-3 |
+|  4 | Charitha | IT   |   50000.00 |  30 | NULL     |
+|  8 | Sandhya  | IT   |   12000.00 |  40 | NULL     |
++----+----------+------+------------+-----+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where dept in(select dept from emp where hired between '2025-2-3' and '2026-2-3') and hired is not null;
++----+----------+------+------------+-----+----------+
+| id | name     | dept | sal        | age | hired    |
++----+----------+------+------------+-----+----------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR   |   45000.00 |  50 | 2025-2-3 |
++----+----------+------+------------+-----+----------+
+2 rows in set (0.00 sec)
+
+mysql>  select * from emp where id in(select id from emp where hired between '2025-2-3' and '2026-2-3');
++----+----------+------+------------+-----+----------+
+| id | name     | dept | sal        | age | hired    |
++----+----------+------+------------+-----+----------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR   |   45000.00 |  50 | 2025-2-3 |
++----+----------+------+------------+-----+----------+
+2 rows in set (0.00 sec)
+
+mysql> select substring(name,1,3) from emp where dept='it';
++---------------------+
+| substring(name,1,3) |
++---------------------+
+| Vin                 |
+| Cha                 |
+| San                 |
++---------------------+
+3 rows in set (0.01 sec)
+
+mysql> select name,dept,hired from emp where dept ='it' and dept like '%a';
+Empty set (0.00 sec)
+
+mysql> select name,dept,hired from emp where dept ='it' and name like '%a';
++----------+------+----------+
+| name     | dept | hired    |
++----------+------+----------+
+| Vineetha | IT   | 2026-2-2 |
+| Charitha | IT   | NULL     |
+| Sandhya  | IT   | NULL     |
++----------+------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select name from emp orderby sal asc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sal asc' at line 1
+mysql> select name from emp order by asc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'asc' at line 1
+mysql> select name from emp order by name asc;
++----------+
+| name     |
++----------+
+| Bhargavi |
+| Charitha |
+| Kiran    |
+| Lohitha  |
+| Narayan  |
+| Navya    |
+| Ravi     |
+| Sandhya  |
+| Vineetha |
++----------+
+9 rows in set (0.00 sec)
+
+mysql> select sal from emp order by sal asc;
++------------+
+| sal        |
++------------+
+|   12000.00 |
+|   15000.00 |
+|   20000.00 |
+|   29000.00 |
+|   45000.00 |
+|   50000.00 |
+|   55000.00 |
+|  100000.00 |
+| 2500000.00 |
++------------+
+9 rows in set (0.00 sec)
+
+mysql> select id from emp order by id des;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'des' at line 1
+mysql> select id from emp order by id desc;
++----+
+| id |
++----+
+| 10 |
+|  9 |
+|  8 |
+|  7 |
+|  5 |
+|  4 |
+|  3 |
+|  2 |
+|  1 |
++----+
+9 rows in set (0.00 sec)
+
+mysql> select name,sal,dept from emp order by name asc;
++----------+------------+------------+
+| name     | sal        | dept       |
++----------+------------+------------+
+| Bhargavi |  100000.00 | Accounts   |
+| Charitha |   50000.00 | IT         |
+| Kiran    |   45000.00 | HR         |
+| Lohitha  |   20000.00 | Electrical |
+| Narayan  |   29000.00 | Biology    |
+| Navya    |   15000.00 | Compuetrs  |
+| Ravi     |   55000.00 | Finance    |
+| Sandhya  |   12000.00 | IT         |
+| Vineetha | 2500000.00 | IT         |
++----------+------------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select name from emp order by dept desc;
++----------+
+| name     |
++----------+
+| Vineetha |
+| Charitha |
+| Sandhya  |
+| Kiran    |
+| Ravi     |
+| Lohitha  |
+| Navya    |
+| Narayan  |
+| Bhargavi |
++----------+
+9 rows in set (0.01 sec)
+
+mysql> select * from emp order by name asc, dept desc;
++----+----------+------------+------------+-----+----------+
+| id | name     | dept       | sal        | age | hired    |
++----+----------+------------+------------+-----+----------+
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     |
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 |
++----+----------+------------+------------+-----+----------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where rownum<=5;
+ERROR 1054 (42S22): Unknown column 'rownum' in 'where clause'
+mysql> select * from (select * from(select sal from emp  order by sal desc)where rownum^C
+mysql> selct * from emp limit<5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selct * from emp limit<5' at line 1
+mysql> select * from emp limit<5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<5' at line 1
+mysql> select * from emp limit 5;
++----+----------+----------+------------+-----+----------+
+| id | name     | dept     | sal        | age | hired    |
++----+----------+----------+------------+-----+----------+
+|  1 | Vineetha | IT       | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR       |   45000.00 |  50 | 2025-2-3 |
+|  3 | Ravi     | Finance  |   55000.00 |  45 | NULL     |
+|  4 | Charitha | IT       |   50000.00 |  30 | NULL     |
+|  5 | Bhargavi | Accounts |  100000.00 |  35 | NULL     |
++----+----------+----------+------------+-----+----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from(select * from(select sal from emp order by desc limit 5) where order by sal asc limit 5) where limit=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc limit 5) where order by sal asc limit 5) where limit=1' at line 1
+mysql> select sal from emp order by sal desc limit 4,1;
++----------+
+| sal      |
++----------+
+| 45000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql>  select sal from emp order by sal desc limit 2,1;
++----------+
+| sal      |
++----------+
+| 55000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sal from emp order by sal desc limit 1,1;
++-----------+
+| sal       |
++-----------+
+| 100000.00 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql>  select sal from emp order by sal desc limit 1;
++------------+
+| sal        |
++------------+
+| 2500000.00 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select sal from emp order by desc limit 4,1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc limit 4,1' at line 1
+mysql> select sal from emp order by sal desc limit 4,1;
++----------+
+| sal      |
++----------+
+| 45000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sal from emp order by sal desc;
++------------+
+| sal        |
++------------+
+| 2500000.00 |
+|  100000.00 |
+|   55000.00 |
+|   50000.00 |
+|   45000.00 |
+|   29000.00 |
+|   20000.00 |
+|   15000.00 |
+|   12000.00 |
++------------+
+9 rows in set (0.00 sec)
+
+mysql> select sal from emp order by sal desc limit 2,1;
++----------+
+| sal      |
++----------+
+| 55000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select distinct sal , name from emp;
++------------+----------+
+| sal        | name     |
++------------+----------+
+| 2500000.00 | Vineetha |
+|   45000.00 | Kiran    |
+|   55000.00 | Ravi     |
+|   50000.00 | Charitha |
+|  100000.00 | Bhargavi |
+|   15000.00 | Navya    |
+|   12000.00 | Sandhya  |
+|   20000.00 | Lohitha  |
+|   29000.00 | Narayan  |
++------------+----------+
+9 rows in set (0.01 sec)
+
+mysql> select distinct age fom emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'emp' at line 1
+mysql> select distinct age from emp;
++-----+
+| age |
++-----+
+|  30 |
+|  50 |
+|  45 |
+|  35 |
+|  25 |
+|  40 |
+|  31 |
++-----+
+7 rows in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+
+| id | name     | dept       | sal        | age | hired    |
++----+----------+------------+------------+-----+----------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     |
++----+----------+------------+------------+-----+----------+
+9 rows in set (0.00 sec)
+
+mysql> select age from emp;
++-----+
+| age |
++-----+
+|  30 |
+|  50 |
+|  45 |
+|  30 |
+|  35 |
+|  25 |
+|  40 |
+|  30 |
+|  31 |
++-----+
+9 rows in set (0.00 sec)
+
+mysql> select distinct age from emp;
++-----+
+| age |
++-----+
+|  30 |
+|  50 |
+|  45 |
+|  35 |
+|  25 |
+|  40 |
+|  31 |
++-----+
+7 rows in set (0.00 sec)
+
+mysql> select length('Banana')-length(replace('banana','a'));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '))' at line 1
+mysql> SELECT LENGTH(LOWER('Banana')) - LENGTH(REPLACE(LOWER('Banana'),'a',''));
++-------------------------------------------------------------------+
+| LENGTH(LOWER('Banana')) - LENGTH(REPLACE(LOWER('Banana'),'a','')) |
++-------------------------------------------------------------------+
+|                                                                 3 |
++-------------------------------------------------------------------+
+1 row in set (0.02 sec)
+
+mysql> select reverse(name) from emp;
++---------------+
+| reverse(name) |
++---------------+
+| ahteeniV      |
+| nariK         |
+| ivaR          |
+| ahtirahC      |
+| ivagrahB      |
+| ayvaN         |
+| ayhdnaS       |
+| ahtihoL       |
+| nayaraN       |
++---------------+
+9 rows in set (0.00 sec)
+
+mysql> select length('banana')-length('banana','a');
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'length'
+mysql> select length('banana')-length(replace('banana','a'));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '))' at line 1
+mysql>  select length('banana')-length(replace('banana','a',''));
++---------------------------------------------------+
+| length('banana')-length(replace('banana','a','')) |
++---------------------------------------------------+
+|                                                 3 |
++---------------------------------------------------+
+1 row in set (0.00 sec)
