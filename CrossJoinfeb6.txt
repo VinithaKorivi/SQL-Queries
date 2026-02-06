@@ -1,0 +1,429 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.13 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| emp                |
+| info               |
+| nandu              |
+| rough              |
+| ujn                |
+| vini               |
++--------------------+
+8 rows in set (0.07 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+
+| id | name     | dept       | sal        | age | hired    |
++----+----------+------------+------------+-----+----------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     |
++----+----------+------------+------------+-----+----------+
+9 rows in set (0.01 sec)
+
+mysql> select emp.name,class.name from emp cross join class;
++----------+----------+
+| name     | name     |
++----------+----------+
+| Vineetha | Mounika  |
+| Vineetha | Thanooja |
+| Vineetha | Kalyani  |
+| Vineetha | Hari     |
+| Vineetha | Hema     |
+| Vineetha | Rahul    |
+| Kiran    | Mounika  |
+| Kiran    | Thanooja |
+| Kiran    | Kalyani  |
+| Kiran    | Hari     |
+| Kiran    | Hema     |
+| Kiran    | Rahul    |
+| Ravi     | Mounika  |
+| Ravi     | Thanooja |
+| Ravi     | Kalyani  |
+| Ravi     | Hari     |
+| Ravi     | Hema     |
+| Ravi     | Rahul    |
+| Charitha | Mounika  |
+| Charitha | Thanooja |
+| Charitha | Kalyani  |
+| Charitha | Hari     |
+| Charitha | Hema     |
+| Charitha | Rahul    |
+| Bhargavi | Mounika  |
+| Bhargavi | Thanooja |
+| Bhargavi | Kalyani  |
+| Bhargavi | Hari     |
+| Bhargavi | Hema     |
+| Bhargavi | Rahul    |
+| Navya    | Mounika  |
+| Navya    | Thanooja |
+| Navya    | Kalyani  |
+| Navya    | Hari     |
+| Navya    | Hema     |
+| Navya    | Rahul    |
+| Sandhya  | Mounika  |
+| Sandhya  | Thanooja |
+| Sandhya  | Kalyani  |
+| Sandhya  | Hari     |
+| Sandhya  | Hema     |
+| Sandhya  | Rahul    |
+| Lohitha  | Mounika  |
+| Lohitha  | Thanooja |
+| Lohitha  | Kalyani  |
+| Lohitha  | Hari     |
+| Lohitha  | Hema     |
+| Lohitha  | Rahul    |
+| Narayan  | Mounika  |
+| Narayan  | Thanooja |
+| Narayan  | Kalyani  |
+| Narayan  | Hari     |
+| Narayan  | Hema     |
+| Narayan  | Rahul    |
++----------+----------+
+54 rows in set (0.01 sec)
+
+mysql> select * from  emp;
++----+----------+------------+------------+-----+----------+
+| id | name     | dept       | sal        | age | hired    |
++----+----------+------------+------------+-----+----------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     |
++----+----------+------------+------------+-----+----------+
+9 rows in set (0.00 sec)
+
+mysql> select * from class
+    -> ^C
+mysql> select * from class;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> insert into class values(7,'Sandhya','2026-2-2',92,'Hyderabada','5th class');
+Query OK, 1 row affected (0.09 sec)
+
+mysql>  insert into class values(8,'Bhargavi','2024-2-2',77,'Himalayas','8th class'),(9,'Lohitha','2028-2-25',71,'Uttarkhand','1st class');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from class;
++--------+----------+------------+-------+------------+-----------+
+| rollno | name     | joindate   | marks | location   | cname     |
++--------+----------+------------+-------+------------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK    | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi  | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor   | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore  | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi  | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago    | 9th class |
+|      7 | Sandhya  | 2026-02-02 |    92 | Hyderabada | 5th class |
+|      8 | Bhargavi | 2024-02-02 |    77 | Himalayas  | 8th class |
+|      9 | Lohitha  | 2028-02-25 |    71 | Uttarkhand | 1st class |
++--------+----------+------------+-------+------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> select emp.name,class.name from emp cross join class where emp.name='Thanooja';
+Empty set (0.00 sec)
+
+mysql> select emp.name,class.name from emp cross join class where emp.name='Sandhya';
++---------+----------+
+| name    | name     |
++---------+----------+
+| Sandhya | Rahul    |
+| Sandhya | Hema     |
+| Sandhya | Hari     |
+| Sandhya | Kalyani  |
+| Sandhya | Thanooja |
+| Sandhya | Mounika  |
+| Sandhya | Sandhya  |
+| Sandhya | Bhargavi |
+| Sandhya | Lohitha  |
++---------+----------+
+9 rows in set (0.00 sec)
+
+mysql> alter table emp add location varchar(20);
+Query OK, 0 rows affected (0.30 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+----------+
+| id | name     | dept       | sal        | age | hired    | location |
++----+----------+------------+------------+-----+----------+----------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | NULL     |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | NULL     |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | NULL     |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | NULL     |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | NULL     |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | NULL     |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | NULL     |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | NULL     |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | NULL     |
++----+----------+------------+------------+-----+----------+----------+
+9 rows in set (0.00 sec)
+
+mysql> update emp set location =case when dept='it' then 'Bangalore' when dept='finance'then 'Hyderabad' when location='Computers' then 'Pune' else 'Tirupathi' end;
+Query OK, 9 rows affected (0.01 sec)
+Rows matched: 9  Changed: 9  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+
+| id | name     | dept       | sal        | age | hired    | location  |
++----+----------+------------+------------+-----+----------+-----------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi |
++----+----------+------------+------------+-----+----------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> alter table emp add job varchar(30);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+------+
+| id | name     | dept       | sal        | age | hired    | location  | job  |
++----+----------+------------+------------+-----+----------+-----------+------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | NULL |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | NULL |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | NULL |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | NULL |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | NULL |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | NULL |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | NULL |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | NULL |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | NULL |
++----+----------+------------+------------+-----+----------+-----------+------+
+9 rows in set (0.00 sec)
+
+mysql> update emp set job=cast when dept='it' then 'Software Engineer' when dept='Accounts' then 'Accountant' when dept='Computers' then 'Java Developer' when dept='Electrical' then 'Engineer' when dept='Biology' then 'Professor' when dept='Hr' then 'Manager' else 'Associate' end;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'when dept='it' then 'Software Engineer' when dept='Accounts' then 'Accountant' w' at line 1
+mysql> update emp set job=case when dept='it' then 'Software Engineer' when dept='Accounts' then 'Accountant' when dept='Computers' then 'Java Developer' when dept='Electrical' then 'Engineer' when dept='Biology' then 'Professor' when dept='Hr' then 'Manager' else 'Associate' end;
+Query OK, 9 rows affected (0.01 sec)
+Rows matched: 9  Changed: 9  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select emp.name,emp.sal/2,class.location from emp cross join class where job='manager';
++-------+--------------+------------+
+| name  | emp.sal/2    | location   |
++-------+--------------+------------+
+| Kiran | 22500.000000 | NEWYORK    |
+| Kiran | 22500.000000 | Tirupathi  |
+| Kiran | 22500.000000 | Chittoor   |
+| Kiran | 22500.000000 | Bangalore  |
+| Kiran | 22500.000000 | Tirupathi  |
+| Kiran | 22500.000000 | Chicago    |
+| Kiran | 22500.000000 | Hyderabada |
+| Kiran | 22500.000000 | Himalayas  |
+| Kiran | 22500.000000 | Uttarkhand |
++-------+--------------+------------+
+9 rows in set (0.01 sec)
+
+mysql> select emp.*,emp.dept,class.location from emp cross join class;
++----+----------+------------+------------+-----+----------+-----------+-------------------+------------+------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               | dept       | location   |
++----+----------+------------+------------+-----+----------+-----------+-------------------+------------+------------+
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         | Biology    | NEWYORK    |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          | Electrical | NEWYORK    |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer | IT         | NEWYORK    |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         | Compuetrs  | NEWYORK    |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        | Accounts   | NEWYORK    |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer | IT         | NEWYORK    |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         | Finance    | NEWYORK    |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           | HR         | NEWYORK    |
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer | IT         | NEWYORK    |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         | Biology    | Tirupathi  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          | Electrical | Tirupathi  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer | IT         | Tirupathi  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         | Compuetrs  | Tirupathi  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        | Accounts   | Tirupathi  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer | IT         | Tirupathi  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         | Finance    | Tirupathi  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           | HR         | Tirupathi  |
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer | IT         | Tirupathi  |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         | Biology    | Chittoor   |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          | Electrical | Chittoor   |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer | IT         | Chittoor   |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         | Compuetrs  | Chittoor   |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        | Accounts   | Chittoor   |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer | IT         | Chittoor   |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         | Finance    | Chittoor   |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           | HR         | Chittoor   |
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer | IT         | Chittoor   |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         | Biology    | Bangalore  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          | Electrical | Bangalore  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer | IT         | Bangalore  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         | Compuetrs  | Bangalore  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        | Accounts   | Bangalore  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer | IT         | Bangalore  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         | Finance    | Bangalore  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           | HR         | Bangalore  |
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer | IT         | Bangalore  |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         | Biology    | Tirupathi  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          | Electrical | Tirupathi  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer | IT         | Tirupathi  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         | Compuetrs  | Tirupathi  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        | Accounts   | Tirupathi  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer | IT         | Tirupathi  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         | Finance    | Tirupathi  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           | HR         | Tirupathi  |
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer | IT         | Tirupathi  |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         | Biology    | Chicago    |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          | Electrical | Chicago    |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer | IT         | Chicago    |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         | Compuetrs  | Chicago    |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        | Accounts   | Chicago    |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer | IT         | Chicago    |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         | Finance    | Chicago    |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           | HR         | Chicago    |
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer | IT         | Chicago    |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         | Biology    | Hyderabada |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          | Electrical | Hyderabada |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer | IT         | Hyderabada |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         | Compuetrs  | Hyderabada |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        | Accounts   | Hyderabada |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer | IT         | Hyderabada |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         | Finance    | Hyderabada |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           | HR         | Hyderabada |
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer | IT         | Hyderabada |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         | Biology    | Himalayas  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          | Electrical | Himalayas  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer | IT         | Himalayas  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         | Compuetrs  | Himalayas  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        | Accounts   | Himalayas  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer | IT         | Himalayas  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         | Finance    | Himalayas  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           | HR         | Himalayas  |
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer | IT         | Himalayas  |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         | Biology    | Uttarkhand |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          | Electrical | Uttarkhand |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer | IT         | Uttarkhand |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         | Compuetrs  | Uttarkhand |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        | Accounts   | Uttarkhand |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer | IT         | Uttarkhand |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         | Finance    | Uttarkhand |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           | HR         | Uttarkhand |
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer | IT         | Uttarkhand |
++----+----------+------------+------------+-----+----------+-----------+-------------------+------------+------------+
+81 rows in set (0.01 sec)
+
+mysql> select emp.name,emp.sal*12,class.location from emp cross join class where emp.job in('Bangalore','Tirupathi');
+Empty set (0.01 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+------------+-----------+
+| rollno | name     | joindate   | marks | location   | cname     |
++--------+----------+------------+-------+------------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK    | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi  | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor   | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore  | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi  | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago    | 9th class |
+|      7 | Sandhya  | 2026-02-02 |    92 | Hyderabada | 5th class |
+|      8 | Bhargavi | 2024-02-02 |    77 | Himalayas  | 8th class |
+|      9 | Lohitha  | 2028-02-25 |    71 | Uttarkhand | 1st class |
++--------+----------+------------+-------+------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.00 sec)
+
+mysql>  select emp.name,emp.sal*12,class.location from emp cross join class where emp.job in('Professor','Engineer');
++---------+------------+------------+
+| name    | emp.sal*12 | location   |
++---------+------------+------------+
+| Narayan |  348000.00 | NEWYORK    |
+| Lohitha |  240000.00 | NEWYORK    |
+| Narayan |  348000.00 | Tirupathi  |
+| Lohitha |  240000.00 | Tirupathi  |
+| Narayan |  348000.00 | Chittoor   |
+| Lohitha |  240000.00 | Chittoor   |
+| Narayan |  348000.00 | Bangalore  |
+| Lohitha |  240000.00 | Bangalore  |
+| Narayan |  348000.00 | Tirupathi  |
+| Lohitha |  240000.00 | Tirupathi  |
+| Narayan |  348000.00 | Chicago    |
+| Lohitha |  240000.00 | Chicago    |
+| Narayan |  348000.00 | Hyderabada |
+| Lohitha |  240000.00 | Hyderabada |
+| Narayan |  348000.00 | Himalayas  |
+| Lohitha |  240000.00 | Himalayas  |
+| Narayan |  348000.00 | Uttarkhand |
+| Lohitha |  240000.00 | Uttarkhand |
++---------+------------+------------+
+18 rows in s
