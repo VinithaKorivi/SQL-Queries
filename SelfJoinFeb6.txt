@@ -1,0 +1,76 @@
+mysql> select emp.name,class.name from emp left outer join class on emp.id=class.rollno;
++----------+----------+
+| name     | name     |
++----------+----------+
+| Vineetha | Rahul    |
+| Kiran    | Hema     |
+| Ravi     | Hari     |
+| Charitha | Kalyani  |
+| Bhargavi | Thanooja |
+| Navya    | Sandhya  |
+| Sandhya  | Bhargavi |
+| Lohitha  | Lohitha  |
+| Narayan  | NULL     |
++----------+----------+
+9 rows in set (0.01 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT e1.name AS emp1, e2.name AS emp2, e1.dept FROM emp e1 JOIN emp e2 ON e1.dept = e2.dept AND e1.id <> e2.id;
++----------+----------+------+
+| emp1     | emp2     | dept |
++----------+----------+------+
+| Sandhya  | Vineetha | IT   |
+| Charitha | Vineetha | IT   |
+| Sandhya  | Charitha | IT   |
+| Vineetha | Charitha | IT   |
+| Charitha | Sandhya  | IT   |
+| Vineetha | Sandhya  | IT   |
++----------+----------+------+
+6 rows in set (0.01 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.01 sec)
+
+mysql> select e1.name as emp1,e2.name as emp2,e1.dept from emp e1 join emp e2 on e1.dept=e2.dept and e1.id=e2.id;
++----------+----------+------------+
+| emp1     | emp2     | dept       |
++----------+----------+------------+
+| Vineetha | Vineetha | IT         |
+| Kiran    | Kiran    | HR         |
+| Ravi     | Ravi     | Finance    |
+| Charitha | Charitha | IT         |
+| Bhargavi | Bhargavi | Accounts   |
+| Navya    | Navya    | Compuetrs  |
+| Sandhya  | Sandhya  | IT         |
+| Lohitha  | Lohitha  | Electrical |
+| Narayan  | Narayan  | Biology    |
++----------+----------+------------+
+9 rows in set (0.02 sec)
