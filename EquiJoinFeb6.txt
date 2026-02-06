@@ -1,0 +1,110 @@
+mysql> select emp.name,class.name from emp,class where emp.id=class.rollno;
++----------+----------+
+| name     | name     |
++----------+----------+
+| Vineetha | Rahul    |
+| Kiran    | Hema     |
+| Ravi     | Hari     |
+| Charitha | Kalyani  |
+| Bhargavi | Thanooja |
+| Navya    | Sandhya  |
+| Sandhya  | Bhargavi |
+| Lohitha  | Lohitha  |
++----------+----------+
+8 rows in set (0.01 sec)
+
+mysql> select emp.name,class.name from emp,class where emp.location=class.location;
++----------+----------+
+| name     | name     |
++----------+----------+
+| Narayan  | Hema     |
+| Lohitha  | Hema     |
+| Navya    | Hema     |
+| Bhargavi | Hema     |
+| Kiran    | Hema     |
+| Sandhya  | Kalyani  |
+| Charitha | Kalyani  |
+| Vineetha | Kalyani  |
+| Narayan  | Thanooja |
+| Lohitha  | Thanooja |
+| Navya    | Thanooja |
+| Bhargavi | Thanooja |
+| Kiran    | Thanooja |
++----------+----------+
+13 rows in set (0.01 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+------------+-----------+
+| rollno | name     | joindate   | marks | location   | cname     |
++--------+----------+------------+-------+------------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK    | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi  | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor   | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore  | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi  | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago    | 9th class |
+|      7 | Sandhya  | 2026-02-02 |    92 | Hyderabada | 5th class |
+|      8 | Bhargavi | 2024-02-02 |    77 | Himalayas  | 8th class |
+|      9 | Lohitha  | 2028-02-25 |    71 | Uttarkhand | 1st class |
++--------+----------+------------+-------+------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> select emp.name,emp.sal*12,class.name from emp,class where name='Sandhya' and emp.id=class.id;
+ERROR 1052 (23000): Column 'name' in where clause is ambiguous
+mysql> select emp.name,emp.sal*12,class.name from emp,class where emp.name='Sandhya' and emp.id=class.id;
+ERROR 1054 (42S22): Unknown column 'class.id' in 'where clause'
+mysql>  select emp.name,emp.sal*12,class.name from emp,class where emp.name='Sandhya' and emp.id=class.rollno;
++---------+------------+----------+
+| name    | emp.sal*12 | name     |
++---------+------------+----------+
+| Sandhya |  144000.00 | Bhargavi |
++---------+------------+----------+
+1 row in set (0.00 sec)
+
+mysql> select emp.name,emp.sal*6,class.name from emp,class where emp.id=class.rollno;
++----------+-------------+----------+
+| name     | emp.sal*6   | name     |
++----------+-------------+----------+
+| Vineetha | 15000000.00 | Rahul    |
+| Kiran    |   270000.00 | Hema     |
+| Ravi     |   330000.00 | Hari     |
+| Charitha |   300000.00 | Kalyani  |
+| Bhargavi |   600000.00 | Thanooja |
+| Navya    |    90000.00 | Sandhya  |
+| Sandhya  |    72000.00 | Bhargavi |
+| Lohitha  |   120000.00 | Lohitha  |
++----------+-------------+----------+
+8 rows in set (0.00 sec)
+
+mysql> select name,emp.dept,class.location from emp,class where emp.sal>20000 and emp.id=class.rollno;
+ERROR 1052 (23000): Column 'name' in field list is ambiguous
+mysql> select emp.name,emp.sal*6,class.name from emp,class where emp.id=class.rollno;
++----------+-------------+----------+
+| name     | emp.sal*6   | name     |
++----------+-------------+----------+
+| Vineetha | 15000000.00 | Rahul    |
+| Kiran    |   270000.00 | Hema     |
+| Ravi     |   330000.00 | Hari     |
+| Charitha |   300000.00 | Kalyani  |
+| Bhargavi |   600000.00 | Thanooja |
+| Navya    |    90000.00 | Sandhya  |
+| Sandhya  |    72000.00 | Bhargavi |
+| Lohitha  |   120000.00 | Lohitha  |
++----------+-------------+----------+
+8 rows in set (0.00 sec)
