@@ -1,0 +1,214 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.51 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables in employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| emp                |
+| info               |
+| nandu              |
+| rough              |
+| ujn                |
+| vini               |
++--------------------+
+8 rows in set (0.02 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.11 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+------------+-----------+
+| rollno | name     | joindate   | marks | location   | cname     |
++--------+----------+------------+-------+------------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK    | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi  | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor   | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore  | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi  | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago    | 9th class |
+|      7 | Sandhya  | 2026-02-02 |    92 | Hyderabada | 5th class |
+|      8 | Bhargavi | 2024-02-02 |    77 | Himalayas  | 8th class |
+|      9 | Lohitha  | 2028-02-25 |    71 | Uttarkhand | 1st class |
++--------+----------+------------+-------+------------+-----------+
+9 rows in set (0.03 sec)
+
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Hareesh   | BSC   | Married   |   23 |
+| Hema      | BSC   | Married   |   20 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Karna     | BSC   | Married   |   23 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Naveen    | BTech | UnMarried |   20 |
+| Navya     | BTech | UnMarried |   18 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| Satya     | BSC   | Married   |   20 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+16 rows in set (0.01 sec)
+
+mysql> select * from product;
+ERROR 1146 (42S02): Table 'employee.product' doesn't exist
+mysql> select name,sal from emp;
++----------+------------+
+| name     | sal        |
++----------+------------+
+| Vineetha | 2500000.00 |
+| Kiran    |   45000.00 |
+| Ravi     |   55000.00 |
+| Charitha |   50000.00 |
+| Bhargavi |  100000.00 |
+| Navya    |   15000.00 |
+| Sandhya  |   12000.00 |
+| Lohitha  |   20000.00 |
+| Narayan  |   29000.00 |
++----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select name,sal+300 from emp;
++----------+------------+
+| name     | sal+300    |
++----------+------------+
+| Vineetha | 2500300.00 |
+| Kiran    |   45300.00 |
+| Ravi     |   55300.00 |
+| Charitha |   50300.00 |
+| Bhargavi |  100300.00 |
+| Navya    |   15300.00 |
+| Sandhya  |   12300.00 |
+| Lohitha  |   20300.00 |
+| Narayan  |   29300.00 |
++----------+------------+
+9 rows in set (0.01 sec)
+
+mysql> select sal*12 from emp;
++-------------+
+| sal*12      |
++-------------+
+| 30000000.00 |
+|   540000.00 |
+|   660000.00 |
+|   600000.00 |
+|  1200000.00 |
+|   180000.00 |
+|   144000.00 |
+|   240000.00 |
+|   348000.00 |
++-------------+
+9 rows in set (0.00 sec)
+
+mysql> select name,sal/2 from emp;
++----------+----------------+
+| name     | sal/2          |
++----------+----------------+
+| Vineetha | 1250000.000000 |
+| Kiran    |   22500.000000 |
+| Ravi     |   27500.000000 |
+| Charitha |   25000.000000 |
+| Bhargavi |   50000.000000 |
+| Navya    |    7500.000000 |
+| Sandhya  |    6000.000000 |
+| Lohitha  |   10000.000000 |
+| Narayan  |   14500.000000 |
++----------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> select name,sal-300 from emp;
++----------+------------+
+| name     | sal-300    |
++----------+------------+
+| Vineetha | 2499700.00 |
+| Kiran    |   44700.00 |
+| Ravi     |   54700.00 |
+| Charitha |   49700.00 |
+| Bhargavi |   99700.00 |
+| Navya    |   14700.00 |
+| Sandhya  |   11700.00 |
+| Lohitha  |   19700.00 |
+| Narayan  |   28700.00 |
++----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select dept from emp where location='tirupathi';
++------------+
+| dept       |
++------------+
+| HR         |
+| Accounts   |
+| Compuetrs  |
+| Electrical |
+| Biology    |
++------------+
+5 rows in set (0.01 sec)
+
+mysql> select concat(name,'is earning sal of',sal) as details from emp;
++-------------------------------------+
+| details                             |
++-------------------------------------+
+| Vineethais earning sal of2500000.00 |
+| Kiranis earning sal of45000.00      |
+| Raviis earning sal of55000.00       |
+| Charithais earning sal of50000.00   |
+| Bhargaviis earning sal of100000.00  |
+| Navyais earning sal of15000.00      |
+| Sandhyais earning sal of12000.00    |
+| Lohithais earning sal of20000.00    |
+| Narayanis earning sal of29000.00    |
++-------------------------------------+
+9 rows in set (0.01 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.19 sec)
