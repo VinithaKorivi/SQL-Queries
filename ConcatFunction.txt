@@ -1,0 +1,123 @@
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select concat(id,age) from emp;
++----------------+
+| concat(id,age) |
++----------------+
+| 130            |
+| 250            |
+| 345            |
+| 430            |
+| 535            |
+| 725            |
+| 840            |
+| 930            |
+| 1031           |
++----------------+
+9 rows in set (0.01 sec)
+
+mysql> select concat(job,'is working in the location of',location) from emp;
++---------------------------------------------------------+
+| concat(job,'is working in the location of',location)    |
++---------------------------------------------------------+
+| Software Engineeris working in the location ofBangalore |
+| Manageris working in the location ofTirupathi           |
+| Associateis working in the location ofHyderabad         |
+| Software Engineeris working in the location ofBangalore |
+| Accountantis working in the location ofTirupathi        |
+| Associateis working in the location ofTirupathi         |
+| Software Engineeris working in the location ofBangalore |
+| Engineeris working in the location ofTirupathi          |
+| Professoris working in the location ofTirupathi         |
++---------------------------------------------------------+
+9 rows in set (0.02 sec)
+
+mysql> select concat(name,'is having the age of',age) from emp;
++-----------------------------------------+
+| concat(name,'is having the age of',age) |
++-----------------------------------------+
+| Vineethais having the age of30          |
+| Kiranis having the age of50             |
+| Raviis having the age of45              |
+| Charithais having the age of30          |
+| Bhargaviis having the age of35          |
+| Navyais having the age of25             |
+| Sandhyais having the age of40           |
+| Lohithais having the age of30           |
+| Narayanis having the age of31           |
++-----------------------------------------+
+9 rows in set (0.01 sec)
+
+mysql> select concat(name,'is working in',dept,'and getting the sal of' sal) from emp;
+ERROR 1583 (42000): Incorrect parameters in the call to native function 'concat'
+mysql> select concat(name,'is working in',dept,'and getting the sal of',sal) from emp;
++----------------------------------------------------------------+
+| concat(name,'is working in',dept,'and getting the sal of',sal) |
++----------------------------------------------------------------+
+| Vineethais working inITand getting the sal of2500000.00        |
+| Kiranis working inHRand getting the sal of45000.00             |
+| Raviis working inFinanceand getting the sal of55000.00         |
+| Charithais working inITand getting the sal of50000.00          |
+| Bhargaviis working inAccountsand getting the sal of100000.00   |
+| Navyais working inCompuetrsand getting the sal of15000.00      |
+| Sandhyais working inITand getting the sal of12000.00           |
+| Lohithais working inElectricaland getting the sal of20000.00   |
+| Narayanis working inBiologyand getting the sal of29000.00      |
++----------------------------------------------------------------+
+9 rows in set (0.01 sec)
+
+mysql> select(name,'is hired on',hired) from emp;
+ERROR 1241 (21000): Operand should contain 1 column(s)
+mysql> select concat(name,'is hired on',hired) from emp;
++----------------------------------+
+| concat(name,'is hired on',hired) |
++----------------------------------+
+| Vineethais hired on2026-2-2      |
+| Kiranis hired on2025-2-3         |
+| NULL                             |
+| NULL                             |
+| NULL                             |
+| NULL                             |
+| NULL                             |
+| NULL                             |
+| NULL                             |
++----------------------------------+
+9 rows in set (0.00 sec)
+
+mysql> select concat('vini','nandu');
++------------------------+
+| concat('vini','nandu') |
++------------------------+
+| vininandu              |
++------------------------+
+1 row in set (0.01 sec)
+
+mysql> select concat('java','Developers');
++-----------------------------+
+| concat('java','Developers') |
++-----------------------------+
+| javaDevelopers              |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select concat('sita','rama');
++-----------------------+
+| concat('sita','rama') |
++-----------------------+
+| sitarama              |
++-----------------------+
+1 row in set (0.00 sec)
