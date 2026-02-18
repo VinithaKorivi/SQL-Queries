@@ -1,0 +1,381 @@
+mysql> show databases
+    -> ^C
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.10 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables in employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| emp                |
+| info               |
+| nandu              |
+| rough              |
+| ujn                |
+| vini               |
++--------------------+
+8 rows in set (0.04 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.01 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+------------+-----------+
+| rollno | name     | joindate   | marks | location   | cname     |
++--------+----------+------------+-------+------------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK    | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi  | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor   | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore  | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi  | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago    | 9th class |
+|      7 | Sandhya  | 2026-02-02 |    92 | Hyderabada | 5th class |
+|      8 | Bhargavi | 2024-02-02 |    77 | Himalayas  | 8th class |
+|      9 | Lohitha  | 2028-02-25 |    71 | Uttarkhand | 1st class |
++--------+----------+------------+-------+------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> select * from book;
++----+-------+
+| id | price |
++----+-------+
+|  1 |     2 |
+|  2 |     2 |
+|  3 |     3 |
+|  4 |     4 |
+|  5 |     5 |
+|  6 |    11 |
+|  7 |    22 |
+|  8 |    33 |
+|  9 |    44 |
+| 10 |    55 |
++----+-------+
+10 rows in set (0.09 sec)
+
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Hareesh   | BSC   | Married   |   23 |
+| Hema      | BSC   | Married   |   20 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Karna     | BSC   | Married   |   23 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Naveen    | BTech | UnMarried |   20 |
+| Navya     | BTech | UnMarried |   18 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| Satya     | BSC   | Married   |   20 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+16 rows in set (0.00 sec)
+
+mysql> select * from book;
++----+-------+
+| id | price |
++----+-------+
+|  1 |     2 |
+|  2 |     2 |
+|  3 |     3 |
+|  4 |     4 |
+|  5 |     5 |
+|  6 |    11 |
+|  7 |    22 |
+|  8 |    33 |
+|  9 |    44 |
+| 10 |    55 |
++----+-------+
+10 rows in set (0.00 sec)
+
+mysql> select * from ujn;
++----+----------+
+| id | value    |
++----+----------+
+|  1 |   7889.1 |
+|  2 |   7889.2 |
+|  3 |   6789.3 |
+|  4 |   7889.3 |
+|  5 |   7889.4 |
+|  6 |   7889.5 |
+|  7 |   7889.6 |
+|  8 |   7889.7 |
+|  9 |   7889.8 |
+| 10 |   7889.9 |
+| 11 |   7889.1 |
+| 12 |  7889.12 |
+| 13 | 45874.36 |
++----+----------+
+13 rows in set (0.02 sec)
+
+mysql> select * from vini;
++-----+-------+------+--------+
+| vid | name  | age  | fcolor |
++-----+-------+------+--------+
+|   1 | Nadu  |   25 | green  |
+|   2 | kavya |   48 | green  |
+|   3 | mavya |   48 | red    |
+|   4 | kavya |   48 | red    |
++-----+-------+------+--------+
+4 rows in set (0.01 sec)
+
+mysql> select * from nandu;
++-----------+-------------+------+
+| dob       | sname       | no   |
++-----------+-------------+------+
+| 2025/2/25 | Narayan     |    8 |
+| 2025/4/11 | iran        |   45 |
+| 2025/5/15 | immimiran   |   14 |
+| 2026/5/1  | Amaranam    |   15 |
+| 2026/5/10 | Madava      |   10 |
+| 2026/5/11 | Keshava     |   11 |
+| 2026/5/2  | Shiva       |    2 |
+| 2026/5/3  | Ohmshiva    |    3 |
+| 2026/5/4  | Vinayaka    |    4 |
+| 2026/5/5  | JaiShreeram |    5 |
+| 2026/5/6  | Shreeram    |    6 |
+| 2026/5/7  | Janakiram   |    7 |
+| 2026/5/9  | Mukunda     |    9 |
++-----------+-------------+------+
+13 rows in set (0.01 sec)
+
+mysql> select name,hired from emp;
++----------+----------+
+| name     | hired    |
++----------+----------+
+| Vineetha | 2026-2-2 |
+| Kiran    | 2025-2-3 |
+| Ravi     | NULL     |
+| Charitha | NULL     |
+| Bhargavi | NULL     |
+| Navya    | NULL     |
+| Sandhya  | NULL     |
+| Lohitha  | NULL     |
+| Narayan  | NULL     |
++----------+----------+
+9 rows in set (0.00 sec)
+
+mysql> select dept from emp;
++------------+
+| dept       |
++------------+
+| IT         |
+| HR         |
+| Finance    |
+| IT         |
+| Accounts   |
+| Compuetrs  |
+| IT         |
+| Electrical |
+| Biology    |
++------------+
+9 rows in set (0.00 sec)
+
+mysql> select name,sal+300 from emp;
++----------+------------+
+| name     | sal+300    |
++----------+------------+
+| Vineetha | 2500300.00 |
+| Kiran    |   45300.00 |
+| Ravi     |   55300.00 |
+| Charitha |   50300.00 |
+| Bhargavi |  100300.00 |
+| Navya    |   15300.00 |
+| Sandhya  |   12300.00 |
+| Lohitha  |   20300.00 |
+| Narayan  |   29300.00 |
++----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select sal*12 from emp;
++-------------+
+| sal*12      |
++-------------+
+| 30000000.00 |
+|   540000.00 |
+|   660000.00 |
+|   600000.00 |
+|  1200000.00 |
+|   180000.00 |
+|   144000.00 |
+|   240000.00 |
+|   348000.00 |
++-------------+
+9 rows in set (0.00 sec)
+
+mysql> select name,sal/2 from emp;
++----------+----------------+
+| name     | sal/2          |
++----------+----------------+
+| Vineetha | 1250000.000000 |
+| Kiran    |   22500.000000 |
+| Ravi     |   27500.000000 |
+| Charitha |   25000.000000 |
+| Bhargavi |   50000.000000 |
+| Navya    |    7500.000000 |
+| Sandhya  |    6000.000000 |
+| Lohitha  |   10000.000000 |
+| Narayan  |   14500.000000 |
++----------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> select name,dept,sal-300 from emp;
++----------+------------+------------+
+| name     | dept       | sal-300    |
++----------+------------+------------+
+| Vineetha | IT         | 2499700.00 |
+| Kiran    | HR         |   44700.00 |
+| Ravi     | Finance    |   54700.00 |
+| Charitha | IT         |   49700.00 |
+| Bhargavi | Accounts   |   99700.00 |
+| Navya    | Compuetrs  |   14700.00 |
+| Sandhya  | IT         |   11700.00 |
+| Lohitha  | Electrical |   19700.00 |
+| Narayan  | Biology    |   28700.00 |
++----------+------------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where name='Kiran';
++----+-------+------+----------+-----+----------+-----------+---------+
+| id | name  | dept | sal      | age | hired    | location  | job     |
++----+-------+------+----------+-----+----------+-----------+---------+
+|  2 | Kiran | HR   | 45000.00 |  50 | 2025-2-3 | Tirupathi | Manager |
++----+-------+------+----------+-----+----------+-----------+---------+
+1 row in set (0.01 sec)
+
+mysql> select name,id,dept from emp where name='Vinitha';
+Empty set (0.00 sec)
+
+mysql> select dept from emp where loc='Tirupathi';
+ERROR 1054 (42S22): Unknown column 'loc' in 'where clause'
+mysql> select dept from emp where location='Tirupathi';
++------------+
+| dept       |
++------------+
+| HR         |
+| Accounts   |
+| Compuetrs  |
+| Electrical |
+| Biology    |
++------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp where hired='2025-2-3';
++----+-------+------+----------+-----+----------+-----------+---------+
+| id | name  | dept | sal      | age | hired    | location  | job     |
++----+-------+------+----------+-----+----------+-----------+---------+
+|  2 | Kiran | HR   | 45000.00 |  50 | 2025-2-3 | Tirupathi | Manager |
++----+-------+------+----------+-----+----------+-----------+---------+
+1 row in set (0.00 sec)
+
+mysql> select name,dept from emp where id=8;
++---------+------+
+| name    | dept |
++---------+------+
+| Sandhya | IT   |
++---------+------+
+1 row in set (0.00 sec)
+
+mysql> select concat(name,'is working as a',dept,'and getting the salary of',sal) from emp;
++---------------------------------------------------------------------+
+| concat(name,'is working as a',dept,'and getting the salary of',sal) |
++---------------------------------------------------------------------+
+| Vineethais working as aITand getting the salary of2500000.00        |
+| Kiranis working as aHRand getting the salary of45000.00             |
+| Raviis working as aFinanceand getting the salary of55000.00         |
+| Charithais working as aITand getting the salary of50000.00          |
+| Bhargaviis working as aAccountsand getting the salary of100000.00   |
+| Navyais working as aCompuetrsand getting the salary of15000.00      |
+| Sandhyais working as aITand getting the salary of12000.00           |
+| Lohithais working as aElectricaland getting the salary of20000.00   |
+| Narayanis working as aBiologyand getting the salary of29000.00      |
++---------------------------------------------------------------------+
+9 rows in set (0.16 sec)
+
+mysql> select concat(name,'is working as a',dept,'and getting the salary of',sal) as details from emp;
++-------------------------------------------------------------------+
+| details                                                           |
++-------------------------------------------------------------------+
+| Vineethais working as aITand getting the salary of2500000.00      |
+| Kiranis working as aHRand getting the salary of45000.00           |
+| Raviis working as aFinanceand getting the salary of55000.00       |
+| Charithais working as aITand getting the salary of50000.00        |
+| Bhargaviis working as aAccountsand getting the salary of100000.00 |
+| Navyais working as aCompuetrsand getting the salary of15000.00    |
+| Sandhyais working as aITand getting the salary of12000.00         |
+| Lohithais working as aElectricaland getting the salary of20000.00 |
+| Narayanis working as aBiologyand getting the salary of29000.00    |
++-------------------------------------------------------------------+
+9 rows in set (0.00 sec)
+
+mysql> select dept from emp where id=10;
++---------+
+| dept    |
++---------+
+| Biology |
++---------+
+1 row in set (0.02 sec)
+
+mysql> select * fm emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fm emp' at line 1
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where name in('Vineetha','Kiran','Charitha','Bhargavi');
++----+----------+----------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept     | sal        | age | hired    | location  | job               |
++----+----------+----------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT       | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR       |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  4 | Charitha | IT       |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
++----+----------+----------+------------+-----+----------+-----------+-------------------+
+4 rows in set (0.01 sec)
