@@ -1,0 +1,1023 @@
+mysql> select mod(33,3);
++-----------+
+| mod(33,3) |
++-----------+
+|         0 |
++-----------+
+1 row in set (0.01 sec)
+
+mysql> select mod(id,2) from emp;
++-----------+
+| mod(id,2) |
++-----------+
+|         1 |
+|         0 |
+|         1 |
+|         0 |
+|         1 |
+|         0 |
+|         1 |
+|         0 |
+|         1 |
+|         0 |
+|         1 |
+|         0 |
++-----------+
+12 rows in set (0.00 sec)
+
+mysql> select mod(sal,20) from emp;
++-------------+
+| mod(sal,20) |
++-------------+
+|        0.00 |
+|        0.00 |
+|        0.00 |
+|        0.00 |
+|        0.00 |
+|        0.00 |
+|        0.00 |
+|        0.00 |
+|        0.00 |
+|        0.00 |
+|        0.00 |
+|        0.00 |
++-------------+
+12 rows in set (0.01 sec)
+
+mysql> select abs(-34567);
++-------------+
+| abs(-34567) |
++-------------+
+|       34567 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> select abs(-age) from emp;
++-----------+
+| abs(-age) |
++-----------+
+|        30 |
+|        50 |
+|        45 |
+|        30 |
+|        35 |
+|        25 |
+|        25 |
+|        40 |
+|        30 |
+|        31 |
+|        35 |
+|        30 |
++-----------+
+12 rows in set (0.00 sec)
+
+mysql> select abs(-23458976);
++----------------+
+| abs(-23458976) |
++----------------+
+|       23458976 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select power(id) from emp;
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'power'
+mysql> select power(id,2) from emp;
++-------------+
+| power(id,2) |
++-------------+
+|           1 |
+|           4 |
+|           9 |
+|          16 |
+|          25 |
+|          36 |
+|          49 |
+|          64 |
+|          81 |
+|         100 |
+|         121 |
+|         144 |
++-------------+
+12 rows in set (0.01 sec)
+
+mysql> select power(age,1) from emp;
++--------------+
+| power(age,1) |
++--------------+
+|           30 |
+|           50 |
+|           45 |
+|           30 |
+|           35 |
+|           25 |
+|           25 |
+|           40 |
+|           30 |
+|           31 |
+|           35 |
+|           30 |
++--------------+
+12 rows in set (0.00 sec)
+
+mysql> select power(id,1) from emp;
++-------------+
+| power(id,1) |
++-------------+
+|           1 |
+|           2 |
+|           3 |
+|           4 |
+|           5 |
+|           6 |
+|           7 |
+|           8 |
+|           9 |
+|          10 |
+|          11 |
+|          12 |
++-------------+
+12 rows in set (0.00 sec)
+
+mysql> select sqtr(sal) from emp;
+ERROR 1305 (42000): FUNCTION employee.sqtr does not exist
+mysql> select sqrt(sal) from emp;
++--------------------+
+| sqrt(sal)          |
++--------------------+
+| 1581.1388300841897 |
+| 212.13203435596427 |
+|  234.5207879911715 |
+| 223.60679774997897 |
+| 316.22776601683796 |
+| 212.13203435596427 |
+| 122.47448713915891 |
+| 109.54451150103323 |
+|  141.4213562373095 |
+| 170.29386365926402 |
+|  234.5207879911715 |
+| 122.47448713915891 |
++--------------------+
+12 rows in set (0.01 sec)
+
+mysql> select sqrt(age) from emp;
++--------------------+
+| sqrt(age)          |
++--------------------+
+|  5.477225575051661 |
+| 7.0710678118654755 |
+|  6.708203932499369 |
+|  5.477225575051661 |
+|  5.916079783099616 |
+|                  5 |
+|                  5 |
+|  6.324555320336759 |
+|  5.477225575051661 |
+| 5.5677643628300215 |
+|  5.916079783099616 |
+|  5.477225575051661 |
++--------------------+
+12 rows in set (0.00 sec)
+
+mysql> show tables from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| emp                |
+| info               |
+| nandu              |
+| rough              |
+| ujn                |
+| vini               |
++--------------------+
+8 rows in set (0.10 sec)
+
+mysql> select * from rough;
++----+-------+-------+------------+
+| id | name  | price | type       |
++----+-------+-------+------------+
+|  2 | Soap  | 20    | normal     |
+|  3 | Brush | 78    | customized |
++----+-------+-------+------------+
+2 rows in set (0.04 sec)
+
+mysql> select * from nandu;
++-----------+-------------+------+
+| dob       | sname       | no   |
++-----------+-------------+------+
+| 2025/2/25 | Narayan     |    8 |
+| 2025/4/11 | iran        |   45 |
+| 2025/5/15 | immimiran   |   14 |
+| 2026/5/1  | Amaranam    |   15 |
+| 2026/5/10 | Madava      |   10 |
+| 2026/5/11 | Keshava     |   11 |
+| 2026/5/2  | Shiva       |    2 |
+| 2026/5/3  | Ohmshiva    |    3 |
+| 2026/5/4  | Vinayaka    |    4 |
+| 2026/5/5  | JaiShreeram |    5 |
+| 2026/5/6  | Shreeram    |    6 |
+| 2026/5/7  | Janakiram   |    7 |
+| 2026/5/9  | Mukunda     |    9 |
++-----------+-------------+------+
+13 rows in set (0.01 sec)
+
+mysql> select * from ujn;
++----+----------+
+| id | value    |
++----+----------+
+|  1 |   7889.1 |
+|  2 |   7889.2 |
+|  3 |   6789.3 |
+|  4 |   7889.3 |
+|  5 |   7889.4 |
+|  6 |   7889.5 |
+|  7 |   7889.6 |
+|  8 |   7889.7 |
+|  9 |   7889.8 |
+| 10 |   7889.9 |
+| 11 |   7889.1 |
+| 12 |  7889.12 |
+| 13 | 45874.36 |
++----+----------+
+13 rows in set (0.01 sec)
+
+mysql> select floor(value) from ujn;
++--------------+
+| floor(value) |
++--------------+
+|         7889 |
+|         7889 |
+|         6789 |
+|         7889 |
+|         7889 |
+|         7889 |
+|         7889 |
+|         7889 |
+|         7889 |
+|         7889 |
+|         7889 |
+|         7889 |
+|        45874 |
++--------------+
+13 rows in set (0.01 sec)
+
+mysql> select ceil(value) from ujn;
++-------------+
+| ceil(value) |
++-------------+
+|        7890 |
+|        7890 |
+|        6790 |
+|        7890 |
+|        7890 |
+|        7890 |
+|        7890 |
+|        7890 |
+|        7890 |
+|        7890 |
+|        7890 |
+|        7890 |
+|       45875 |
++-------------+
+13 rows in set (0.00 sec)
+
+mysql> select round(value) from ujn;
++--------------+
+| round(value) |
++--------------+
+|         7889 |
+|         7889 |
+|         6789 |
+|         7889 |
+|         7889 |
+|         7890 |
+|         7890 |
+|         7890 |
+|         7890 |
+|         7890 |
+|         7889 |
+|         7889 |
+|        45874 |
++--------------+
+13 rows in set (0.00 sec)
+
+mysql> select ascii(name) from emp;
++-------------+
+| ascii(name) |
++-------------+
+|          86 |
+|          75 |
+|          82 |
+|          67 |
+|          66 |
+|          86 |
+|          78 |
+|          83 |
+|          76 |
+|          78 |
+|          77 |
+|          82 |
++-------------+
+12 rows in set (0.00 sec)
+
+mysql> select length(name) from emp;
++--------------+
+| length(name) |
++--------------+
+|            8 |
+|            5 |
+|            4 |
+|            8 |
+|            8 |
+|            6 |
+|            5 |
+|            7 |
+|            7 |
+|            7 |
+|            5 |
+|            5 |
++--------------+
+12 rows in set (0.00 sec)
+
+mysql> select length('developers');
++----------------------+
+| length('developers') |
++----------------------+
+|                   10 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select upper(name) from emp;
++-------------+
+| upper(name) |
++-------------+
+| VINEETHA    |
+| KIRAN       |
+| RAVI        |
+| CHARITHA    |
+| BHARGAVI    |
+| VRUNDA      |
+| NAVYA       |
+| SANDHYA     |
+| LOHITHA     |
+| NARAYAN     |
+| MEGHA       |
+| RISHI       |
++-------------+
+12 rows in set (0.01 sec)
+
+mysql> select lower(name) from emp;
++-------------+
+| lower(name) |
++-------------+
+| vineetha    |
+| kiran       |
+| ravi        |
+| charitha    |
+| bhargavi    |
+| vrunda      |
+| navya       |
+| sandhya     |
+| lohitha     |
+| narayan     |
+| megha       |
+| rishi       |
++-------------+
+12 rows in set (0.00 sec)
+
+mysql> select lower(substr(name,1,3)) from emp;
++-------------------------+
+| lower(substr(name,1,3)) |
++-------------------------+
+| vin                     |
+| kir                     |
+| rav                     |
+| cha                     |
+| bha                     |
+| vru                     |
+| nav                     |
+| san                     |
+| loh                     |
+| nar                     |
+| meg                     |
+| ris                     |
++-------------------------+
+12 rows in set (0.00 sec)
+
+mysql> select upper(substr(name,1,3)) from emp;
++-------------------------+
+| upper(substr(name,1,3)) |
++-------------------------+
+| VIN                     |
+| KIR                     |
+| RAV                     |
+| CHA                     |
+| BHA                     |
+| VRU                     |
+| NAV                     |
+| SAN                     |
+| LOH                     |
+| NAR                     |
+| MEG                     |
+| RIS                     |
++-------------------------+
+12 rows in set (0.00 sec)
+
+mysql> select replace(substr(name,1,3,),'mam') from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',),'mam') from emp' at line 1
+mysql> select replace(substr(name,1,3),substr(name,1,3),'Mam') from emp;
++--------------------------------------------------+
+| replace(substr(name,1,3),substr(name,1,3),'Mam') |
++--------------------------------------------------+
+| Mam                                              |
+| Mam                                              |
+| Mam                                              |
+| Mam                                              |
+| Mam                                              |
+| Mam                                              |
+| Mam                                              |
+| Mam                                              |
+| Mam                                              |
+| Mam                                              |
+| Mam                                              |
+| Mam                                              |
++--------------------------------------------------+
+12 rows in set (0.01 sec)
+
+mysql> select reverse(name) from emp;
++---------------+
+| reverse(name) |
++---------------+
+| ahteeniV      |
+| nariK         |
+| ivaR          |
+| ahtirahC      |
+| ivagrahB      |
+| adnurV        |
+| ayvaN         |
+| ayhdnaS       |
+| ahtihoL       |
+| nayaraN       |
+| ahgeM         |
+| ihsiR         |
++---------------+
+12 rows in set (0.00 sec)
+
+mysql> select reverse(location) from emp;
++-------------------+
+| reverse(location) |
++-------------------+
+| erolagnaB         |
+| ihtapuriT         |
+| dabaredyH         |
+| erolagnaB         |
+| udaNlimaT         |
+| iannahC           |
+| aoG               |
+| erolagnaB         |
+| hsedarPrattU      |
+| hsedarPrattU      |
+| ihleD             |
+| artsarahaM        |
++-------------------+
+12 rows in set (0.00 sec)
+
+mysql> alter table emp rename column location to loc;
+Query OK, 0 rows affected (0.13 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select reverse(loc) from emp;
++--------------+
+| reverse(loc) |
++--------------+
+| erolagnaB    |
+| ihtapuriT    |
+| dabaredyH    |
+| erolagnaB    |
+| udaNlimaT    |
+| iannahC      |
+| aoG          |
+| erolagnaB    |
+| hsedarPrattU |
+| hsedarPrattU |
+| ihleD        |
+| artsarahaM   |
++--------------+
+12 rows in set (0.00 sec)
+
+mysql> select reverse(dept) from emp;
++---------------+
+| reverse(dept) |
++---------------+
+| TI            |
+| RH            |
+| ecnaniF       |
+| TI            |
+| stnuoccA      |
+| laicoS        |
+| srteupmoC     |
+| TI            |
+| lacirtcelE    |
+| ygoloiB       |
+| yrtsimehC     |
+| ynatoB        |
++---------------+
+12 rows in set (0.00 sec)
+
+mysql> select substr(name,1,4) from emp;
++------------------+
+| substr(name,1,4) |
++------------------+
+| Vine             |
+| Kira             |
+| Ravi             |
+| Char             |
+| Bhar             |
+| Vrun             |
+| Navy             |
+| Sand             |
+| Lohi             |
+| Nara             |
+| Megh             |
+| Rish             |
++------------------+
+12 rows in set (0.00 sec)
+
+mysql> select substr(name,1,7) from emp;
++------------------+
+| substr(name,1,7) |
++------------------+
+| Vineeth          |
+| Kiran            |
+| Ravi             |
+| Charith          |
+| Bhargav          |
+| Vrunda           |
+| Navya            |
+| Sandhya          |
+| Lohitha          |
+| Narayan          |
+| Megha            |
+| Rishi            |
++------------------+
+12 rows in set (0.00 sec)
+
+mysql> select replace(name,name,'SitaRam') from emp;
++------------------------------+
+| replace(name,name,'SitaRam') |
++------------------------------+
+| SitaRam                      |
+| SitaRam                      |
+| SitaRam                      |
+| SitaRam                      |
+| SitaRam                      |
+| SitaRam                      |
+| SitaRam                      |
+| SitaRam                      |
+| SitaRam                      |
+| SitaRam                      |
+| SitaRam                      |
+| SitaRam                      |
++------------------------------+
+12 rows in set (0.00 sec)
+
+mysql> select replace('java','ja','ma');
++---------------------------+
+| replace('java','ja','ma') |
++---------------------------+
+| mava                      |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select initcap(name) from emp;
+ERROR 1305 (42000): FUNCTION employee.initcap does not exist
+mysql> select init cap(name) from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(name) from emp' at line 1
+mysql> select concat(upper(left(name,1))),lower(substr(name,2)) from emp;
++-----------------------------+-----------------------+
+| concat(upper(left(name,1))) | lower(substr(name,2)) |
++-----------------------------+-----------------------+
+| V                           | ineetha               |
+| K                           | iran                  |
+| R                           | avi                   |
+| C                           | haritha               |
+| B                           | hargavi               |
+| V                           | runda                 |
+| N                           | avya                  |
+| S                           | andhya                |
+| L                           | ohitha                |
+| N                           | arayan                |
+| M                           | egha                  |
+| R                           | ishi                  |
++-----------------------------+-----------------------+
+12 rows in set (0.00 sec)
+
+mysql>  select concat(upper(left(name,1)),lower(substr(name,2))) from emp;
++---------------------------------------------------+
+| concat(upper(left(name,1)),lower(substr(name,2))) |
++---------------------------------------------------+
+| Vineetha                                          |
+| Kiran                                             |
+| Ravi                                              |
+| Charitha                                          |
+| Bhargavi                                          |
+| Vrunda                                            |
+| Navya                                             |
+| Sandhya                                           |
+| Lohitha                                           |
+| Narayan                                           |
+| Megha                                             |
+| Rishi                                             |
++---------------------------------------------------+
+12 rows in set (0.00 sec)
+
+mysql> select instr('Developers','e');
++-------------------------+
+| instr('Developers','e') |
++-------------------------+
+|                       2 |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select instr('developers','e',1,9);
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'instr'
+mysql> SELECT LOCATE('e','developers')+1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> SELECT LOCATE('e','developers') + 1;
++------------------------------+
+| LOCATE('e','developers') + 1 |
++------------------------------+
+|                            3 |
++------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select instr('Developers','e');
++-------------------------+
+| instr('Developers','e') |
++-------------------------+
+|                       2 |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> select sal from emp where sal!=0;
++------------+
+| sal        |
++------------+
+| 2500000.00 |
+|   45000.00 |
+|   55000.00 |
+|   50000.00 |
+|  100000.00 |
+|   45000.00 |
+|   15000.00 |
+|   12000.00 |
+|   20000.00 |
+|   29000.00 |
+|   55000.00 |
+|   15000.00 |
++------------+
+12 rows in set (0.01 sec)
+
+mysql> select * from emp where mod(sal,2)!=0;
+Empty set (0.00 sec)
+
+mysql> select * from emp where mod(sal,2)=0;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where mod(id,2)!=0;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+6 rows in set (0.01 sec)
+
+mysql> select * from emp where id/2=0;
+Empty set (0.00 sec)
+
+mysql> select * from emp where id/2!=0;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where  id%2!=0;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from emp where sal%2=0;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where mod(id,2)!=0;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from emp where mod(id,2)=0;
++----+----------+---------+----------+-----+-----------+--------------+-------------------+
+| id | name     | dept    | sal      | age | hired     | loc          | job               |
++----+----------+---------+----------+-----+-----------+--------------+-------------------+
+|  2 | Kiran    | HR      | 45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  4 | Charitha | IT      | 50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  6 | Vrunda   | Social  | 45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  8 | Sandhya  | IT      | 12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+| 10 | Narayan  | Biology | 29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 12 | Rishi    | Botany  | 15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+---------+----------+-----+-----------+--------------+-------------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from emp where mod(sal,2)=0;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where name like '____';
++----+------+---------+----------+-----+-------+-----------+-----------+
+| id | name | dept    | sal      | age | hired | loc       | job       |
++----+------+---------+----------+-----+-------+-----------+-----------+
+|  3 | Ravi | Finance | 55000.00 |  45 | NULL  | Hyderabad | Associate |
++----+------+---------+----------+-----+-------+-----------+-----------+
+1 row in set (0.02 sec)
+
+mysql> select * from emp where name like '______';
++----+--------+--------+----------+-----+-----------+---------+---------+
+| id | name   | dept   | sal      | age | hired     | loc     | job     |
++----+--------+--------+----------+-----+-----------+---------+---------+
+|  6 | Vrunda | Social | 45000.00 |  25 | 2026-1-23 | Channai | Teacher |
++----+--------+--------+----------+-----+-----------+---------+---------+
+1 row in set (0.00 sec)
+
+mysql> select name from emp where job like'_______';
++--------+
+| name   |
++--------+
+| Kiran  |
+| Vrunda |
+| Megha  |
+| Rishi  |
++--------+
+4 rows in set (0.00 sec)
+
+mysql> select substr(name,1,3) from emp;
++------------------+
+| substr(name,1,3) |
++------------------+
+| Vin              |
+| Kir              |
+| Rav              |
+| Cha              |
+| Bha              |
+| Vru              |
+| Nav              |
+| San              |
+| Loh              |
+| Nar              |
+| Meg              |
+| Ris              |
++------------------+
+12 rows in set (0.00 sec)
+
+mysql> select substr(name,-3) from emp;
++-----------------+
+| substr(name,-3) |
++-----------------+
+| tha             |
+| ran             |
+| avi             |
+| tha             |
+| avi             |
+| nda             |
+| vya             |
+| hya             |
+| tha             |
+| yan             |
+| gha             |
+| shi             |
++-----------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where job like substr(job,1,3) as 'Ass';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as 'Ass'' at line 1
+mysql> select * from emp where substr(job,1,3) as 'Ass';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as 'Ass'' at line 1
+mysql>  select * from emp where substr(job,1,3)= 'Ass';
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+| id | name  | dept      | sal      | age | hired | loc       | job       |
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+|  3 | Ravi  | Finance   | 55000.00 |  45 | NULL  | Hyderabad | Associate |
+|  7 | Navya | Compuetrs | 15000.00 |  25 | NULL  | Goa       | Associate |
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where substr(job,-3)='Ass';
+Empty set (0.00 sec)
+
+mysql> select * from emp where substr(job,-3)='ate';
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+| id | name  | dept      | sal      | age | hired | loc       | job       |
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+|  3 | Ravi  | Finance   | 55000.00 |  45 | NULL  | Hyderabad | Associate |
+|  7 | Navya | Compuetrs | 15000.00 |  25 | NULL  | Goa       | Associate |
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where substr(job,-3)='eer';
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+4 rows in set (0.00 sec)
+
+mysql> select replace('developer','developer','development');
++------------------------------------------------+
+| replace('developer','developer','development') |
++------------------------------------------------+
+| development                                    |
++------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select lower(substr(dept,2,5));
+ERROR 1054 (42S22): Unknown column 'dept' in 'field list'
+mysql>  select lower(substr(dept,2,5)) from emp;;
++-------------------------+
+| lower(substr(dept,2,5)) |
++-------------------------+
+| t                       |
+| r                       |
+| inanc                   |
+| t                       |
+| ccoun                   |
+| ocial                   |
+| ompue                   |
+| t                       |
+| lectr                   |
+| iolog                   |
+| hemis                   |
+| otany                   |
++-------------------------+
+12 rows in set (0.00 sec)
+
+ERROR:
+No query specified
+
+mysql> select lower(substr(dept,2,5)) from emp;
++-------------------------+
+| lower(substr(dept,2,5)) |
++-------------------------+
+| t                       |
+| r                       |
+| inanc                   |
+| t                       |
+| ccoun                   |
+| ocial                   |
+| ompue                   |
+| t                       |
+| lectr                   |
+| iolog                   |
+| hemis                   |
+| otany                   |
++-------------------------+
+12 rows in set (0.00 sec)
+
+mysql>  select lower(substr(dept, -5)) from emp;
++-------------------------+
+| lower(substr(dept, -5)) |
++-------------------------+
+|                         |
+|                         |
+| nance                   |
+|                         |
+| ounts                   |
+| ocial                   |
+| uetrs                   |
+|                         |
+| rical                   |
+| ology                   |
+| istry                   |
+| otany                   |
++-------------------------+
+12 rows in set (0.00 sec)
+
+mysql> select upper(substr(dept, -5)) from emp;
++-------------------------+
+| upper(substr(dept, -5)) |
++-------------------------+
+|                         |
+|                         |
+| NANCE                   |
+|                         |
+| OUNTS                   |
+| OCIAL                   |
+| UETRS                   |
+|                         |
+| RICAL                   |
+| OLOGY                   |
+| ISTRY                   |
+| OTANY                   |
++-------------------------+
+12 rows in set (0.00 sec)
