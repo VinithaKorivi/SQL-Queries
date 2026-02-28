@@ -1,0 +1,489 @@
+mysql> create table student(sn int primary key,name varchar(20) unique,class varchar(20),age int default(15),dist int check(dist<=25));
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> insert into student values(1,'Amrutha','1st class',5,25);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from student;
++----+---------+-----------+------+------+
+| sn | name    | class     | age  | dist |
++----+---------+-----------+------+------+
+|  1 | Amrutha | 1st class |    5 |   25 |
++----+---------+-----------+------+------+
+1 row in set (0.00 sec)
+
+mysql> alter table student add marks int;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | location     | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from student;
++----+---------+-----------+------+------+-------+
+| sn | name    | class     | age  | dist | marks |
++----+---------+-----------+------+------+-------+
+|  1 | Amrutha | 1st class |    5 |   25 |  NULL |
++----+---------+-----------+------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> update student set marks=75 where sn=1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | location     | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from student;
++----+---------+-----------+------+------+-------+
+| sn | name    | class     | age  | dist | marks |
++----+---------+-----------+------+------+-------+
+|  1 | Amrutha | 1st class |    5 |   25 |    75 |
++----+---------+-----------+------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> update student set age=6 where sn=1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | location     | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from student;
++----+---------+-----------+------+------+-------+
+| sn | name    | class     | age  | dist | marks |
++----+---------+-----------+------+------+-------+
+|  1 | Amrutha | 1st class |    6 |   25 |    75 |
++----+---------+-----------+------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> rename student to stu;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'student to stu' at line 1
+mysql> alter table student rename student to stu;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to stu' at line 1
+mysql> alter  student rename student to stu;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'student rename student to stu' at line 1
+mysql> alter table student rename to stu;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from stu;
++----+---------+-----------+------+------+-------+
+| sn | name    | class     | age  | dist | marks |
++----+---------+-----------+------+------+-------+
+|  1 | Amrutha | 1st class |    6 |   25 |    75 |
++----+---------+-----------+------+------+-------+
+1 row in set (0.01 sec)
+
+mysql> alter table stu rename dist to dist(km);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to dist(km)' at line 1
+mysql>  alter table stu rename column dist to dist(km);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(km)' at line 1
+mysql> alter table stu rename column dist to distinkm;
+ERROR 3959 (HY000): Check constraint 'stu_chk_1' uses column 'dist', hence column cannot be dropped or renamed.
+mysql> alter table stu modify column dist to distinkm(check(distinkm>25);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to distinkm(check(distinkm>25)' at line 1
+mysql> desc stu;
++-------+-------------+------+-----+---------+-------------------+
+| Field | Type        | Null | Key | Default | Extra             |
++-------+-------------+------+-----+---------+-------------------+
+| sn    | int         | NO   | PRI | NULL    |                   |
+| name  | varchar(20) | YES  | UNI | NULL    |                   |
+| class | varchar(20) | YES  |     | NULL    |                   |
+| age   | int         | YES  |     | 15      | DEFAULT_GENERATED |
+| dist  | int         | YES  |     | NULL    |                   |
+| marks | int         | YES  |     | NULL    |                   |
++-------+-------------+------+-----+---------+-------------------+
+6 rows in set (0.04 sec)
+
+mysql> alter table stu drop chek dist;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dist' at line 1
+mysql> alter table stu drop check dist;
+ERROR 3821 (HY000): Check constraint 'dist' is not found in the table.
+mysql> show ctrate table stu;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ctrate table stu' at line 1
+mysql> show create table stu;
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table | Create Table                                                                                                                                                                                                                                                                                                                                                             |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| stu   | CREATE TABLE `stu` (
+  `sn` int NOT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `class` varchar(20) DEFAULT NULL,
+  `age` int DEFAULT (15),
+  `dist` int DEFAULT NULL,
+  `marks` int DEFAULT NULL,
+  PRIMARY KEY (`sn`),
+  UNIQUE KEY `name` (`name`),
+  CONSTRAINT `stu_chk_1` CHECK ((`dist` <= 25))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> alter table stu drop check dist;
+ERROR 3821 (HY000): Check constraint 'dist' is not found in the table.
+mysql> alter table stu drop `stu_chk_1`;
+ERROR 1091 (42000): Can't DROP 'stu_chk_1'; check that column/key exists
+mysql> select * from stu;
++----+---------+-----------+------+------+-------+
+| sn | name    | class     | age  | dist | marks |
++----+---------+-----------+------+------+-------+
+|  1 | Amrutha | 1st class |    6 |   25 |    75 |
++----+---------+-----------+------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> alter table stu drop check stu_chk_1;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from stu;
++----+---------+-----------+------+------+-------+
+| sn | name    | class     | age  | dist | marks |
++----+---------+-----------+------+------+-------+
+|  1 | Amrutha | 1st class |    6 |   25 |    75 |
++----+---------+-----------+------+------+-------+
+1 row in set (0.00 sec)
+
+mysql> alter table stu rename column dist to distinkm;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from stu;
++----+---------+-----------+------+----------+-------+
+| sn | name    | class     | age  | distinkm | marks |
++----+---------+-----------+------+----------+-------+
+|  1 | Amrutha | 1st class |    6 |       25 |    75 |
++----+---------+-----------+------+----------+-------+
+1 row in set (0.00 sec)
+
+mysql> alter table stu modify distinkm int ckeck(distinkm<25);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ckeck(distinkm<25)' at line 1
+mysql> alter table stu modify distinkm int check(distinkm > 25);
+ERROR 3819 (HY000): Check constraint 'stu_chk_1' is violated.
+mysql> alter table stu modify distinkm int check(distinkm < 25);
+ERROR 3819 (HY000): Check constraint 'stu_chk_1' is violated.
+mysql> alter table stu modify distinkm int check(distinkm <= 25);
+Query OK, 1 row affected (0.11 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> select * from stu;
++----+---------+-----------+------+----------+-------+
+| sn | name    | class     | age  | distinkm | marks |
++----+---------+-----------+------+----------+-------+
+|  1 | Amrutha | 1st class |    6 |       25 |    75 |
++----+---------+-----------+------+----------+-------+
+1 row in set (0.00 sec)
+
+mysql> insert into stu values(2,'Bavya',45,56);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into stu values(2,'Bavya',default,45,56);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into stu values(2,'Bavya','2nd class',default,45,56);
+ERROR 3819 (HY000): Check constraint 'stu_chk_1' is violated.
+mysql> insert into stu values(2,'Bavya','2nd class',default,15,56);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | location     | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from stu;
++----+---------+-----------+------+----------+-------+
+| sn | name    | class     | age  | distinkm | marks |
++----+---------+-----------+------+----------+-------+
+|  1 | Amrutha | 1st class |    6 |       25 |    75 |
+|  2 | Bavya   | 2nd class |   15 |       15 |    56 |
++----+---------+-----------+------+----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table stu add desig varchar(20);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from stu;
++----+---------+-----------+------+----------+-------+-------+
+| sn | name    | class     | age  | distinkm | marks | desig |
++----+---------+-----------+------+----------+-------+-------+
+|  1 | Amrutha | 1st class |    6 |       25 |    75 | NULL  |
+|  2 | Bavya   | 2nd class |   15 |       15 |    56 | NULL  |
++----+---------+-----------+------+----------+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table stu rename column name to sname;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from stu;
++----+---------+-----------+------+----------+-------+-------+
+| sn | sname   | class     | age  | distinkm | marks | desig |
++----+---------+-----------+------+----------+-------+-------+
+|  1 | Amrutha | 1st class |    6 |       25 |    75 | NULL  |
+|  2 | Bavya   | 2nd class |   15 |       15 |    56 | NULL  |
++----+---------+-----------+------+----------+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc stu;
++----------+-------------+------+-----+---------+-------------------+
+| Field    | Type        | Null | Key | Default | Extra             |
++----------+-------------+------+-----+---------+-------------------+
+| sn       | int         | NO   | PRI | NULL    |                   |
+| sname    | varchar(20) | YES  | UNI | NULL    |                   |
+| class    | varchar(20) | YES  |     | NULL    |                   |
+| age      | int         | YES  |     | 15      | DEFAULT_GENERATED |
+| distinkm | int         | YES  |     | NULL    |                   |
+| marks    | int         | YES  |     | NULL    |                   |
+| desig    | varchar(20) | YES  |     | NULL    |                   |
++----------+-------------+------+-----+---------+-------------------+
+7 rows in set (0.00 sec)
+
+mysql> show create table stu;
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table | Create Table                                                                                                                                                                                                                                                                                                                                                                                                           |
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| stu   | CREATE TABLE `stu` (
+  `sn` int NOT NULL,
+  `sname` varchar(20) DEFAULT NULL,
+  `class` varchar(20) DEFAULT NULL,
+  `age` int DEFAULT (15),
+  `distinkm` int DEFAULT NULL,
+  `marks` int DEFAULT NULL,
+  `desig` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`sn`),
+  UNIQUE KEY `name` (`sname`),
+  CONSTRAINT `stu_chk_1` CHECK ((`distinkm` <= 25))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> alter table stu drop CHECK ((`distinkm` <= 25));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '((`distinkm` <= 25))' at line 1
+mysql> alter table stu drop check stu_chk_1;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show create table stu;
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table | Create Table                                                                                                                                                                                                                                                                                                                                                      |
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| stu   | CREATE TABLE `stu` (
+  `sn` int NOT NULL,
+  `sname` varchar(20) DEFAULT NULL,
+  `class` varchar(20) DEFAULT NULL,
+  `age` int DEFAULT (15),
+  `distinkm` int DEFAULT NULL,
+  `marks` int DEFAULT NULL,
+  `desig` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`sn`),
+  UNIQUE KEY `name` (`sname`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> alter table stu rename column distinkm to KM;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from stu;
++----+---------+-----------+------+------+-------+-------+
+| sn | sname   | class     | age  | KM   | marks | desig |
++----+---------+-----------+------+------+-------+-------+
+|  1 | Amrutha | 1st class |    6 |   25 |    75 | NULL  |
+|  2 | Bavya   | 2nd class |   15 |   15 |    56 | NULL  |
++----+---------+-----------+------+------+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table stu rename column distinkm to km;
+ERROR 1054 (42S22): Unknown column 'distinkm' in 'stu'
+mysql> alter table stu rename column KM to km;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from stu;
++----+---------+-----------+------+------+-------+-------+
+| sn | sname   | class     | age  | km   | marks | desig |
++----+---------+-----------+------+------+-------+-------+
+|  1 | Amrutha | 1st class |    6 |   25 |    75 | NULL  |
+|  2 | Bavya   | 2nd class |   15 |   15 |    56 | NULL  |
++----+---------+-----------+------+------+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table stu modify km int check(km<=25)'
+    '> ^C
+mysql>  alter table stu modify km int check(km<=25);
+Query OK, 2 rows affected (0.12 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | location     | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from stu;
++----+---------+-----------+------+------+-------+-------+
+| sn | sname   | class     | age  | km   | marks | desig |
++----+---------+-----------+------+------+-------+-------+
+|  1 | Amrutha | 1st class |    6 |   25 |    75 | NULL  |
+|  2 | Bavya   | 2nd class |   15 |   15 |    56 | NULL  |
++----+---------+-----------+------+------+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> show create table stu;
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table | Create Table                                                                                                                                                                                                                                                                                                                                                                                               |
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| stu   | CREATE TABLE `stu` (
+  `sn` int NOT NULL,
+  `sname` varchar(20) DEFAULT NULL,
+  `class` varchar(20) DEFAULT NULL,
+  `age` int DEFAULT (15),
+  `km` int DEFAULT NULL,
+  `marks` int DEFAULT NULL,
+  `desig` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`sn`),
+  UNIQUE KEY `name` (`sname`),
+  CONSTRAINT `stu_chk_1` CHECK ((`km` <= 25))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> alter table stu drop check stu_chk_1;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show create table stu;
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table | Create Table                                                                                                                                                                                                                                                                                                                                                |
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| stu   | CREATE TABLE `stu` (
+  `sn` int NOT NULL,
+  `sname` varchar(20) DEFAULT NULL,
+  `class` varchar(20) DEFAULT NULL,
+  `age` int DEFAULT (15),
+  `km` int DEFAULT NULL,
+  `marks` int DEFAULT NULL,
+  `desig` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`sn`),
+  UNIQUE KEY `name` (`sname`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++-------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql>  alter table stu modify km int check(km<=25);
+Query OK, 2 rows affected (0.10 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from stu;
++----+---------+-----------+------+------+-------+-------+
+| sn | sname   | class     | age  | km   | marks | desig |
++----+---------+-----------+------+------+-------+-------+
+|  1 | Amrutha | 1st class |    6 |   25 |    75 | NULL  |
+|  2 | Bavya   | 2nd class |   15 |   15 |    56 | NULL  |
++----+---------+-----------+------+------+-------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table stu drop column desig;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table stu to stud;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to stud' at line 1
+mysql> alter table stu rename to stud;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> alter table stud rename column class to cls;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from stud;
++----+---------+-----------+------+------+-------+
+| sn | sname   | cls       | age  | km   | marks |
++----+---------+-----------+------+------+-------+
+|  1 | Amrutha | 1st class |    6 |   25 |    75 |
+|  2 | Bavya   | 2nd class |   15 |   15 |    56 |
++----+---------+-----------+------+------+-------+
+2 rows in set (0.00 sec)
+
+mysql> truncate table stud;
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> drop table stud;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from stud;
+ERROR 1146 (42S02): Table 'employee.stud' doesn't exist
