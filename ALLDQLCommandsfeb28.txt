@@ -1,0 +1,1071 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.27 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables in employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| emp                |
+| info               |
+| nandu              |
+| rough              |
+| ujn                |
+| vini               |
++--------------------+
+8 rows in set (0.05 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.06 sec)
+
+mysql> select name,sal from emp;
++----------+------------+
+| name     | sal        |
++----------+------------+
+| Vineetha | 2500000.00 |
+| Kiran    |   45000.00 |
+| Ravi     |   55000.00 |
+| Charitha |   50000.00 |
+| Bhargavi |  100000.00 |
+| Navya    |   15000.00 |
+| Sandhya  |   12000.00 |
+| Lohitha  |   20000.00 |
+| Narayan  |   29000.00 |
++----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select name,job,hired from emp;
++----------+-------------------+----------+
+| name     | job               | hired    |
++----------+-------------------+----------+
+| Vineetha | Software Engineer | 2026-2-2 |
+| Kiran    | Manager           | 2025-2-3 |
+| Ravi     | Associate         | NULL     |
+| Charitha | Software Engineer | NULL     |
+| Bhargavi | Accountant        | NULL     |
+| Navya    | Associate         | NULL     |
+| Sandhya  | Software Engineer | NULL     |
+| Lohitha  | Engineer          | NULL     |
+| Narayan  | Professor         | NULL     |
++----------+-------------------+----------+
+9 rows in set (0.00 sec)
+
+mysql> select dept  from emp;
++------------+
+| dept       |
++------------+
+| IT         |
+| HR         |
+| Finance    |
+| IT         |
+| Accounts   |
+| Compuetrs  |
+| IT         |
+| Electrical |
+| Biology    |
++------------+
+9 rows in set (0.00 sec)
+
+mysql> select dept,sal  from emp;
++------------+------------+
+| dept       | sal        |
++------------+------------+
+| IT         | 2500000.00 |
+| HR         |   45000.00 |
+| Finance    |   55000.00 |
+| IT         |   50000.00 |
+| Accounts   |  100000.00 |
+| Compuetrs  |   15000.00 |
+| IT         |   12000.00 |
+| Electrical |   20000.00 |
+| Biology    |   29000.00 |
++------------+------------+
+9 rows in set (0.00 sec)
+
+mysql> desc emp;
++----------+---------------+------+-----+---------+----------------+
+| Field    | Type          | Null | Key | Default | Extra          |
++----------+---------------+------+-----+---------+----------------+
+| id       | int           | NO   | PRI | NULL    | auto_increment |
+| name     | varchar(50)   | YES  |     | NULL    |                |
+| dept     | varchar(30)   | YES  |     | NULL    |                |
+| sal      | decimal(10,2) | YES  |     | NULL    |                |
+| age      | int           | NO   |     | NULL    |                |
+| hired    | varchar(30)   | YES  |     | NULL    |                |
+| location | varchar(20)   | YES  |     | NULL    |                |
+| job      | varchar(30)   | YES  |     | NULL    |                |
++----------+---------------+------+-----+---------+----------------+
+8 rows in set (0.03 sec)
+
+mysql> select name,sal+300 from emp;
++----------+------------+
+| name     | sal+300    |
++----------+------------+
+| Vineetha | 2500300.00 |
+| Kiran    |   45300.00 |
+| Ravi     |   55300.00 |
+| Charitha |   50300.00 |
+| Bhargavi |  100300.00 |
+| Navya    |   15300.00 |
+| Sandhya  |   12300.00 |
+| Lohitha  |   20300.00 |
+| Narayan  |   29300.00 |
++----------+------------+
+9 rows in set (0.01 sec)
+
+mysql> select sal*12 from emp;
++-------------+
+| sal*12      |
++-------------+
+| 30000000.00 |
+|   540000.00 |
+|   660000.00 |
+|   600000.00 |
+|  1200000.00 |
+|   180000.00 |
+|   144000.00 |
+|   240000.00 |
+|   348000.00 |
++-------------+
+9 rows in set (0.00 sec)
+
+mysql> select name,sal/2 from emp;
++----------+----------------+
+| name     | sal/2          |
++----------+----------------+
+| Vineetha | 1250000.000000 |
+| Kiran    |   22500.000000 |
+| Ravi     |   27500.000000 |
+| Charitha |   25000.000000 |
+| Bhargavi |   50000.000000 |
+| Navya    |    7500.000000 |
+| Sandhya  |    6000.000000 |
+| Lohitha  |   10000.000000 |
+| Narayan  |   14500.000000 |
++----------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> select name,dept, sal-300 from from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from emp' at line 1
+mysql> select name,dept, sal-300 from emp;
++----------+------------+------------+
+| name     | dept       | sal-300    |
++----------+------------+------------+
+| Vineetha | IT         | 2499700.00 |
+| Kiran    | HR         |   44700.00 |
+| Ravi     | Finance    |   54700.00 |
+| Charitha | IT         |   49700.00 |
+| Bhargavi | Accounts   |   99700.00 |
+| Navya    | Compuetrs  |   14700.00 |
+| Sandhya  | IT         |   11700.00 |
+| Lohitha  | Electrical |   19700.00 |
+| Narayan  | Biology    |   28700.00 |
++----------+------------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select name,hired,sal*30/100 from emp;
++----------+----------+---------------+
+| name     | hired    | sal*30/100    |
++----------+----------+---------------+
+| Vineetha | 2026-2-2 | 750000.000000 |
+| Kiran    | 2025-2-3 |  13500.000000 |
+| Ravi     | NULL     |  16500.000000 |
+| Charitha | NULL     |  15000.000000 |
+| Bhargavi | NULL     |  30000.000000 |
+| Navya    | NULL     |   4500.000000 |
+| Sandhya  | NULL     |   3600.000000 |
+| Lohitha  | NULL     |   6000.000000 |
+| Narayan  | NULL     |   8700.000000 |
++----------+----------+---------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where name='vinitha';
+Empty set (0.01 sec)
+
+mysql> select * from emp where name='vineetha';
++----+----------+------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept | sal        | age | hired    | location  | job               |
++----+----------+------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
++----+----------+------+------------+-----+----------+-----------+-------------------+
+1 row in set (0.00 sec)
+
+mysql> select name,id,dept from emp where name='ravi';
++------+----+---------+
+| name | id | dept    |
++------+----+---------+
+| Ravi |  3 | Finance |
++------+----+---------+
+1 row in set (0.00 sec)
+
+mysql> select dept from emp where location='tirupathi';
++------------+
+| dept       |
++------------+
+| HR         |
+| Accounts   |
+| Compuetrs  |
+| Electrical |
+| Biology    |
++------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp where hired=' 2025-2-3';
+Empty set (0.00 sec)
+
+mysql> select * from emp where hired='2025-2-3';
++----+-------+------+----------+-----+----------+-----------+---------+
+| id | name  | dept | sal      | age | hired    | location  | job     |
++----+-------+------+----------+-----+----------+-----------+---------+
+|  2 | Kiran | HR   | 45000.00 |  50 | 2025-2-3 | Tirupathi | Manager |
++----+-------+------+----------+-----+----------+-----------+---------+
+1 row in set (0.00 sec)
+
+mysql> select name,dept from emp where id=2;
++-------+------+
+| name  | dept |
++-------+------+
+| Kiran | HR   |
++-------+------+
+1 row in set (0.00 sec)
+
+mysql> select 'ravi' from emp;
++------+
+| ravi |
++------+
+| ravi |
+| ravi |
+| ravi |
+| ravi |
+| ravi |
+| ravi |
+| ravi |
+| ravi |
+| ravi |
++------+
+9 rows in set (0.00 sec)
+
+mysql> select concat(name,'is having sal of',sal) from emp;
++-------------------------------------+
+| concat(name,'is having sal of',sal) |
++-------------------------------------+
+| Vineethais having sal of2500000.00  |
+| Kiranis having sal of45000.00       |
+| Raviis having sal of55000.00        |
+| Charithais having sal of50000.00    |
+| Bhargaviis having sal of100000.00   |
+| Navyais having sal of15000.00       |
+| Sandhyais having sal of12000.00     |
+| Lohithais having sal of20000.00     |
+| Narayanis having sal of29000.00     |
++-------------------------------------+
+9 rows in set (0.01 sec)
+
+mysql> select 'Accountant' from emp where id in(1,2,3,4,5,6,7);
++------------+
+| Accountant |
++------------+
+| Accountant |
+| Accountant |
+| Accountant |
+| Accountant |
+| Accountant |
+| Accountant |
++------------+
+6 rows in set (0.01 sec)
+
+mysql> select name,'Accountant' from emp where id in(1,2,3,4,5,6,7);
++----------+------------+
+| name     | Accountant |
++----------+------------+
+| Vineetha | Accountant |
+| Kiran    | Accountant |
+| Ravi     | Accountant |
+| Charitha | Accountant |
+| Bhargavi | Accountant |
+| Navya    | Accountant |
++----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select concat(name,'is working as a',job,'and earning a salary of',sal) from emp;
++---------------------------------------------------------------------------+
+| concat(name,'is working as a',job,'and earning a salary of',sal)          |
++---------------------------------------------------------------------------+
+| Vineethais working as aSoftware Engineerand earning a salary of2500000.00 |
+| Kiranis working as aManagerand earning a salary of45000.00                |
+| Raviis working as aAssociateand earning a salary of55000.00               |
+| Charithais working as aSoftware Engineerand earning a salary of50000.00   |
+| Bhargaviis working as aAccountantand earning a salary of100000.00         |
+| Navyais working as aAssociateand earning a salary of15000.00              |
+| Sandhyais working as aSoftware Engineerand earning a salary of12000.00    |
+| Lohithais working as aEngineerand earning a salary of20000.00             |
+| Narayanis working as aProfessorand earning a salary of29000.00            |
++---------------------------------------------------------------------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where name in('Vineetha','Kiran','Charitha');
++----+----------+------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept | sal        | age | hired    | location  | job               |
++----+----------+------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR   |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  4 | Charitha | IT   |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
++----+----------+------+------------+-----+----------+-----------+-------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp where sal!>45000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '!>45000' at line 1
+mysql> select * from emp where not sal>45000;
++----+---------+------------+----------+-----+----------+-----------+-------------------+
+| id | name    | dept       | sal      | age | hired    | location  | job               |
++----+---------+------------+----------+-----+----------+-----------+-------------------+
+|  2 | Kiran   | HR         | 45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  7 | Navya   | Compuetrs  | 15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya | IT         | 12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha | Electrical | 20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan | Biology    | 29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+---------+------------+----------+-----+----------+-----------+-------------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp where name='Kiran' and sal=45000;
++----+-------+------+----------+-----+----------+-----------+---------+
+| id | name  | dept | sal      | age | hired    | location  | job     |
++----+-------+------+----------+-----+----------+-----------+---------+
+|  2 | Kiran | HR   | 45000.00 |  50 | 2025-2-3 | Tirupathi | Manager |
++----+-------+------+----------+-----+----------+-----------+---------+
+1 row in set (0.00 sec)
+
+mysql> select name,sal from emp where job='Manager' or job='Engineer';
++---------+----------+
+| name    | sal      |
++---------+----------+
+| Kiran   | 45000.00 |
+| Lohitha | 20000.00 |
++---------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select dept from emp where location='Tirupathi' or job='Associate';
++------------+
+| dept       |
++------------+
+| HR         |
+| Finance    |
+| Accounts   |
+| Compuetrs  |
+| Electrical |
+| Biology    |
++------------+
+6 rows in set (0.00 sec)
+
+mysql> select dept from emp where not location='dallas';
++------------+
+| dept       |
++------------+
+| IT         |
+| HR         |
+| Finance    |
+| IT         |
+| Accounts   |
+| Compuetrs  |
+| IT         |
+| Electrical |
+| Biology    |
++------------+
+9 rows in set (0.00 sec)
+
+mysql> select sal from emp where sal>2500;
++------------+
+| sal        |
++------------+
+| 2500000.00 |
+|   45000.00 |
+|   55000.00 |
+|   50000.00 |
+|  100000.00 |
+|   15000.00 |
+|   12000.00 |
+|   20000.00 |
+|   29000.00 |
++------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where sal>=1000;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select name from emp where not job='Software Engineer';
++----------+
+| name     |
++----------+
+| Kiran    |
+| Ravi     |
+| Bhargavi |
+| Navya    |
+| Lohitha  |
+| Narayan  |
++----------+
+6 rows in set (0.00 sec)
+
+mysql> select * from emp where sal=10000;
+Empty set (0.00 sec)
+
+mysql> select * from emp where sal>20000;
++----+----------+----------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept     | sal        | age | hired    | location  | job               |
++----+----------+----------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT       | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR       |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance  |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT       |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+| 10 | Narayan  | Biology  |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+----------+------------+-----+----------+-----------+-------------------+
+6 rows in set (0.00 sec)
+
+mysql> select name,sal,id from emp where hired>'2025-2-3';
++----------+------------+----+
+| name     | sal        | id |
++----------+------------+----+
+| Vineetha | 2500000.00 |  1 |
++----------+------------+----+
+1 row in set (0.00 sec)
+
+mysql>  select name,sal,id from emp where hired>='2025-2-3';
++----------+------------+----+
+| name     | sal        | id |
++----------+------------+----+
+| Vineetha | 2500000.00 |  1 |
+| Kiran    |   45000.00 |  2 |
++----------+------------+----+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where name like 's%';
++----+---------+------+----------+-----+-------+-----------+-------------------+
+| id | name    | dept | sal      | age | hired | location  | job               |
++----+---------+------+----------+-----+-------+-----------+-------------------+
+|  8 | Sandhya | IT   | 12000.00 |  40 | NULL  | Bangalore | Software Engineer |
++----+---------+------+----------+-----+-------+-----------+-------------------+
+1 row in set (0.01 sec)
+
+mysql> select * from emp where name like '%s';
+Empty set (0.00 sec)
+
+mysql>  select * from emp where name like '%a';
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+5 rows in set (0.00 sec)
+
+mysql> select name,id,sal from emp where job like 's%r';
++----------+----+------------+
+| name     | id | sal        |
++----------+----+------------+
+| Vineetha |  1 | 2500000.00 |
+| Charitha |  4 |   50000.00 |
+| Sandhya  |  8 |   12000.00 |
++----------+----+------------+
+3 rows in set (0.00 sec)
+
+mysql> select name,id,sal.job from emp where job like 's%r';
+ERROR 1054 (42S22): Unknown column 'sal.job' in 'field list'
+mysql> select name,id,sal,job from emp where job like 's%r';
++----------+----+------------+-------------------+
+| name     | id | sal        | job               |
++----------+----+------------+-------------------+
+| Vineetha |  1 | 2500000.00 | Software Engineer |
+| Charitha |  4 |   50000.00 | Software Engineer |
+| Sandhya  |  8 |   12000.00 | Software Engineer |
++----------+----+------------+-------------------+
+3 rows in set (0.00 sec)
+
+mysql> select dept,location from emp where location like '%i%';
++------------+-----------+
+| dept       | location  |
++------------+-----------+
+| HR         | Tirupathi |
+| Accounts   | Tirupathi |
+| Compuetrs  | Tirupathi |
+| Electrical | Tirupathi |
+| Biology    | Tirupathi |
++------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select dept, sal from emp where name like'%a%a%';
++-----------+-----------+
+| dept      | sal       |
++-----------+-----------+
+| IT        |  50000.00 |
+| Accounts  | 100000.00 |
+| Compuetrs |  15000.00 |
+| IT        |  12000.00 |
+| Biology   |  29000.00 |
++-----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql>  select dept, sal,name from emp where name like'%a%a%';
++-----------+-----------+----------+
+| dept      | sal       | name     |
++-----------+-----------+----------+
+| IT        |  50000.00 | Charitha |
+| Accounts  | 100000.00 | Bhargavi |
+| Compuetrs |  15000.00 | Navya    |
+| IT        |  12000.00 | Sandhya  |
+| Biology   |  29000.00 | Narayan  |
++-----------+-----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp where name like 'B____a%i';
++----+----------+----------+-----------+-----+-------+-----------+------------+
+| id | name     | dept     | sal       | age | hired | location  | job        |
++----+----------+----------+-----------+-----+-------+-----------+------------+
+|  5 | Bhargavi | Accounts | 100000.00 |  35 | NULL  | Tirupathi | Accountant |
++----+----------+----------+-----------+-----+-------+-----------+------------+
+1 row in set (0.00 sec)
+
+mysql> select name from emp where sal between 2500 and 15000;
++---------+
+| name    |
++---------+
+| Navya   |
+| Sandhya |
++---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where sal between 2500 and 15000;
++----+---------+-----------+----------+-----+-------+-----------+-------------------+
+| id | name    | dept      | sal      | age | hired | location  | job               |
++----+---------+-----------+----------+-----+-------+-----------+-------------------+
+|  7 | Navya   | Compuetrs | 15000.00 |  25 | NULL  | Tirupathi | Associate         |
+|  8 | Sandhya | IT        | 12000.00 |  40 | NULL  | Bangalore | Software Engineer |
++----+---------+-----------+----------+-----+-------+-----------+-------------------+
+2 rows in set (0.00 sec)
+
+mysql> selct * from emp where name between 'a' and 'k';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selct * from emp where name between 'a' and 'k'' at line 1
+mysql> select  * from emp where name between 'a' and 'k';
++----+----------+----------+-----------+-----+-------+-----------+-------------------+
+| id | name     | dept     | sal       | age | hired | location  | job               |
++----+----------+----------+-----------+-----+-------+-----------+-------------------+
+|  4 | Charitha | IT       |  50000.00 |  30 | NULL  | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts | 100000.00 |  35 | NULL  | Tirupathi | Accountant        |
++----+----------+----------+-----------+-----+-------+-----------+-------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where id between 1 and 5;
++----+----------+----------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept     | sal        | age | hired    | location  | job               |
++----+----------+----------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT       | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR       |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance  |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT       |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
++----+----------+----------+------------+-----+----------+-----------+-------------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp where id between 1 and 3;
++----+----------+---------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept    | sal        | age | hired    | location  | job               |
++----+----------+---------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT      | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR      |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
++----+----------+---------+------------+-----+----------+-----------+-------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp where sal between 45000 and 60000;
++----+----------+---------+----------+-----+----------+-----------+-------------------+
+| id | name     | dept    | sal      | age | hired    | location  | job               |
++----+----------+---------+----------+-----+----------+-----------+-------------------+
+|  2 | Kiran    | HR      | 45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance | 55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT      | 50000.00 |  30 | NULL     | Bangalore | Software Engineer |
++----+----------+---------+----------+-----+----------+-----------+-------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp where hired is null;
++----+----------+------------+-----------+-----+-------+-----------+-------------------+
+| id | name     | dept       | sal       | age | hired | location  | job               |
++----+----------+------------+-----------+-----+-------+-----------+-------------------+
+|  3 | Ravi     | Finance    |  55000.00 |  45 | NULL  | Hyderabad | Associate         |
+|  4 | Charitha | IT         |  50000.00 |  30 | NULL  | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   | 100000.00 |  35 | NULL  | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |  15000.00 |  25 | NULL  | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |  12000.00 |  40 | NULL  | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |  20000.00 |  30 | NULL  | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |  29000.00 |  31 | NULL  | Tirupathi | Professor         |
++----+----------+------------+-----------+-----+-------+-----------+-------------------+
+7 rows in set (0.00 sec)
+
+mysql> select dept from emp where hired is not null;
++------+
+| dept |
++------+
+| IT   |
+| HR   |
++------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where hired is not null;
++----+----------+------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept | sal        | age | hired    | location  | job               |
++----+----------+------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR   |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
++----+----------+------+------------+-----+----------+-----------+-------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where sal is not null;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where name in('Charitha','Bhargavi','Lohitha');
++----+----------+------------+-----------+-----+-------+-----------+-------------------+
+| id | name     | dept       | sal       | age | hired | location  | job               |
++----+----------+------------+-----------+-----+-------+-----------+-------------------+
+|  4 | Charitha | IT         |  50000.00 |  30 | NULL  | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   | 100000.00 |  35 | NULL  | Tirupathi | Accountant        |
+|  9 | Lohitha  | Electrical |  20000.00 |  30 | NULL  | Tirupathi | Engineer          |
++----+----------+------------+-----------+-----+-------+-----------+-------------------+
+3 rows in set (0.00 sec)
+
+mysql> select name,sal from emp where dept in(10,20);
+Empty set, 5 warnings (0.01 sec)
+
+mysql> select * from emp where id in(5,6);
++----+----------+----------+-----------+-----+-------+-----------+------------+
+| id | name     | dept     | sal       | age | hired | location  | job        |
++----+----------+----------+-----------+-----+-------+-----------+------------+
+|  5 | Bhargavi | Accounts | 100000.00 |  35 | NULL  | Tirupathi | Accountant |
++----+----------+----------+-----------+-----+-------+-----------+------------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where id in(3,4,7,9);
++----+----------+------------+----------+-----+-------+-----------+-------------------+
+| id | name     | dept       | sal      | age | hired | location  | job               |
++----+----------+------------+----------+-----+-------+-----------+-------------------+
+|  3 | Ravi     | Finance    | 55000.00 |  45 | NULL  | Hyderabad | Associate         |
+|  4 | Charitha | IT         | 50000.00 |  30 | NULL  | Bangalore | Software Engineer |
+|  7 | Navya    | Compuetrs  | 15000.00 |  25 | NULL  | Tirupathi | Associate         |
+|  9 | Lohitha  | Electrical | 20000.00 |  30 | NULL  | Tirupathi | Engineer          |
++----+----------+------------+----------+-----+-------+-----------+-------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where location in('Tirupathi','Bangalore');
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from emp where job in('Manager','Engineer');
++----+---------+------------+----------+-----+----------+-----------+----------+
+| id | name    | dept       | sal      | age | hired    | location  | job      |
++----+---------+------------+----------+-----+----------+-----------+----------+
+|  2 | Kiran   | HR         | 45000.00 |  50 | 2025-2-3 | Tirupathi | Manager  |
+|  9 | Lohitha | Electrical | 20000.00 |  30 | NULL     | Tirupathi | Engineer |
++----+---------+------------+----------+-----+----------+-----------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select name ename,sal income,location loc,job designation from emp;
++----------+------------+-----------+-------------------+
+| ename    | income     | loc       | designation       |
++----------+------------+-----------+-------------------+
+| Vineetha | 2500000.00 | Bangalore | Software Engineer |
+| Kiran    |   45000.00 | Tirupathi | Manager           |
+| Ravi     |   55000.00 | Hyderabad | Associate         |
+| Charitha |   50000.00 | Bangalore | Software Engineer |
+| Bhargavi |  100000.00 | Tirupathi | Accountant        |
+| Navya    |   15000.00 | Tirupathi | Associate         |
+| Sandhya  |   12000.00 | Bangalore | Software Engineer |
+| Lohitha  |   20000.00 | Tirupathi | Engineer          |
+| Narayan  |   29000.00 | Tirupathi | Professor         |
++----------+------------+-----------+-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+------------+-----------+
+| rollno | name     | joindate   | marks | location   | cname     |
++--------+----------+------------+-------+------------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK    | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi  | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor   | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore  | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi  | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago    | 9th class |
+|      7 | Sandhya  | 2026-02-02 |    92 | Hyderabada | 5th class |
+|      8 | Bhargavi | 2024-02-02 |    77 | Himalayas  | 8th class |
+|      9 | Lohitha  | 2028-02-25 |    71 | Uttarkhand | 1st class |
++--------+----------+------------+-------+------------+-----------+
+9 rows in set (0.07 sec)
+
+mysql> select id from emp union select rollno from class;
++----+
+| id |
++----+
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|  5 |
+|  7 |
+|  8 |
+|  9 |
+| 10 |
+|  6 |
++----+
+10 rows in set (0.00 sec)
+
+mysql> select id from emp union all select rollno from emp;
+ERROR 1054 (42S22): Unknown column 'rollno' in 'field list'
+mysql> select id from emp union all select rollno from class;
++----+
+| id |
++----+
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|  5 |
+|  7 |
+|  8 |
+|  9 |
+| 10 |
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|  5 |
+|  6 |
+|  7 |
+|  8 |
+|  9 |
++----+
+18 rows in set (0.00 sec)
+
+mysql> select id from emp intersect select rollno from class;
++----+
+| id |
++----+
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|  5 |
+|  7 |
+|  8 |
+|  9 |
++----+
+8 rows in set (0.00 sec)
+
+mysql> select id from emp where id not in(select rollno from class);
++----+
+| id |
++----+
+| 10 |
++----+
+1 row in set (0.01 sec)
+
+mysql> select rollno from class where rollno not in(select id from emp);
++--------+
+| rollno |
++--------+
+|      6 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select 'Electrical' from emp where id=9 and sal>1500;
++------------+
+| Electrical |
++------------+
+| Electrical |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where job='Manager' and id=2;
++----+-------+------+----------+-----+----------+-----------+---------+
+| id | name  | dept | sal      | age | hired    | location  | job     |
++----+-------+------+----------+-----+----------+-----------+---------+
+|  2 | Kiran | HR   | 45000.00 |  50 | 2025-2-3 | Tirupathi | Manager |
++----+-------+------+----------+-----+----------+-----------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where name not like 's%a';
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from emp where job='Software Engineer' and id in(1,2,3,4,5,6,7,8) and sal>1500;
++----+----------+------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept | sal        | age | hired    | location  | job               |
++----+----------+------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  4 | Charitha | IT   |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  8 | Sandhya  | IT   |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
++----+----------+------+------------+-----+----------+-----------+-------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp where hired is null and job='Associate';
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+| id | name  | dept      | sal      | age | hired | location  | job       |
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+|  3 | Ravi  | Finance   | 55000.00 |  45 | NULL  | Hyderabad | Associate |
+|  7 | Navya | Compuetrs | 15000.00 |  25 | NULL  | Tirupathi | Associate |
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select name,sal from emp where job!='manager' and id in(1,2,3,4,5,6,7,8);
++----------+------------+
+| name     | sal        |
++----------+------------+
+| Vineetha | 2500000.00 |
+| Ravi     |   55000.00 |
+| Charitha |   50000.00 |
+| Bhargavi |  100000.00 |
+| Navya    |   15000.00 |
+| Sandhya  |   12000.00 |
++----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select name,sal from emp where job!='manager';
++----------+------------+
+| name     | sal        |
++----------+------------+
+| Vineetha | 2500000.00 |
+| Ravi     |   55000.00 |
+| Charitha |   50000.00 |
+| Bhargavi |  100000.00 |
+| Navya    |   15000.00 |
+| Sandhya  |   12000.00 |
+| Lohitha  |   20000.00 |
+| Narayan  |   29000.00 |
++----------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select name,sal from emp where job!='manager';
++----------+------------+
+| name     | sal        |
++----------+------------+
+| Vineetha | 2500000.00 |
+| Ravi     |   55000.00 |
+| Charitha |   50000.00 |
+| Bhargavi |  100000.00 |
+| Navya    |   15000.00 |
+| Sandhya  |   12000.00 |
+| Lohitha  |   20000.00 |
+| Narayan  |   29000.00 |
++----------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select sal*12 from emp where id in(1,2,3,4,5,7,8,9,10);
++-------------+
+| sal*12      |
++-------------+
+| 30000000.00 |
+|   540000.00 |
+|   660000.00 |
+|   600000.00 |
+|  1200000.00 |
+|   180000.00 |
+|   144000.00 |
+|   240000.00 |
+|   348000.00 |
++-------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where name like 'a'or'e'or'i';
+Empty set, 2 warnings (0.01 sec)
+
+mysql> select * from emp where name like 'a'or'e'or'l';
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select * from emp where job='Associate' and name like '%a' and sal like '_____';
+Empty set (0.00 sec)
+
+mysql> select * from emp where job='Associate' and name like '%a' and sal like '______';
+Empty set (0.00 sec)
+
+mysql> select * from emp where name='navya';
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+| id | name  | dept      | sal      | age | hired | location  | job       |
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+|  7 | Navya | Compuetrs | 15000.00 |  25 | NULL  | Tirupathi | Associate |
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where job='Associate' and name like '%a' and sal like '________';
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+| id | name  | dept      | sal      | age | hired | location  | job       |
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+|  7 | Navya | Compuetrs | 15000.00 |  25 | NULL  | Tirupathi | Associate |
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> select 'Associate' from emp where sal between 10000 and 80000 and dept in(1,2,3,4,5,7,8,9);
+Empty set, 4 warnings (0.00 sec)
+
+mysql>  select * from emp where job='Associate' and sal between 10000 and 80000 and dept in(1,2,3,4,5,7,8,9);
+Empty set, 2 warnings (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where job='Associate' and sal between 10000 and 80000 and id in(1,2,3,4,5,7,8,9);
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+| id | name  | dept      | sal      | age | hired | location  | job       |
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+|  3 | Ravi  | Finance   | 55000.00 |  45 | NULL  | Hyderabad | Associate |
+|  7 | Navya | Compuetrs | 15000.00 |  25 | NULL  | Tirupathi | Associate |
++----+-------+-----------+----------+-----+-------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where hired>'1981-12-31';
++----+----------+------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept | sal        | age | hired    | location  | job               |
++----+----------+------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR   |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
++----+----------+------+------------+-----+----------+-----------+-------------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where hired='%2%';
+Empty set (0.01 sec)
