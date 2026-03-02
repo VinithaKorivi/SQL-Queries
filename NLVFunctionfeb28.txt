@@ -1,0 +1,251 @@
+mysql>  select ifnull(hired,'2026-2-24') from emp;
++---------------------------+
+| ifnull(hired,'2026-2-24') |
++---------------------------+
+| 2026-2-2                  |
+| 2025-2-3                  |
+| 2026-2-24                 |
+| 2017-7-23                 |
+| 2026-2-24                 |
+| 2026-1-23                 |
+| 2026-2-24                 |
+| 2026-2-24                 |
+| 2016-5-27                 |
+| 2015-12-7                 |
+| 2022-5-13                 |
+| 2020-8-13                 |
++---------------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> alter table emp add comm int default(300);
+Query OK, 12 rows affected (0.15 sec)
+Records: 12  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               | comm |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.00 sec)
+
+mysql>  alter table emp add desig int;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+-------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               | comm | desig |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+-------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |  300 |  NULL |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |  NULL |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |  NULL |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |  NULL |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |  NULL |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |  NULL |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |  300 |  NULL |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |  NULL |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |  NULL |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |  NULL |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |  NULL |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |  NULL |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+-------+
+12 rows in set (0.00 sec)
+
+mysql> select ifnull(desig, 45) from emp;
++-------------------+
+| ifnull(desig, 45) |
++-------------------+
+|                45 |
+|                45 |
+|                45 |
+|                45 |
+|                45 |
+|                45 |
+|                45 |
+|                45 |
+|                45 |
+|                45 |
+|                45 |
+|                45 |
++-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+-------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               | comm | desig |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+-------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |  300 |  NULL |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |  NULL |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |  NULL |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |  NULL |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |  NULL |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |  NULL |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |  300 |  NULL |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |  NULL |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |  NULL |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |  NULL |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |  NULL |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |  NULL |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+-------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where ifnull(desig,70);
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+-------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               | comm | desig |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+-------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |  300 |  NULL |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |  NULL |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |  NULL |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |  NULL |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |  NULL |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |  NULL |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |  300 |  NULL |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |  NULL |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |  NULL |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |  NULL |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |  NULL |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |  NULL |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+-------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where desig in(select ifnull(desig, 45) from emp);
+Empty set (0.01 sec)
+
+mysql> alter table emp drop column desig;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               | comm |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.00 sec)
+
+mysql> alter table emp set comm=100 where id=1, set comm=200 where id=2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'set comm=100 where id=1, set comm=200 where id=2' at line 1
+mysql> alter table emp set comm=100 where id=1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'set comm=100 where id=1' at line 1
+mysql> update emp set comm=100 where id=1;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               | comm |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |  100 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.00 sec)
+
+mysql> update emp set comm=200 where id=2, set comm=300 where id=3;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', set comm=300 where id=3' at line 1
+mysql> update emp set comm=200 where id=2;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp set comm=300 where id=3,comm=400 where id=4;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',comm=400 where id=4' at line 1
+mysql> update emp set comm=400 where id=4;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               | comm |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |  100 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  200 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  400 |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.00 sec)
+
+mysql> select ifnull(hired,'resigned') from emp;
++--------------------------+
+| ifnull(hired,'resigned') |
++--------------------------+
+| 2026-2-2                 |
+| 2025-2-3                 |
+| resigned                 |
+| 2017-7-23                |
+| resigned                 |
+| 2026-1-23                |
+| resigned                 |
+| resigned                 |
+| 2016-5-27                |
+| 2015-12-7                |
+| 2022-5-13                |
+| 2020-8-13                |
++--------------------------+
+12 rows in set (0.00 sec)
+
+mysql> select trim('_hello_');
++-----------------+
+| trim('_hello_') |
++-----------------+
+| _hello_         |
++-----------------+
+1 row in set (0.00 sec)
