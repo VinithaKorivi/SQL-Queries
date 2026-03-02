@@ -1,0 +1,235 @@
+mysql> select current_date;
++--------------+
+| current_date |
++--------------+
+| 2026-02-28   |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2026-02-28 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 19:13:16  |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select current_time;
++--------------+
+| current_time |
++--------------+
+| 19:13:23     |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-02-28 19:13:42 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select sysdate;
+ERROR 1054 (42S22): Unknown column 'sysdate' in 'field list'
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2026-02-28 19:13:58 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select system_date;
+ERROR 1054 (42S22): Unknown column 'system_date' in 'field list'
+mysql> select year(curdate());
++-----------------+
+| year(curdate()) |
++-----------------+
+|            2026 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select month(curdate());
++------------------+
+| month(curdate()) |
++------------------+
+|                2 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select date();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql>  select day(curdate());
++----------------+
+| day(curdate()) |
++----------------+
+|             28 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select dayname(curdate());
++--------------------+
+| dayname(curdate()) |
++--------------------+
+| Saturday           |
++--------------------+
+1 row in set (0.02 sec)
+
+mysql> select monthname(curdate());
++----------------------+
+| monthname(curdate()) |
++----------------------+
+| February             |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select maketime(23,4,5);
++------------------+
+| maketime(23,4,5) |
++------------------+
+| 23:04:05         |
++------------------+
+1 row in set (0.01 sec)
+
+mysql> select adddate(curdate(),4);
++----------------------+
+| adddate(curdate(),4) |
++----------------------+
+| 2026-03-04           |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select addmonth(curdate(),2);
+ERROR 1305 (42000): FUNCTION employee.addmonth does not exist
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2026-02-28 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select month(cutdate());
+ERROR 1305 (42000): FUNCTION employee.cutdate does not exist
+mysql>  select month(curdate());
++------------------+
+| month(curdate()) |
++------------------+
+|                2 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select day(curdate());
++----------------+
+| day(curdate()) |
++----------------+
+|             28 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select monthname(curdate());
++----------------------+
+| monthname(curdate()) |
++----------------------+
+| February             |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2026-02-28 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select dayname(curdate());
++--------------------+
+| dayname(curdate()) |
++--------------------+
+| Saturday           |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql> select monthname(curdate());
++----------------------+
+| monthname(curdate()) |
++----------------------+
+| February             |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select year(curdate());
++-----------------+
+| year(curdate()) |
++-----------------+
+|            2026 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select adddate(curdate(),4);
++----------------------+
+| adddate(curdate(),4) |
++----------------------+
+| 2026-03-04           |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select subdate(curdate(),7);
++----------------------+
+| subdate(curdate(),7) |
++----------------------+
+| 2026-02-21           |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select last_day(curdate());
++---------------------+
+| last_day(curdate()) |
++---------------------+
+| 2026-02-28          |
++---------------------+
+1 row in set (0.01 sec)
+
+mysql> select date_add(curdate(),interval 10 day);
++-------------------------------------+
+| date_add(curdate(),interval 10 day) |
++-------------------------------------+
+| 2026-03-10                          |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_sub(curdate(),interval 10 day);
++-------------------------------------+
+| date_sub(curdate(),interval 10 day) |
++-------------------------------------+
+| 2026-02-18                          |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select month_sub(curdate(),interval 2 month);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql>  select date_sub(curdate(),interval 1 month);
++--------------------------------------+
+| date_sub(curdate(),interval 1 month) |
++--------------------------------------+
+| 2026-01-28                           |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select date_add(curdate(),interval 5 month);
++--------------------------------------+
+| date_add(curdate(),interval 5 month) |
++--------------------------------------+
+| 2026-07-28                           |
++--------------------------------------+
+1 row in set (0.00 sec)
