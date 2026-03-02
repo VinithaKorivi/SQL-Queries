@@ -1,0 +1,131 @@
+mysql> select max(sal) from emp;
++------------+
+| max(sal)   |
++------------+
+| 2500000.00 |
++------------+
+1 row in set (0.01 sec)
+
+mysql> select min(sal) from emp;
++----------+
+| min(sal) |
++----------+
+| 12000.00 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select avg(sal) from emp;
++---------------+
+| avg(sal)      |
++---------------+
+| 245083.333333 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(sal) from emp;
++------------+
+| sum(sal)   |
++------------+
+| 2941000.00 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select count(sal) from emp;
++------------+
+| count(sal) |
++------------+
+|         12 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select max(sal) from emp where sal<(select max(sal) from emp where sal<(select max(sal) from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> select max(sal) from emp where sal<(select max(sal) from emp);
++-----------+
+| max(sal)  |
++-----------+
+| 100000.00 |
++-----------+
+1 row in set (0.01 sec)
+
+mysql> select max(sal) from emp where sal<(select max(sal) from emp where sal<(select max(sal) from emp));
++----------+
+| max(sal) |
++----------+
+| 55000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select asc(sal) from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'asc(sal) from emp' at line 1
+mysql> select * from emp order by sal asc;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql>  select min(sal) from emp where sal>(select min(sal) from emp where sal>(select min(sal) from emp));
++----------+
+| min(sal) |
++----------+
+| 20000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(id) from emp;
++-----------+
+| count(id) |
++-----------+
+|        12 |
++-----------+
+1 row in set (0.02 sec)
+
+mysql> select count(name) from emp;
++-------------+
+| count(name) |
++-------------+
+|          12 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select count(hiredate) from emp;
+ERROR 1054 (42S22): Unknown column 'hiredate' in 'field list'
+mysql> select count(hired) from emp;
++--------------+
+| count(hired) |
++--------------+
+|            8 |
++--------------+
+1 row in set (0.00 sec)
