@@ -1,0 +1,298 @@
+mysql> show tables from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| emp                |
+| info               |
+| nandu              |
+| rough              |
+| ujn                |
+| vini               |
++--------------------+
+8 rows in set (0.03 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired    | location  | job               |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3 | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     | Tirupathi | Accountant        |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL     | Tirupathi | Professor         |
++----+----------+------------+------------+-----+----------+-----------+-------------------+
+9 rows in set (0.01 sec)
+
+mysql> insert into emp values(6,'Vrunda','Social',45000,25,'2026-1-23','Channai','Teacher');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+-----------+-------------------+
+| id | name     | dept       | sal        | age | hired     | location  | job               |
++----+----------+------------+------------+-----+-----------+-----------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL      | Bangalore | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | Tirupathi | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai   | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Tirupathi | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL      | Tirupathi | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL      | Tirupathi | Professor         |
++----+----------+------------+------------+-----+-----------+-----------+-------------------+
+10 rows in set (0.00 sec)
+
+mysql>  insert into emp values(11,'Megha','Chemistry',55000,35,'2022-5-13','Delhi','Teacher'), (12,'Rishi','Botany',15000,30,'2020-8-13','Maharastra','Teacher');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | location   | job               |
++----+----------+------------+------------+-----+-----------+------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore  | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi  | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad  | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL      | Bangalore  | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | Tirupathi  | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai    | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Tirupathi  | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore  | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL      | Tirupathi  | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL      | Tirupathi  | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi      | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra | Teacher           |
++----+----------+------------+------------+-----+-----------+------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> update emp set hired='2017-7-23' where id=4;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | location   | job               |
++----+----------+------------+------------+-----+-----------+------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore  | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi  | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad  | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore  | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | Tirupathi  | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai    | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Tirupathi  | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore  | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL      | Tirupathi  | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | NULL      | Tirupathi  | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi      | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra | Teacher           |
++----+----------+------------+------------+-----+-----------+------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> update emp set location='TamilNadu' where id=5;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp set location='Goa' where id=7;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp set location='UttarPradesh' hired='2016-5-27' where id=9;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'hired='2016-5-27' where id=9' at line 1
+mysql> update emp set location='UttarPradesh', hired='2016-5-27' where id=9;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  update emp set location='UttarPradesh', hired='2015-12-57' where id=10;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp set  hired='2015-12-7' where id=10;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | location     | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Hareesh   | BSC   | Married   |   23 |
+| Hema      | BSC   | Married   |   20 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Karna     | BSC   | Married   |   23 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Naveen    | BTech | UnMarried |   20 |
+| Navya     | BTech | UnMarried |   18 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| Satya     | BSC   | Married   |   20 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+16 rows in set (0.05 sec)
+
+mysql> delete from info where name='Satya';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | location     | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from info
+    -> ^C
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Hareesh   | BSC   | Married   |   23 |
+| Hema      | BSC   | Married   |   20 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Karna     | BSC   | Married   |   23 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Naveen    | BTech | UnMarried |   20 |
+| Navya     | BTech | UnMarried |   18 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+15 rows in set (0.00 sec)
+
+mysql> delete from emp where name='Naveen';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Hareesh   | BSC   | Married   |   23 |
+| Hema      | BSC   | Married   |   20 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Karna     | BSC   | Married   |   23 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Naveen    | BTech | UnMarried |   20 |
+| Navya     | BTech | UnMarried |   18 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+15 rows in set (0.00 sec)
+
+mysql> delete from info where name='Naveen';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> delete from info where name='Karna';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+| id | name     | dept       | sal        | age | hired     | location     | job               |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Hareesh   | BSC   | Married   |   23 |
+| Hema      | BSC   | Married   |   20 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Navya     | BTech | UnMarried |   18 |
+| Pandu     | BSC   | Married   |   23 |
+| RAM       | BSC   | Married   |   23 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+13 rows in set (0.00 sec)
+
+mysql> delete from info where name='Pandu';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from info;
++-----------+-------+-----------+------+
+| name      | quali | status    | age  |
++-----------+-------+-----------+------+
+| DharmaRaj | BTech | UnMarried |   20 |
+| Draupathi | BTech | UnMarried |   18 |
+| Hareesh   | BSC   | Married   |   23 |
+| Hema      | BSC   | Married   |   20 |
+| Jalandhar | BTech | UnMarried |   20 |
+| Lakshmi   | BTech | UnMarried |   18 |
+| Narayan   | BTech | UnMarried |   20 |
+| Navya     | BTech | UnMarried |   18 |
+| RAM       | BSC   | Married   |   23 |
+| SITA      | BSC   | Married   |   20 |
+| Vaishali  | BSC   | Married   |   20 |
+| Vrinda    | BTech | UnMarried |   18 |
++-----------+-------+-----------+------+
+12 rows in set (0.00 sec)
