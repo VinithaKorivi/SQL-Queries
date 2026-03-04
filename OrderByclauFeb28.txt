@@ -1,0 +1,167 @@
+mysql> select * from emp order by sal asc;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               | comm |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.01 sec)
+
+mysql> select * from emp order by id desc;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               | comm |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.00 sec)
+
+mysql> select sal from emp order by desc from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc from emp' at line 1
+mysql> select sal order by desc from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc from emp' at line 1
+mysql> select sal from emp order by sal asc;
++------------+
+| sal        |
++------------+
+|   12000.00 |
+|   15000.00 |
+|   15000.00 |
+|   20000.00 |
+|   29000.00 |
+|   45000.00 |
+|   45000.00 |
+|   50000.00 |
+|   55000.00 |
+|   55000.00 |
+|  100000.00 |
+| 2500000.00 |
++------------+
+12 rows in set (0.00 sec)
+
+mysql> select id from emp order by id desc;
++----+
+| id |
++----+
+| 12 |
+| 11 |
+| 10 |
+|  9 |
+|  8 |
+|  7 |
+|  6 |
+|  5 |
+|  4 |
+|  3 |
+|  2 |
+|  1 |
++----+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp limit 5;
++----+----------+----------+------------+-----+-----------+-----------+-------------------+------+
+| id | name     | dept     | sal        | age | hired     | loc       | job               | comm |
++----+----------+----------+------------+-----+-----------+-----------+-------------------+------+
+|  1 | Vineetha | IT       | 2500000.00 |  30 | 2026-2-2  | Bangalore | Software Engineer |  300 |
+|  2 | Kiran    | HR       |   45000.00 |  50 | 2025-2-3  | Tirupathi | Manager           |  300 |
+|  3 | Ravi     | Finance  |   55000.00 |  45 | NULL      | Hyderabad | Associate         |  300 |
+|  4 | Charitha | IT       |   50000.00 |  30 | 2017-7-23 | Bangalore | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts |  100000.00 |  35 | NULL      | TamilNadu | Accountant        |  300 |
++----+----------+----------+------------+-----+-----------+-----------+-------------------+------+
+5 rows in set (0.01 sec)
+
+mysql> select * from emp where limit 10;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'limit 10' at line 1
+mysql> select * from emp limit 4;
++----+----------+---------+------------+-----+-----------+-----------+-------------------+------+
+| id | name     | dept    | sal        | age | hired     | loc       | job               | comm |
++----+----------+---------+------------+-----+-----------+-----------+-------------------+------+
+|  1 | Vineetha | IT      | 2500000.00 |  30 | 2026-2-2  | Bangalore | Software Engineer |  300 |
+|  2 | Kiran    | HR      |   45000.00 |  50 | 2025-2-3  | Tirupathi | Manager           |  300 |
+|  3 | Ravi     | Finance |   55000.00 |  45 | NULL      | Hyderabad | Associate         |  300 |
+|  4 | Charitha | IT      |   50000.00 |  30 | 2017-7-23 | Bangalore | Software Engineer |  300 |
++----+----------+---------+------------+-----+-----------+-----------+-------------------+------+
+4 rows in set (0.01 sec)
+
+mysql> select * from class limit 5;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
++--------+----------+------------+-------+-----------+-----------+
+5 rows in set (0.03 sec)
+
+mysql> select * from (select * from (select sal from emp order by sal desc) limit 5 order by asc) where limit 1;
+ERROR 1248 (42000): Every derived table must have its own alias
+mysql>  select * from (select * from (select sal from emp order by sal desc) limit 5 order by sal asc) where limit 1;
+ERROR 1248 (42000): Every derived table must have its own alias
+mysql>  select * from (select * from (select sal from emp order by sal desc) limit 5 order by sal asc) limit 1;
+ERROR 1248 (42000): Every derived table must have its own alias
+mysql> select sal from(select sal from emp order by sal desc limit 5) order by sal asc limit 1;
+ERROR 1248 (42000): Every derived table must have its own alias
+mysql> select @@autocommit;
++--------------+
+| @@autocommit |
++--------------+
+|            1 |
++--------------+
+1 row in set (0.03 sec)
+
+mysql> grant insert,delete on emp to hr;
+ERROR 1410 (42000): You are not allowed to create a user with GRANT
+mysql> SELECT user, host FROM mysql.user;
++------------------+-----------+
+| user             | host      |
++------------------+-----------+
+| mysql.infoschema | localhost |
+| mysql.session    | localhost |
+| mysql.sys        | localhost |
+| root             | localhost |
++------------------+-----------+
+4 rows in set (0.01 sec)
+
+mysql> CREATE USER 'hr'@'localhost' IDENTIFIED BY Tiger@1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Tiger@1' at line 1
+mysql> CREATE USER 'hr'@'localhost' IDENTIFIED BY 'Tiger@1';
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> SELECT user, host FROM mysql.user;
++------------------+-----------+
+| user             | host      |
++------------------+-----------+
+| hr               | localhost |
+| mysql.infoschema | localhost |
+| mysql.session    | localhost |
+| mysql.sys        | localhost |
+| root             | localhost |
++------------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> grant insert,delete on emp to hr;
+ERROR 1410 (42000): You are not allowed to create a user with GRANT
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.02 sec)
