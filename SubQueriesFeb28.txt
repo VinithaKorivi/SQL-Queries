@@ -1,0 +1,383 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.04 sec)
+
+mysql> use employee;
+Database changed
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               | comm |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.00 sec)
+
+mysql> select length('banana')-length(replace('banana','a',' '));
++----------------------------------------------------+
+| length('banana')-length(replace('banana','a',' ')) |
++----------------------------------------------------+
+|                                                  0 |
++----------------------------------------------------+
+1 row in set (0.01 sec)
+
+mysql> select replace('banana', 'a','');
++---------------------------+
+| replace('banana', 'a','') |
++---------------------------+
+| bnn                       |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select length('banana');
++------------------+
+| length('banana') |
++------------------+
+|                6 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select length(replace('banana','a',' '));
++-----------------------------------+
+| length(replace('banana','a',' ')) |
++-----------------------------------+
+|                                 6 |
++-----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> ^C
+mysql> select length('banana')-length(replace('banana','a',''));
++---------------------------------------------------+
+| length('banana')-length(replace('banana','a','')) |
++---------------------------------------------------+
+|                                                 3 |
++---------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where sal=(select max(sal) from emp);
++----+----------+------+------------+-----+----------+-----------+-------------------+------+
+| id | name     | dept | sal        | age | hired    | loc       | job               | comm |
++----+----------+------+------------+-----+----------+-----------+-------------------+------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |  300 |
++----+----------+------+------------+-----+----------+-----------+-------------------+------+
+1 row in set (0.06 sec)
+
+mysql> select * from emp where sal=(select min(sal) from emp);
++----+---------+------+----------+-----+-------+-----------+-------------------+------+
+| id | name    | dept | sal      | age | hired | loc       | job               | comm |
++----+---------+------+----------+-----+-------+-----------+-------------------+------+
+|  8 | Sandhya | IT   | 12000.00 |  40 | NULL  | Bangalore | Software Engineer |  300 |
++----+---------+------+----------+-----+-------+-----------+-------------------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where id=(select id from emp where name='vineetha');
++----+----------+------+------------+-----+----------+-----------+-------------------+------+
+| id | name     | dept | sal        | age | hired    | loc       | job               | comm |
++----+----------+------+------------+-----+----------+-----------+-------------------+------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |  300 |
++----+----------+------+------------+-----+----------+-----------+-------------------+------+
+1 row in set (0.01 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               | comm |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where job =(select job from emp where name='Vineetha');
++----+----------+------+------------+-----+-----------+-----------+-------------------+------+
+| id | name     | dept | sal        | age | hired     | loc       | job               | comm |
++----+----------+------+------------+-----+-----------+-----------+-------------------+------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2  | Bangalore | Software Engineer |  300 |
+|  4 | Charitha | IT   |   50000.00 |  30 | 2017-7-23 | Bangalore | Software Engineer |  300 |
+|  8 | Sandhya  | IT   |   12000.00 |  40 | NULL      | Bangalore | Software Engineer |  300 |
++----+----------+------+------------+-----+-----------+-----------+-------------------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from emp where id in(select id from emp where job in('Associate',' Software Engineer'));
++----+-------+-----------+----------+-----+-------+-----------+-----------+------+
+| id | name  | dept      | sal      | age | hired | loc       | job       | comm |
++----+-------+-----------+----------+-----+-------+-----------+-----------+------+
+|  3 | Ravi  | Finance   | 55000.00 |  45 | NULL  | Hyderabad | Associate |  300 |
+|  7 | Navya | Compuetrs | 15000.00 |  25 | NULL  | Goa       | Associate |  300 |
++----+-------+-----------+----------+-----+-------+-----------+-----------+------+
+2 rows in set (0.01 sec)
+
+mysql> select id from emp where job in('Associate',' Software Engineer');
++----+
+| id |
++----+
+|  3 |
+|  7 |
++----+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where id in(select id from emp where job in('Associate','Software Engineer'));
++----+----------+-----------+------------+-----+-----------+-----------+-------------------+------+
+| id | name     | dept      | sal        | age | hired     | loc       | job               | comm |
++----+----------+-----------+------------+-----+-----------+-----------+-------------------+------+
+|  1 | Vineetha | IT        | 2500000.00 |  30 | 2026-2-2  | Bangalore | Software Engineer |  300 |
+|  3 | Ravi     | Finance   |   55000.00 |  45 | NULL      | Hyderabad | Associate         |  300 |
+|  4 | Charitha | IT        |   50000.00 |  30 | 2017-7-23 | Bangalore | Software Engineer |  300 |
+|  7 | Navya    | Compuetrs |   15000.00 |  25 | NULL      | Goa       | Associate         |  300 |
+|  8 | Sandhya  | IT        |   12000.00 |  40 | NULL      | Bangalore | Software Engineer |  300 |
++----+----------+-----------+------------+-----+-----------+-----------+-------------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp where job in('Associate','Software Engineer');
++----+----------+-----------+------------+-----+-----------+-----------+-------------------+------+
+| id | name     | dept      | sal        | age | hired     | loc       | job               | comm |
++----+----------+-----------+------------+-----+-----------+-----------+-------------------+------+
+|  1 | Vineetha | IT        | 2500000.00 |  30 | 2026-2-2  | Bangalore | Software Engineer |  300 |
+|  3 | Ravi     | Finance   |   55000.00 |  45 | NULL      | Hyderabad | Associate         |  300 |
+|  4 | Charitha | IT        |   50000.00 |  30 | 2017-7-23 | Bangalore | Software Engineer |  300 |
+|  7 | Navya    | Compuetrs |   15000.00 |  25 | NULL      | Goa       | Associate         |  300 |
+|  8 | Sandhya  | IT        |   12000.00 |  40 | NULL      | Bangalore | Software Engineer |  300 |
++----+----------+-----------+------------+-----+-----------+-----------+-------------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from emp where job in(select job from emp where name='Vineetha');
++----+----------+------+------------+-----+-----------+-----------+-------------------+------+
+| id | name     | dept | sal        | age | hired     | loc       | job               | comm |
++----+----------+------+------------+-----+-----------+-----------+-------------------+------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2  | Bangalore | Software Engineer |  300 |
+|  4 | Charitha | IT   |   50000.00 |  30 | 2017-7-23 | Bangalore | Software Engineer |  300 |
+|  8 | Sandhya  | IT   |   12000.00 |  40 | NULL      | Bangalore | Software Engineer |  300 |
++----+----------+------+------------+-----+-----------+-----------+-------------------+------+
+3 rows in set (0.02 sec)
+
+mysql> select name,dept from emp where sal in(select sal from emp where sal>2500);
++----------+------------+
+| name     | dept       |
++----------+------------+
+| Vineetha | IT         |
+| Kiran    | HR         |
+| Ravi     | Finance    |
+| Charitha | IT         |
+| Bhargavi | Accounts   |
+| Vrunda   | Social     |
+| Navya    | Compuetrs  |
+| Sandhya  | IT         |
+| Lohitha  | Electrical |
+| Narayan  | Biology    |
+| Megha    | Chemistry  |
+| Rishi    | Botany     |
++----------+------------+
+12 rows in set (0.01 sec)
+
+mysql> select * from emp where sal in(select sal from emp where name='Vineetha');
++----+----------+------+------------+-----+----------+-----------+-------------------+------+
+| id | name     | dept | sal        | age | hired    | loc       | job               | comm |
++----+----------+------+------------+-----+----------+-----------+-------------------+------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |  300 |
++----+----------+------+------------+-----+----------+-----------+-------------------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where sal in(select sal from emp where comm=300);
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               | comm |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.00 sec)
+
+mysql> select dept from emp where job like '%r';
++------------+
+| dept       |
++------------+
+| IT         |
+| HR         |
+| IT         |
+| Social     |
+| IT         |
+| Electrical |
+| Biology    |
+| Chemistry  |
+| Botany     |
++------------+
+9 rows in set (0.01 sec)
+
+mysql> select * from emp where sal>(select sal from emp where name=^X^C
+mysql>  select * from emp where sal>(select sal from emp where name='Lohitha');
++----+----------+-----------+------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept      | sal        | age | hired     | loc          | job               | comm |
++----+----------+-----------+------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT        | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
+|  2 | Kiran    | HR        |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance   |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT        |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts  |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social    |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+| 10 | Narayan  | Biology   |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
++----+----------+-----------+------------+-----+-----------+--------------+-------------------+------+
+8 rows in set (0.00 sec)
+
+mysql> select * from emp where job='Manager';
++----+-------+------+----------+-----+----------+-----------+---------+------+
+| id | name  | dept | sal      | age | hired    | loc       | job     | comm |
++----+-------+------+----------+-----+----------+-----------+---------+------+
+|  2 | Kiran | HR   | 45000.00 |  50 | 2025-2-3 | Tirupathi | Manager |  300 |
++----+-------+------+----------+-----+----------+-----------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> select dept from emp where hired is null;
++-----------+
+| dept      |
++-----------+
+| Finance   |
+| Accounts  |
+| Compuetrs |
+| IT        |
++-----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where dept in(select dept from emp where hired is null);
++----+----------+-----------+------------+-----+-----------+-----------+-------------------+------+
+| id | name     | dept      | sal        | age | hired     | loc       | job               | comm |
++----+----------+-----------+------------+-----+-----------+-----------+-------------------+------+
+|  1 | Vineetha | IT        | 2500000.00 |  30 | 2026-2-2  | Bangalore | Software Engineer |  300 |
+|  3 | Ravi     | Finance   |   55000.00 |  45 | NULL      | Hyderabad | Associate         |  300 |
+|  4 | Charitha | IT        |   50000.00 |  30 | 2017-7-23 | Bangalore | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts  |  100000.00 |  35 | NULL      | TamilNadu | Accountant        |  300 |
+|  7 | Navya    | Compuetrs |   15000.00 |  25 | NULL      | Goa       | Associate         |  300 |
+|  8 | Sandhya  | IT        |   12000.00 |  40 | NULL      | Bangalore | Software Engineer |  300 |
++----+----------+-----------+------------+-----+-----------+-----------+-------------------+------+
+6 rows in set (0.00 sec)
+
+mysql> select dept from emp where hired is null;
++-----------+
+| dept      |
++-----------+
+| Finance   |
+| Accounts  |
+| Compuetrs |
+| IT        |
++-----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where id in(select id from emp where hired is null);
++----+----------+-----------+-----------+-----+-------+-----------+-------------------+------+
+| id | name     | dept      | sal       | age | hired | loc       | job               | comm |
++----+----------+-----------+-----------+-----+-------+-----------+-------------------+------+
+|  3 | Ravi     | Finance   |  55000.00 |  45 | NULL  | Hyderabad | Associate         |  300 |
+|  5 | Bhargavi | Accounts  | 100000.00 |  35 | NULL  | TamilNadu | Accountant        |  300 |
+|  7 | Navya    | Compuetrs |  15000.00 |  25 | NULL  | Goa       | Associate         |  300 |
+|  8 | Sandhya  | IT        |  12000.00 |  40 | NULL  | Bangalore | Software Engineer |  300 |
++----+----------+-----------+-----------+-----+-------+-----------+-------------------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where sal>(select avg(sal) from emp);
++----+----------+------+------------+-----+----------+-----------+-------------------+------+
+| id | name     | dept | sal        | age | hired    | loc       | job               | comm |
++----+----------+------+------------+-----+----------+-----------+-------------------+------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2 | Bangalore | Software Engineer |  300 |
++----+----------+------+------------+-----+----------+-----------+-------------------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where sal>(select avg(sal) from emp where id=6);
++----+----------+-----------+------------+-----+-----------+-----------+-------------------+------+
+| id | name     | dept      | sal        | age | hired     | loc       | job               | comm |
++----+----------+-----------+------------+-----+-----------+-----------+-------------------+------+
+|  1 | Vineetha | IT        | 2500000.00 |  30 | 2026-2-2  | Bangalore | Software Engineer |  300 |
+|  3 | Ravi     | Finance   |   55000.00 |  45 | NULL      | Hyderabad | Associate         |  300 |
+|  4 | Charitha | IT        |   50000.00 |  30 | 2017-7-23 | Bangalore | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts  |  100000.00 |  35 | NULL      | TamilNadu | Accountant        |  300 |
+| 11 | Megha    | Chemistry |   55000.00 |  35 | 2022-5-13 | Delhi     | Teacher           |  300 |
++----+----------+-----------+------------+-----+-----------+-----------+-------------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select dept from emp where hired is null;
++-----------+
+| dept      |
++-----------+
+| Finance   |
+| Accounts  |
+| Compuetrs |
+| IT        |
++-----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where id in(select id from emp where loc='tirupathi');
++----+-------+------+----------+-----+----------+-----------+---------+------+
+| id | name  | dept | sal      | age | hired    | loc       | job     | comm |
++----+-------+------+----------+-----+----------+-----------+---------+------+
+|  2 | Kiran | HR   | 45000.00 |  50 | 2025-2-3 | Tirupathi | Manager |  300 |
++----+-------+------+----------+-----+----------+-----------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal        | age | hired     | loc          | job               | comm |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT         | 2500000.00 |  30 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
+|  2 | Kiran    | HR         |   45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT         |   50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social     |   45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology    |   29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry  |   55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 12 | Rishi    | Botany     |   15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
++----+----------+------------+------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where id in(select id from emp where loc='Bangalore');
++----+----------+------+------------+-----+-----------+-----------+-------------------+------+
+| id | name     | dept | sal        | age | hired     | loc       | job               | comm |
++----+----------+------+------------+-----+-----------+-----------+-------------------+------+
+|  1 | Vineetha | IT   | 2500000.00 |  30 | 2026-2-2  | Bangalore | Software Engineer |  300 |
+|  4 | Charitha | IT   |   50000.00 |  30 | 2017-7-23 | Bangalore | Software Engineer |  300 |
+|  8 | Sandhya  | IT   |   12000.00 |  40 | NULL      | Bangalore | Software Engineer |  300 |
++----+----------+------+------------+-----+-----------+-----------+-------------------+------+
+3 rows in set (0.00 sec)
