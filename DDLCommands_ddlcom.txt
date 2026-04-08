@@ -1,0 +1,272 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.02 sec)
+
+mysql> use employee;
+Database changed
+mysql> select * from emp;
++----+----------+------------+------------+-----+
+| id | name     | dept       | sal        | age |
++----+----------+------------+------------+-----+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 |
+|  2 | Kiran    | HR         |   45000.00 |  50 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 |
+|  4 | Charitha | IT         |   50000.00 |  30 |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 |
+|  8 | Sandhya  | IT         |   12000.00 |  40 |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 |
+| 10 | Amrutha  | Maths      |  200000.00 |  36 |
+| 11 | Narayan  | Biology    |   29000.00 |  31 |
++----+----------+------------+------------+-----+
+10 rows in set (0.00 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> create table Product(pid INT PRIMARY KEY, pname VARCHAR(50) UNIQUE, price INT NOT NULL,MFGDate VARCHAR(40) DEFAULT 'Not available');
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into product values(1,'RICE',200,'11/2/2025');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into product values(2,'Wheat',300,'11/3/2025'), (3,'OIL',400);
+ERROR 1136 (21S01): Column count doesn't match value count at row 2
+mysql> insert into product values(2,'Wheat',300,'11/3/2025'), (3,'OIL',400,'');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from products
+    -> ^C
+mysql> select * from product;
++-----+-------+-------+-----------+
+| pid | pname | price | MFGDate   |
++-----+-------+-------+-----------+
+|   1 | RICE  |   200 | 11/2/2025 |
+|   2 | Wheat |   300 | 11/3/2025 |
+|   3 | OIL   |   400 |           |
++-----+-------+-------+-----------+
+3 rows in set (0.00 sec)
+
+mysql>  insert into product values(4,'Badam',800,'11/4/2025');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from product;
++-----+-------+-------+-----------+
+| pid | pname | price | MFGDate   |
++-----+-------+-------+-----------+
+|   1 | RICE  |   200 | 11/2/2025 |
+|   2 | Wheat |   300 | 11/3/2025 |
+|   3 | OIL   |   400 |           |
+|   4 | Badam |   800 | 11/4/2025 |
++-----+-------+-------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> alter table class rename cname as sname;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as sname' at line 1
+mysql> alter table class rename cname to sname;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to sname' at line 1
+mysql>  alter table class rename column cname to sname;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from class;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | sname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> alter table class rename column sname to cname;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+
+| id | name     | dept       | sal        | age |
++----+----------+------------+------------+-----+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 |
+|  2 | Kiran    | HR         |   45000.00 |  50 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 |
+|  4 | Charitha | IT         |   50000.00 |  30 |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 |
+|  8 | Sandhya  | IT         |   12000.00 |  40 |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 |
+| 10 | Amrutha  | Maths      |  200000.00 |  36 |
+| 11 | Narayan  | Biology    |   29000.00 |  31 |
++----+----------+------------+------------+-----+
+10 rows in set (0.00 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+-----------+-----------+
+| rollno | name     | joindate   | marks | location  | cname     |
++--------+----------+------------+-------+-----------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK   | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor  | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi | LKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago   | 9th class |
++--------+----------+------------+-------+-----------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> alter table emp add hiredate VARCHAR;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> alter table emp add hiredate varchar(20);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+
+| id | name     | dept       | sal        | age | hiredate |
++----+----------+------------+------------+-----+----------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL     |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL     |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     |
+| 10 | Amrutha  | Maths      |  200000.00 |  36 | NULL     |
+| 11 | Narayan  | Biology    |   29000.00 |  31 | NULL     |
++----+----------+------------+------------+-----+----------+
+10 rows in set (0.00 sec)
+
+mysql> alter table emp drop column hiredate;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+
+| id | name     | dept       | sal        | age |
++----+----------+------------+------------+-----+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 |
+|  2 | Kiran    | HR         |   45000.00 |  50 |
+|  3 | Ravi     | Finance    |   55000.00 |  45 |
+|  4 | Charitha | IT         |   50000.00 |  30 |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 |
+|  8 | Sandhya  | IT         |   12000.00 |  40 |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 |
+| 10 | Amrutha  | Maths      |  200000.00 |  36 |
+| 11 | Narayan  | Biology    |   29000.00 |  31 |
++----+----------+------------+------------+-----+
+10 rows in set (0.00 sec)
+
+mysql> alter table emp modify column dept varchar(30);
+Query OK, 10 rows affected (0.11 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> desc emp;
++-------+---------------+------+-----+---------+----------------+
+| Field | Type          | Null | Key | Default | Extra          |
++-------+---------------+------+-----+---------+----------------+
+| id    | int           | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(50)   | YES  |     | NULL    |                |
+| dept  | varchar(30)   | YES  |     | NULL    |                |
+| sal   | decimal(10,2) | YES  |     | NULL    |                |
+| age   | int           | NO   |     | NULL    |                |
++-------+---------------+------+-----+---------+----------------+
+5 rows in set (0.04 sec)
+
+mysql> alter table emp add hiredate varchar(30);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table emp rename column sal to income;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+----------+
+| id | name     | dept       | income     | age | hiredate |
++----+----------+------------+------------+-----+----------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL     |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL     |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL     |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL     |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL     |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL     |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL     |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL     |
+| 10 | Amrutha  | Maths      |  200000.00 |  36 | NULL     |
+| 11 | Narayan  | Biology    |   29000.00 |  31 | NULL     |
++----+----------+------------+------------+-----+----------+
+10 rows in set (0.00 sec)
+
+mysql> alter table emp modify hiredate to hired;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to hired' at line 1
+mysql> alter table emp rename hiredate to hired;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to hired' at line 1
+mysql> alter table emp rename column hiredate to hired;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++----+----------+------------+------------+-----+-------+
+| id | name     | dept       | income     | age | hired |
++----+----------+------------+------------+-----+-------+
+|  1 | Vinitha  | IT         | 2500000.00 |  30 | NULL  |
+|  2 | Kiran    | HR         |   45000.00 |  50 | NULL  |
+|  3 | Ravi     | Finance    |   55000.00 |  45 | NULL  |
+|  4 | Charitha | IT         |   50000.00 |  30 | NULL  |
+|  5 | Bhargavi | Accounts   |  100000.00 |  35 | NULL  |
+|  7 | Navya    | Compuetrs  |   15000.00 |  25 | NULL  |
+|  8 | Sandhya  | IT         |   12000.00 |  40 | NULL  |
+|  9 | Lohitha  | Electrical |   20000.00 |  30 | NULL  |
+| 10 | Amrutha  | Maths      |  200000.00 |  36 | NULL  |
+| 11 | Narayan  | Biology    |   29000.00 |  31 | NULL  |
++----+----------+------------+------------+-----+-------+
+10 rows in set (0.00 sec)
+
+mysql> select * fom product;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'fom product' at line 1
+mysql> select * from product;
++-----+-------+-------+-----------+
+| pid | pname | price | MFGDate   |
++-----+-------+-------+-----------+
+|   1 | RICE  |   200 | 11/2/2025 |
+|   2 | Wheat |   300 | 11/3/2025 |
+|   3 | OIL   |   400 |           |
+|   4 | Badam |   800 | 11/4/2025 |
++-----+-------+-------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> drop table product;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show recyclebin;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'recyclebin' at line 1
+mysql> ROLLBACK;
+Query OK, 0 rows affected (0.00 sec)
