@@ -1,0 +1,208 @@
+mysql> select length(sal) from emp;
++-------------+
+| length(sal) |
++-------------+
+|          10 |
+|           8 |
+|           8 |
+|           8 |
+|           9 |
+|           8 |
+|           8 |
+|           8 |
+|           8 |
++-------------+
+9 rows in set (0.01 sec)
+
+mysql> select length('Developers');
++----------------------+
+| length('Developers') |
++----------------------+
+|                   10 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select length(name) from emp;
++--------------+
+| length(name) |
++--------------+
+|            8 |
+|            5 |
+|            4 |
+|            8 |
+|            8 |
+|            5 |
+|            7 |
+|            7 |
+|            7 |
++--------------+
+9 rows in set (0.01 sec)
+
+mysql> select length(963214785217852178527
+    -> ^C
+mysql> select length('9632147852178521785278565234567890234567890rtyu87634567');
++-------------------------------------------------------------------+
+| length('9632147852178521785278565234567890234567890rtyu87634567') |
++-------------------------------------------------------------------+
+|                                                                55 |
++-------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select upper(name) from emp;
++-------------+
+| upper(name) |
++-------------+
+| VINEETHA    |
+| KIRAN       |
+| RAVI        |
+| CHARITHA    |
+| BHARGAVI    |
+| NAVYA       |
+| SANDHYA     |
+| LOHITHA     |
+| NARAYAN     |
++-------------+
+9 rows in set (0.02 sec)
+
+mysql> select lower
+    -> (^C
+mysql> select lower(name) from emp;
++-------------+
+| lower(name) |
++-------------+
+| vineetha    |
+| kiran       |
+| ravi        |
+| charitha    |
+| bhargavi    |
+| navya       |
+| sandhya     |
+| lohitha     |
+| narayan     |
++-------------+
+9 rows in set (0.00 sec)
+
+mysql> select substring(sal,4) from emp;
++------------------+
+| substring(sal,4) |
++------------------+
+| 0000.00          |
+| 00.00            |
+| 00.00            |
+| 00.00            |
+| 000.00           |
+| 00.00            |
+| 00.00            |
+| 00.00            |
+| 00.00            |
++------------------+
+9 rows in set (0.01 sec)
+
+mysql> select substring(name,6) from emp;
++-------------------+
+| substring(name,6) |
++-------------------+
+| tha               |
+|                   |
+|                   |
+| tha               |
+| avi               |
+|                   |
+| ya                |
+| ha                |
+| an                |
++-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select substring(name,0,5) from emp;
++---------------------+
+| substring(name,0,5) |
++---------------------+
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
+|                     |
++---------------------+
+9 rows in set (0.00 sec)
+
+mysql> select substring(name,2) from emp;
++-------------------+
+| substring(name,2) |
++-------------------+
+| ineetha           |
+| iran              |
+| avi               |
+| haritha           |
+| hargavi           |
+| avya              |
+| andhya            |
+| ohitha            |
+| arayan            |
++-------------------+
+9 rows in set (0.00 sec)
+
+mysql> select substring(name,1,5) from emp;
++---------------------+
+| substring(name,1,5) |
++---------------------+
+| Vinee               |
+| Kiran               |
+| Ravi                |
+| Chari               |
+| Bharg               |
+| Navya               |
+| Sandh               |
+| Lohit               |
+| Naray               |
++---------------------+
+9 rows in set (0.00 sec)
+
+mysql> select replace('java','ja','ma');
++---------------------------+
+| replace('java','ja','ma') |
++---------------------------+
+| mava                      |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select replace('java','java','Developers');
++-------------------------------------+
+| replace('java','java','Developers') |
++-------------------------------------+
+| Developers                          |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select reverse(name) from emp;
++---------------+
+| reverse(name) |
++---------------+
+| ahteeniV      |
+| nariK         |
+| ivaR          |
+| ahtirahC      |
+| ivagrahB      |
+| ayvaN         |
+| ayhdnaS       |
+| ahtihoL       |
+| nayaraN       |
++---------------+
+9 rows in set (0.00 sec)
+
+mysql> select reverse(name) from class;
++---------------+
+| reverse(name) |
++---------------+
+| luhaR         |
+| ameH          |
+| iraH          |
+| inaylaK       |
+| ajoonahT      |
+| akinuoM       |
++---------------+
+6 rows in set (0.01 sec)
