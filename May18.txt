@@ -1,0 +1,146 @@
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| librarydb          |
+| mysql              |
+| performance_schema |
+| reservation_system |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+12 rows in set (0.27 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| course             |
+| emp                |
+| info               |
+| nandu              |
+| rough              |
+| sqlq               |
+| ujn                |
+| vini               |
++--------------------+
+10 rows in set (0.03 sec)
+
+mysql> select * from emp;
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal         | age | hired     | loc          | job               | comm |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT         |  2500000.00 |  27 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
+|  2 | Kiran    | HR         |    45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance    |    55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT         |    50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts   |   100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social     |    45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  7 | Navya    | Compuetrs  |    15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  8 | Sandhya  | IT         | 45500000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  9 | Lohitha  | Electrical |    20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology    |    29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry  |    55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 12 | Rishi    | Botany     |    15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.06 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+------------+-----------+
+| rollno | name     | joindate   | marks | location   | cname     |
++--------+----------+------------+-------+------------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK    | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi  | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor   | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore  | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi  | UKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago    | 9th class |
+|      7 | Sandhya  | 2026-02-02 |    92 | Hyderabada | 5th class |
+|      8 | Bhargavi | 2024-02-02 |    77 | Himalayas  | 8th class |
+|      9 | Lohitha  | 2028-02-25 |    71 | Uttarkhand | 1st class |
++--------+----------+------------+-------+------------+-----------+
+9 rows in set (0.01 sec)
+
+mysql> select name, sal from emp;
++----------+-------------+
+| name     | sal         |
++----------+-------------+
+| Vineetha |  2500000.00 |
+| Kiran    |    45000.00 |
+| Ravi     |    55000.00 |
+| Charitha |    50000.00 |
+| Bhargavi |   100000.00 |
+| Vrunda   |    45000.00 |
+| Navya    |    15000.00 |
+| Sandhya  | 45500000.00 |
+| Lohitha  |    20000.00 |
+| Narayan  |    29000.00 |
+| Megha    |    55000.00 |
+| Rishi    |    15000.00 |
++----------+-------------+
+12 rows in set (0.00 sec)
+
+mysql> select name, dept, hired from emp;
++----------+------------+-----------+
+| name     | dept       | hired     |
++----------+------------+-----------+
+| Vineetha | IT         | 2026-2-2  |
+| Kiran    | HR         | 2025-2-3  |
+| Ravi     | Finance    | NULL      |
+| Charitha | IT         | 2017-7-23 |
+| Bhargavi | Accounts   | NULL      |
+| Vrunda   | Social     | 2026-1-23 |
+| Navya    | Compuetrs  | NULL      |
+| Sandhya  | IT         | NULL      |
+| Lohitha  | Electrical | 2016-5-27 |
+| Narayan  | Biology    | 2015-12-7 |
+| Megha    | Chemistry  | 2022-5-13 |
+| Rishi    | Botany     | 2020-8-13 |
++----------+------------+-----------+
+12 rows in set (0.00 sec)
+
+mysql> select dept from emp;
++------------+
+| dept       |
++------------+
+| IT         |
+| HR         |
+| Finance    |
+| IT         |
+| Accounts   |
+| Social     |
+| Compuetrs  |
+| IT         |
+| Electrical |
+| Biology    |
+| Chemistry  |
+| Botany     |
++------------+
+12 rows in set (0.00 sec)
+
+mysql> desc emp;
++-------+---------------+------+-----+---------+-------------------+
+| Field | Type          | Null | Key | Default | Extra             |
++-------+---------------+------+-----+---------+-------------------+
+| id    | int           | NO   | PRI | NULL    | auto_increment    |
+| name  | varchar(50)   | YES  |     | NULL    |                   |
+| dept  | varchar(30)   | YES  |     | NULL    |                   |
+| sal   | decimal(10,2) | YES  |     | NULL    |                   |
+| age   | int           | NO   |     | NULL    |                   |
+| hired | varchar(30)   | YES  |     | NULL    |                   |
+| loc   | varchar(20)   | YES  |     | NULL    |                   |
+| job   | varchar(30)   | YES  |     | NULL    |                   |
+| comm  | int           | YES  |     | 300     | DEFAULT_GENERATED |
++-------+---------------+------+-----+---------+-------------------+
+9 rows in set (0.03 sec)
