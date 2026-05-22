@@ -1,0 +1,2255 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| librarydb          |
+| mysql              |
+| performance_schema |
+| reservation_system |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+12 rows in set (0.12 sec)
+
+mysql> use employee;
+Database changed
+mysql> show tables from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| course             |
+| emp                |
+| info               |
+| nandu              |
+| rough              |
+| sqlq               |
+| ujn                |
+| vini               |
++--------------------+
+10 rows in set (0.03 sec)
+
+mysql> select * from emp;
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal         | age | hired     | loc          | job               | comm |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT         |  2500000.00 |  27 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
+|  2 | Kiran    | HR         |    45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance    |    55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT         |    50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts   |   100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social     |    45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  7 | Navya    | Compuetrs  |    15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  8 | Sandhya  | IT         | 45500000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  9 | Lohitha  | Electrical |    20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology    |    29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry  |    55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 12 | Rishi    | Botany     |    15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.05 sec)
+
+mysql> select sal from emp where sal!=0;
++-------------+
+| sal         |
++-------------+
+|  2500000.00 |
+|    45000.00 |
+|    55000.00 |
+|    50000.00 |
+|   100000.00 |
+|    45000.00 |
+|    15000.00 |
+| 45500000.00 |
+|    20000.00 |
+|    29000.00 |
+|    55000.00 |
+|    15000.00 |
++-------------+
+12 rows in set (0.32 sec)
+
+mysql> select * from emp where sal!=0;
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal         | age | hired     | loc          | job               | comm |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT         |  2500000.00 |  27 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
+|  2 | Kiran    | HR         |    45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance    |    55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT         |    50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts   |   100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social     |    45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  7 | Navya    | Compuetrs  |    15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  8 | Sandhya  | IT         | 45500000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  9 | Lohitha  | Electrical |    20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology    |    29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry  |    55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 12 | Rishi    | Botany     |    15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where hired is null;
++----+----------+-----------+-------------+-----+-------+-----------+-------------------+------+
+| id | name     | dept      | sal         | age | hired | loc       | job               | comm |
++----+----------+-----------+-------------+-----+-------+-----------+-------------------+------+
+|  3 | Ravi     | Finance   |    55000.00 |  45 | NULL  | Hyderabad | Associate         |  300 |
+|  5 | Bhargavi | Accounts  |   100000.00 |  35 | NULL  | TamilNadu | Accountant        |  300 |
+|  7 | Navya    | Compuetrs |    15000.00 |  25 | NULL  | Goa       | Associate         |  300 |
+|  8 | Sandhya  | IT        | 45500000.00 |  40 | NULL  | Bangalore | Software Engineer |  300 |
++----+----------+-----------+-------------+-----+-------+-----------+-------------------+------+
+4 rows in set (0.00 sec)
+
+mysql> select concat(name, 'is earning', sal) from emp;
++---------------------------------+
+| concat(name, 'is earning', sal) |
++---------------------------------+
+| Vineethais earning2500000.00    |
+| Kiranis earning45000.00         |
+| Raviis earning55000.00          |
+| Charithais earning50000.00      |
+| Bhargaviis earning100000.00     |
+| Vrundais earning45000.00        |
+| Navyais earning15000.00         |
+| Sandhyais earning45500000.00    |
+| Lohithais earning20000.00       |
+| Narayanis earning29000.00       |
+| Meghais earning55000.00         |
+| Rishiis earning15000.00         |
++---------------------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where sal>50000 and dept='it';
++----+----------+------+-------------+-----+----------+-----------+-------------------+------+
+| id | name     | dept | sal         | age | hired    | loc       | job               | comm |
++----+----------+------+-------------+-----+----------+-----------+-------------------+------+
+|  1 | Vineetha | IT   |  2500000.00 |  27 | 2026-2-2 | Bangalore | Software Engineer |  300 |
+|  8 | Sandhya  | IT   | 45500000.00 |  40 | NULL     | Bangalore | Software Engineer |  300 |
++----+----------+------+-------------+-----+----------+-----------+-------------------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where sal=50000 or sal=100000;
++----+----------+----------+-----------+-----+-----------+-----------+-------------------+------+
+| id | name     | dept     | sal       | age | hired     | loc       | job               | comm |
++----+----------+----------+-----------+-----+-----------+-----------+-------------------+------+
+|  4 | Charitha | IT       |  50000.00 |  30 | 2017-7-23 | Bangalore | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts | 100000.00 |  35 | NULL      | TamilNadu | Accountant        |  300 |
++----+----------+----------+-----------+-----+-----------+-----------+-------------------+------+
+2 rows in set (0.00 sec)
+
+mysql> select sal from emp where sal!=50000;
++-------------+
+| sal         |
++-------------+
+|  2500000.00 |
+|    45000.00 |
+|    55000.00 |
+|   100000.00 |
+|    45000.00 |
+|    15000.00 |
+| 45500000.00 |
+|    20000.00 |
+|    29000.00 |
+|    55000.00 |
+|    15000.00 |
++-------------+
+11 rows in set (0.00 sec)
+
+mysql> select sal from emp where sal>=100000;
++-------------+
+| sal         |
++-------------+
+|  2500000.00 |
+|   100000.00 |
+| 45500000.00 |
++-------------+
+3 rows in set (0.00 sec)
+
+mysql> select sal from emp where dept!='it';
++-----------+
+| sal       |
++-----------+
+|  45000.00 |
+|  55000.00 |
+| 100000.00 |
+|  45000.00 |
+|  15000.00 |
+|  20000.00 |
+|  29000.00 |
+|  55000.00 |
+|  15000.00 |
++-----------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where  dept!='it';
++----+----------+------------+-----------+-----+-----------+--------------+------------+------+
+| id | name     | dept       | sal       | age | hired     | loc          | job        | comm |
++----+----------+------------+-----------+-----+-----------+--------------+------------+------+
+|  2 | Kiran    | HR         |  45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager    |  300 |
+|  3 | Ravi     | Finance    |  55000.00 |  45 | NULL      | Hyderabad    | Associate  |  300 |
+|  5 | Bhargavi | Accounts   | 100000.00 |  35 | NULL      | TamilNadu    | Accountant |  300 |
+|  6 | Vrunda   | Social     |  45000.00 |  25 | 2026-1-23 | Channai      | Teacher    |  300 |
+|  7 | Navya    | Compuetrs  |  15000.00 |  25 | NULL      | Goa          | Associate  |  300 |
+|  9 | Lohitha  | Electrical |  20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer   |  300 |
+| 10 | Narayan  | Biology    |  29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor  |  300 |
+| 11 | Megha    | Chemistry  |  55000.00 |  35 | 2022-5-13 | Delhi        | Teacher    |  300 |
+| 12 | Rishi    | Botany     |  15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher    |  300 |
++----+----------+------------+-----------+-----+-----------+--------------+------------+------+
+9 rows in set (0.00 sec)
+
+mysql> select * from emp where name like's%';
++----+---------+------+-------------+-----+-------+-----------+-------------------+------+
+| id | name    | dept | sal         | age | hired | loc       | job               | comm |
++----+---------+------+-------------+-----+-------+-----------+-------------------+------+
+|  8 | Sandhya | IT   | 45500000.00 |  40 | NULL  | Bangalore | Software Engineer |  300 |
++----+---------+------+-------------+-----+-------+-----------+-------------------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp where name like'v%';
++----+----------+--------+------------+-----+-----------+-----------+-------------------+------+
+| id | name     | dept   | sal        | age | hired     | loc       | job               | comm |
++----+----------+--------+------------+-----+-----------+-----------+-------------------+------+
+|  1 | Vineetha | IT     | 2500000.00 |  27 | 2026-2-2  | Bangalore | Software Engineer |  300 |
+|  6 | Vrunda   | Social |   45000.00 |  25 | 2026-1-23 | Channai   | Teacher           |  300 |
++----+----------+--------+------------+-----+-----------+-----------+-------------------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where sal between 10000 and 16000;
++----+-------+-----------+----------+-----+-----------+------------+-----------+------+
+| id | name  | dept      | sal      | age | hired     | loc        | job       | comm |
++----+-------+-----------+----------+-----+-----------+------------+-----------+------+
+|  7 | Navya | Compuetrs | 15000.00 |  25 | NULL      | Goa        | Associate |  300 |
+| 12 | Rishi | Botany    | 15000.00 |  30 | 2020-8-13 | Maharastra | Teacher   |  300 |
++----+-------+-----------+----------+-----+-----------+------------+-----------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp where hires is null;
+ERROR 1054 (42S22): Unknown column 'hires' in 'where clause'
+mysql> select * from emp where hired is null;
++----+----------+-----------+-------------+-----+-------+-----------+-------------------+------+
+| id | name     | dept      | sal         | age | hired | loc       | job               | comm |
++----+----------+-----------+-------------+-----+-------+-----------+-------------------+------+
+|  3 | Ravi     | Finance   |    55000.00 |  45 | NULL  | Hyderabad | Associate         |  300 |
+|  5 | Bhargavi | Accounts  |   100000.00 |  35 | NULL  | TamilNadu | Accountant        |  300 |
+|  7 | Navya    | Compuetrs |    15000.00 |  25 | NULL  | Goa       | Associate         |  300 |
+|  8 | Sandhya  | IT        | 45500000.00 |  40 | NULL  | Bangalore | Software Engineer |  300 |
++----+----------+-----------+-------------+-----+-------+-----------+-------------------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where name in('Vineetha', 'Vrunda', 'Bhargavi');
++----+----------+----------+------------+-----+-----------+-----------+-------------------+------+
+| id | name     | dept     | sal        | age | hired     | loc       | job               | comm |
++----+----------+----------+------------+-----+-----------+-----------+-------------------+------+
+|  1 | Vineetha | IT       | 2500000.00 |  27 | 2026-2-2  | Bangalore | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts |  100000.00 |  35 | NULL      | TamilNadu | Accountant        |  300 |
+|  6 | Vrunda   | Social   |   45000.00 |  25 | 2026-1-23 | Channai   | Teacher           |  300 |
++----+----------+----------+------------+-----+-----------+-----------+-------------------+------+
+3 rows in set (0.00 sec)
+
+mysql> select name ename, sal earning,loc destination from emp;
++----------+-------------+--------------+
+| ename    | earning     | destination  |
++----------+-------------+--------------+
+| Vineetha |  2500000.00 | Bangalore    |
+| Kiran    |    45000.00 | Tirupathi    |
+| Ravi     |    55000.00 | Hyderabad    |
+| Charitha |    50000.00 | Bangalore    |
+| Bhargavi |   100000.00 | TamilNadu    |
+| Vrunda   |    45000.00 | Channai      |
+| Navya    |    15000.00 | Goa          |
+| Sandhya  | 45500000.00 | Bangalore    |
+| Lohitha  |    20000.00 | UttarPradesh |
+| Narayan  |    29000.00 | UttarPradesh |
+| Megha    |    55000.00 | Delhi        |
+| Rishi    |    15000.00 | Maharastra   |
++----------+-------------+--------------+
+12 rows in set (0.00 sec)
+
+mysql> select id from emp union select rollno from class;
++----+
+| id |
++----+
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|  5 |
+|  6 |
+|  7 |
+|  8 |
+|  9 |
+| 10 |
+| 11 |
+| 12 |
++----+
+12 rows in set (0.14 sec)
+
+mysql> select id from emp union all  select rollno from class;
++----+
+| id |
++----+
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|  5 |
+|  6 |
+|  7 |
+|  8 |
+|  9 |
+| 10 |
+| 11 |
+| 12 |
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|  5 |
+|  6 |
+|  7 |
+|  8 |
+|  9 |
++----+
+21 rows in set (0.00 sec)
+
+mysql> select id from emp intersect  select rollno from class;
++----+
+| id |
++----+
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|  5 |
+|  6 |
+|  7 |
+|  8 |
+|  9 |
++----+
+9 rows in set (0.00 sec)
+
+mysql> select id from emp where id not in  select rollno from class;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select rollno from class' at line 1
+mysql> select * from emp where id not in  (select rollno from class);
++----+---------+-----------+----------+-----+-----------+--------------+-----------+------+
+| id | name    | dept      | sal      | age | hired     | loc          | job       | comm |
++----+---------+-----------+----------+-----+-----------+--------------+-----------+------+
+| 10 | Narayan | Biology   | 29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor |  300 |
+| 11 | Megha   | Chemistry | 55000.00 |  35 | 2022-5-13 | Delhi        | Teacher   |  300 |
+| 12 | Rishi   | Botany    | 15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher   |  300 |
++----+---------+-----------+----------+-----+-----------+--------------+-----------+------+
+3 rows in set (0.01 sec)
+
+mysql> select id from emp where id not in  (select rollno from class);
++----+
+| id |
++----+
+| 10 |
+| 11 |
+| 12 |
++----+
+3 rows in set (0.00 sec)
+
+mysql> desc info;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(50) | NO   | PRI | NULL    |       |
+| quali  | varchar(50) | YES  |     | NULL    |       |
+| status | varchar(50) | YES  |     | NULL    |       |
+| age    | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.11 sec)
+
+mysql> desc sqlq;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> insert into sqlq values(3,'vani');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from sqlq;
++----+---------+
+| id | name    |
++----+---------+
+|  0 | NULL    |
+|  1 | vini    |
+|  2 | narayan |
+|  3 | vani    |
++----+---------+
+4 rows in set (0.00 sec)
+
+mysql> update sqlq set id=4 where id=0;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from sqlq;
++----+---------+
+| id | name    |
++----+---------+
+|  1 | vini    |
+|  2 | narayan |
+|  3 | vani    |
+|  4 | NULL    |
++----+---------+
+4 rows in set (0.00 sec)
+
+mysql> delete from sqlq where id=4;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from sqlq;
++----+---------+
+| id | name    |
++----+---------+
+|  1 | vini    |
+|  2 | narayan |
+|  3 | vani    |
++----+---------+
+3 rows in set (0.00 sec)
+
+mysql> create table prim(id int primary key, name varchar(20));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> insert into prim values(1, 'name1');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from prim
+    -> ^C
+mysql> select * from prim;
++----+-------+
+| id | name  |
++----+-------+
+|  1 | name1 |
++----+-------+
+1 row in set (0.00 sec)
+
+mysql>  insert into prim values(2, 'name2');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> alter table prim rename column id to pid;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from prim;
++-----+-------+
+| pid | name  |
++-----+-------+
+|   1 | name1 |
+|   2 | name2 |
++-----+-------+
+2 rows in set (0.00 sec)
+
+mysql> create table fkey(fid int primary key, name varchar(50), pid int, foreign key(pid) references prim(pid));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into fkey(1, 'Vini', 1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1, 'Vini', 1)' at line 1
+mysql> insert into fkey(1, 'Vini');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1, 'Vini')' at line 1
+mysql> insert into fkey values(1, 'Vini', 1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from fkey;
++-----+------+------+
+| fid | name | pid  |
++-----+------+------+
+|   1 | Vini |    1 |
++-----+------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into fkey values(2, 'divya', 3);
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`employee`.`fkey`, CONSTRAINT `fkey_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `prim` (`pid`))
+mysql> insert into fkey values(2, 'divya', 2);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from prim;
++-----+-------+
+| pid | name  |
++-----+-------+
+|   1 | name1 |
+|   2 | name2 |
++-----+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from fkey;
++-----+-------+------+
+| fid | name  | pid  |
++-----+-------+------+
+|   1 | Vini  |    1 |
+|   2 | divya |    2 |
++-----+-------+------+
+2 rows in set (0.00 sec)
+
+mysql> show tanles from employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'tanles from employee' at line 1
+mysql> show tables  from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| course             |
+| emp                |
+| fkey               |
+| info               |
+| nandu              |
+| prim               |
+| rough              |
+| sqlq               |
+| ujn                |
+| vini               |
++--------------------+
+12 rows in set (0.01 sec)
+
+mysql> desc tables from employee;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from employee' at line 1
+mysql> desc  class;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| rollno   | int         | NO   | PRI | NULL    |       |
+| name     | varchar(50) | YES  |     | NULL    |       |
+| joindate | date        | YES  |     | NULL    |       |
+| marks    | int         | YES  |     | NULL    |       |
+| location | varchar(50) | YES  |     | NULL    |       |
+| cname    | varchar(50) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> desc emp;
++-------+---------------+------+-----+---------+-------------------+
+| Field | Type          | Null | Key | Default | Extra             |
++-------+---------------+------+-----+---------+-------------------+
+| id    | int           | NO   | PRI | NULL    | auto_increment    |
+| name  | varchar(50)   | YES  |     | NULL    |                   |
+| dept  | varchar(30)   | YES  |     | NULL    |                   |
+| sal   | decimal(10,2) | YES  |     | NULL    |                   |
+| age   | int           | NO   |     | NULL    |                   |
+| hired | varchar(30)   | YES  |     | NULL    |                   |
+| loc   | varchar(20)   | YES  |     | NULL    |                   |
+| job   | varchar(30)   | YES  |     | NULL    |                   |
+| comm  | int           | YES  |     | 300     | DEFAULT_GENERATED |
++-------+---------------+------+-----+---------+-------------------+
+9 rows in set (0.00 sec)
+
+mysql> desc emp;
++-------+---------------+------+-----+---------+-------------------+
+| Field | Type          | Null | Key | Default | Extra             |
++-------+---------------+------+-----+---------+-------------------+
+| id    | int           | NO   | PRI | NULL    | auto_increment    |
+| name  | varchar(50)   | YES  |     | NULL    |                   |
+| dept  | varchar(30)   | YES  |     | NULL    |                   |
+| sal   | decimal(10,2) | YES  |     | NULL    |                   |
+| age   | int           | NO   |     | NULL    |                   |
+| hired | varchar(30)   | YES  |     | NULL    |                   |
+| loc   | varchar(20)   | YES  |     | NULL    |                   |
+| job   | varchar(30)   | YES  |     | NULL    |                   |
+| comm  | int           | YES  |     | 300     | DEFAULT_GENERATED |
++-------+---------------+------+-----+---------+-------------------+
+9 rows in set (0.00 sec)
+
+mysql> desc book;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | NO   | PRI | NULL    |       |
+| price | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> desc course;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| id          | int         | NO   | PRI | NULL    |       |
+| name        | varchar(20) | YES  | UNI | NULL    |       |
+| duration    | int         | NO   |     | NULL    |       |
+| type        | varchar(20) | YES  |     | online  |       |
+| eligibe_age | int         | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> desc rough;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| name  | varchar(20) | YES  | UNI | NULL    |       |
+| price | varchar(20) | YES  | UNI | NULL    |       |
+| type  | varchar(20) | YES  |     | normal  |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create table constraint;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'constraint' at line 1
+mysql> create table constraint(id int primary key, name varchar(20) unique, age int not null, color varchar(20) default 'RED', attemps int check(attemps<=6));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'constraint(id int primary key, name varchar(20) unique, age int not null, color ' at line 1
+mysql> create table rules(id int primary key, name varchar(20) unique, age int not null, color varchar(20) default 'RED', attemps int check(attemps<=6));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into rules(1,'vini', 25,'white',5);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,'vini', 25,'white',5)' at line 1
+mysql> insert into rules values(1,'vini', 25,'white',5);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from rules
+    -> ^C
+mysql> select * from rules;
++----+------+-----+-------+---------+
+| id | name | age | color | attemps |
++----+------+-----+-------+---------+
+|  1 | vini |  25 | white |       5 |
++----+------+-----+-------+---------+
+1 row in set (0.00 sec)
+
+mysql> insert into rules (id,name,age,attemps) values(2, 'divya', 30,6);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from rules;
++----+-------+-----+-------+---------+
+| id | name  | age | color | attemps |
++----+-------+-----+-------+---------+
+|  1 | vini  |  25 | white |       5 |
+|  2 | divya |  30 | RED   |       6 |
++----+-------+-----+-------+---------+
+2 rows in set (0.00 sec)
+
+mysql> alter rules add gender varchar(20);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rules add gender varchar(20)' at line 1
+mysql>  alter table rules add gender varchar(20);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from rules;
++----+-------+-----+-------+---------+--------+
+| id | name  | age | color | attemps | gender |
++----+-------+-----+-------+---------+--------+
+|  1 | vini  |  25 | white |       5 | NULL   |
+|  2 | divya |  30 | RED   |       6 | NULL   |
++----+-------+-----+-------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> update rules set gender='female' where id=1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from rules;
++----+-------+-----+-------+---------+--------+
+| id | name  | age | color | attemps | gender |
++----+-------+-----+-------+---------+--------+
+|  1 | vini  |  25 | white |       5 | female |
+|  2 | divya |  30 | RED   |       6 | NULL   |
++----+-------+-----+-------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> alter table rules ramane gender to catg;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ramane gender to catg' at line 1
+mysql> alter table rules rename gender to catg;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to catg' at line 1
+mysql> alter table rules rename column gender to catg;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table rules modify gender varchar(50);
+ERROR 1054 (42S22): Unknown column 'gender' in 'rules'
+mysql> alter table rules modify catg varchar(50);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from rules;
++----+-------+-----+-------+---------+--------+
+| id | name  | age | color | attemps | catg   |
++----+-------+-----+-------+---------+--------+
+|  1 | vini  |  25 | white |       5 | female |
+|  2 | divya |  30 | RED   |       6 | NULL   |
++----+-------+-----+-------+---------+--------+
+2 rows in set (0.00 sec)
+
+mysql> alter table rules modify catg int;
+ERROR 1366 (HY000): Incorrect integer value: 'female' for column 'catg' at row 1
+mysql> create table del(int id);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int id)' at line 1
+mysql> create table del(id int);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into del values(1), values(2);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values(2)' at line 1
+mysql> insert into del values(1),(2);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from del;
++------+
+| id   |
++------+
+|    1 |
+|    2 |
++------+
+2 rows in set (0.00 sec)
+
+mysql> drop table del;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> renale sqlq to sqll;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'renale sqlq to sqll' at line 1
+mysql> rename sqlq to sqll;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'sqlq to sqll' at line 1
+mysql> rename table sqlq to sqll;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| book               |
+| class              |
+| course             |
+| emp                |
+| fkey               |
+| info               |
+| nandu              |
+| prim               |
+| rough              |
+| rules              |
+| sqll               |
+| ujn                |
+| vini               |
++--------------------+
+13 rows in set (0.00 sec)
+
+mysql> select * from ujn;
++----+----------+
+| id | value    |
++----+----------+
+|  1 |   7889.1 |
+|  2 |   7889.2 |
+|  3 |   6789.3 |
+|  4 |   7889.3 |
+|  5 |   7889.4 |
+|  6 |   7889.5 |
+|  7 |   7889.6 |
+|  8 |   7889.7 |
+|  9 |   7889.8 |
+| 10 |   7889.9 |
+| 11 |   7889.1 |
+| 12 |  7889.12 |
+| 13 | 45874.36 |
++----+----------+
+13 rows in set (0.01 sec)
+
+mysql> select * from nandu;
++-----------+-------------+------+
+| dob       | sname       | no   |
++-----------+-------------+------+
+| 2025/2/25 | Narayan     |    8 |
+| 2025/4/11 | iran        |   45 |
+| 2025/5/15 | immimiran   |   14 |
+| 2026/5/1  | Amaranam    |   15 |
+| 2026/5/10 | Madava      |   10 |
+| 2026/5/11 | Keshava     |   11 |
+| 2026/5/2  | Shiva       |    2 |
+| 2026/5/3  | Ohmshiva    |    3 |
+| 2026/5/4  | Vinayaka    |    4 |
+| 2026/5/5  | JaiShreeram |    5 |
+| 2026/5/6  | Shreeram    |    6 |
+| 2026/5/7  | Janakiram   |    7 |
+| 2026/5/9  | Mukunda     |    9 |
++-----------+-------------+------+
+13 rows in set (0.01 sec)
+
+mysql> select * from book;
++----+-------+
+| id | price |
++----+-------+
+|  1 |     2 |
+|  2 |     2 |
+|  3 |     3 |
+|  4 |     4 |
+|  5 |     5 |
+|  6 |    11 |
+|  7 |    22 |
+|  8 |    33 |
+|  9 |    44 |
+| 10 |    55 |
++----+-------+
+10 rows in set (0.00 sec)
+
+mysql> truncate table book;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from book;
+Empty set (0.00 sec)
+
+mysql> drop table book;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables from employee;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| class              |
+| course             |
+| emp                |
+| fkey               |
+| info               |
+| nandu              |
+| prim               |
+| rough              |
+| rules              |
+| sqll               |
+| ujn                |
+| vini               |
++--------------------+
+12 rows in set (0.00 sec)
+
+mysql> select @@autocommit;
++--------------+
+| @@autocommit |
++--------------+
+|            1 |
++--------------+
+1 row in set (0.01 sec)
+
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from sqll;
++----+---------+
+| id | name    |
++----+---------+
+|  1 | vini    |
+|  2 | narayan |
+|  3 | vani    |
++----+---------+
+3 rows in set (0.00 sec)
+
+mysql> insert into sqll values(4, 'jahnavi'), (5, 'lohitha'), (6, 'navya');
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from sqll;
++----+---------+
+| id | name    |
++----+---------+
+|  1 | vini    |
+|  2 | narayan |
+|  3 | vani    |
+|  4 | jahnavi |
+|  5 | lohitha |
+|  6 | navya   |
++----+---------+
+6 rows in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> savepoint 'A';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''A'' at line 1
+mysql> savepoint A;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into sqll values(7, 'jahnavi'), (8, 'lohitha'), (9, 'navya');
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from sqll;
++----+---------+
+| id | name    |
++----+---------+
+|  1 | vini    |
+|  2 | narayan |
+|  3 | vani    |
+|  4 | jahnavi |
+|  5 | lohitha |
+|  6 | navya   |
+|  7 | jahnavi |
+|  8 | lohitha |
+|  9 | navya   |
++----+---------+
+9 rows in set (0.00 sec)
+
+mysql> rollback to A;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from sqll;
++----+---------+
+| id | name    |
++----+---------+
+|  1 | vini    |
+|  2 | narayan |
+|  3 | vani    |
+|  4 | jahnavi |
+|  5 | lohitha |
+|  6 | navya   |
++----+---------+
+6 rows in set (0.00 sec)
+
+mysql> set autocommit=1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from sqll;
++----+---------+
+| id | name    |
++----+---------+
+|  1 | vini    |
+|  2 | narayan |
+|  3 | vani    |
+|  4 | jahnavi |
+|  5 | lohitha |
+|  6 | navya   |
++----+---------+
+6 rows in set (0.00 sec)
+
+mysql> insert into sqll values(7, 'jahnavi'), (8, 'lohitha'), (9, 'navya');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> savepoint A;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>  insert into sqll values(10, 'jahnavi'), (11, 'lohitha'), (12, 'navya');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> rollback A;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'A' at line 1
+mysql>  rollback  to A;
+ERROR 1305 (42000): SAVEPOINT A does not exist
+mysql> select * from sqll;
++----+---------+
+| id | name    |
++----+---------+
+|  1 | vini    |
+|  2 | narayan |
+|  3 | vani    |
+|  4 | jahnavi |
+|  5 | lohitha |
+|  6 | navya   |
+|  7 | jahnavi |
+|  8 | lohitha |
+|  9 | navya   |
+| 10 | jahnavi |
+| 11 | lohitha |
+| 12 | navya   |
++----+---------+
+12 rows in set (0.00 sec)
+
+mysql> delete from sqll where id=7,8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',8' at line 1
+mysql> delete from sqll where id in(7,8,9,10,11,12);
+Query OK, 6 rows affected (0.01 sec)
+
+mysql> select * from sqll;
++----+---------+
+| id | name    |
++----+---------+
+|  1 | vini    |
+|  2 | narayan |
+|  3 | vani    |
+|  4 | jahnavi |
+|  5 | lohitha |
+|  6 | navya   |
++----+---------+
+6 rows in set (0.00 sec)
+
+mysql> select mod(id,2) from emp;
++-----------+
+| mod(id,2) |
++-----------+
+|         1 |
+|         0 |
+|         1 |
+|         0 |
+|         1 |
+|         0 |
+|         1 |
+|         0 |
+|         1 |
+|         0 |
+|         1 |
+|         0 |
++-----------+
+12 rows in set (0.00 sec)
+
+mysql> select abs(-15);
++----------+
+| abs(-15) |
++----------+
+|       15 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select power(id) from emp;
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'power'
+mysql> select power(id,id) from emp;
++---------------+
+| power(id,id)  |
++---------------+
+|             1 |
+|             4 |
+|            27 |
+|           256 |
+|          3125 |
+|         46656 |
+|        823543 |
+|      16777216 |
+|     387420489 |
+|   10000000000 |
+|  285311670611 |
+| 8916100448256 |
++---------------+
+12 rows in set (0.01 sec)
+
+mysql> select sqrt(sal) from emp;
++--------------------+
+| sqrt(sal)          |
++--------------------+
+| 1581.1388300841897 |
+| 212.13203435596427 |
+|  234.5207879911715 |
+| 223.60679774997897 |
+| 316.22776601683796 |
+| 212.13203435596427 |
+| 122.47448713915891 |
+|  6745.368781616021 |
+|  141.4213562373095 |
+| 170.29386365926402 |
+|  234.5207879911715 |
+| 122.47448713915891 |
++--------------------+
+12 rows in set (0.00 sec)
+
+mysql> select sqrt(5) from emp;
++------------------+
+| sqrt(5)          |
++------------------+
+| 2.23606797749979 |
+| 2.23606797749979 |
+| 2.23606797749979 |
+| 2.23606797749979 |
+| 2.23606797749979 |
+| 2.23606797749979 |
+| 2.23606797749979 |
+| 2.23606797749979 |
+| 2.23606797749979 |
+| 2.23606797749979 |
+| 2.23606797749979 |
+| 2.23606797749979 |
++------------------+
+12 rows in set (0.00 sec)
+
+mysql> select sqrt(25);
++----------+
+| sqrt(25) |
++----------+
+|        5 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sqrt(49);
++----------+
+| sqrt(49) |
++----------+
+|        7 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sqrt(169);
++-----------+
+| sqrt(169) |
++-----------+
+|        13 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select floor(13.7);
++-------------+
+| floor(13.7) |
++-------------+
+|          13 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select ceilr(13.7);
+ERROR 1305 (42000): FUNCTION employee.ceilr does not exist
+mysql> select ceil(13.7);
++------------+
+| ceil(13.7) |
++------------+
+|         14 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select round(13.5);
++-------------+
+| round(13.5) |
++-------------+
+|          14 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select round(13.4);
++-------------+
+| round(13.4) |
++-------------+
+|          13 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select length(name) from emp;
++--------------+
+| length(name) |
++--------------+
+|            8 |
+|            5 |
+|            4 |
+|            8 |
+|            8 |
+|            6 |
+|            5 |
+|            7 |
+|            7 |
+|            7 |
+|            5 |
+|            5 |
++--------------+
+12 rows in set (0.00 sec)
+
+mysql> select lower(name) from emp;
++-------------+
+| lower(name) |
++-------------+
+| vineetha    |
+| kiran       |
+| ravi        |
+| charitha    |
+| bhargavi    |
+| vrunda      |
+| navya       |
+| sandhya     |
+| lohitha     |
+| narayan     |
+| megha       |
+| rishi       |
++-------------+
+12 rows in set (0.00 sec)
+
+mysql> select upper(name) from emp;
++-------------+
+| upper(name) |
++-------------+
+| VINEETHA    |
+| KIRAN       |
+| RAVI        |
+| CHARITHA    |
+| BHARGAVI    |
+| VRUNDA      |
+| NAVYA       |
+| SANDHYA     |
+| LOHITHA     |
+| NARAYAN     |
+| MEGHA       |
+| RISHI       |
++-------------+
+12 rows in set (0.00 sec)
+
+mysql> select reverse(name) from emp;
++---------------+
+| reverse(name) |
++---------------+
+| ahteeniV      |
+| nariK         |
+| ivaR          |
+| ahtirahC      |
+| ivagrahB      |
+| adnurV        |
+| ayvaN         |
+| ayhdnaS       |
+| ahtihoL       |
+| nayaraN       |
+| ahgeM         |
+| ihsiR         |
++---------------+
+12 rows in set (0.00 sec)
+
+mysql> seleect replace('durgasoftware', 'software', 'Engineer');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'seleect replace('durgasoftware', 'software', 'Engineer')' at line 1
+mysql> select  replace('durgasoftware', 'software', 'Engineer');
++--------------------------------------------------+
+| replace('durgasoftware', 'software', 'Engineer') |
++--------------------------------------------------+
+| durgaEngineer                                    |
++--------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select init cap(name) from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(name) from emp' at line 1
+mysql> select concat(ucase(left(name,1)),lcase(substring(name,2)) from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from emp' at line 1
+mysql>  select concat(ucase(left(name,1)),lcase(substring(name,2))) from emp;
++------------------------------------------------------+
+| concat(ucase(left(name,1)),lcase(substring(name,2))) |
++------------------------------------------------------+
+| Vineetha                                             |
+| Kiran                                                |
+| Ravi                                                 |
+| Charitha                                             |
+| Bhargavi                                             |
+| Vrunda                                               |
+| Navya                                                |
+| Sandhya                                              |
+| Lohitha                                              |
+| Narayan                                              |
+| Megha                                                |
+| Rishi                                                |
++------------------------------------------------------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT INSTR('VINITHA', 'I');
++-----------------------+
+| INSTR('VINITHA', 'I') |
++-----------------------+
+|                     2 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select instr('vineeeeetha','e');
++--------------------------+
+| instr('vineeeeetha','e') |
++--------------------------+
+|                        4 |
++--------------------------+
+1 row in set (0.00 sec)
+
+mysql> select instr('vineeeeetha','v');
++--------------------------+
+| instr('vineeeeetha','v') |
++--------------------------+
+|                        1 |
++--------------------------+
+1 row in set (0.00 sec)
+
+mysql> select ascii(name) from emp;
++-------------+
+| ascii(name) |
++-------------+
+|          86 |
+|          75 |
+|          82 |
+|          67 |
+|          66 |
+|          86 |
+|          78 |
+|          83 |
+|          76 |
+|          78 |
+|          77 |
+|          82 |
++-------------+
+12 rows in set (0.00 sec)
+
+mysql> select ascii(a);
+ERROR 1054 (42S22): Unknown column 'a' in 'field list'
+mysql> select ascii('a');
++------------+
+| ascii('a') |
++------------+
+|         97 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select ascii('A');
++------------+
+| ascii('A') |
++------------+
+|         65 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2026-05-21 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2026-05-21 17:33:39 |
++---------------------+
+1 row in set (0.01 sec)
+
+mysql> select months-between('23-sep-23', '23-mar-23');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'between('23-sep-23', '23-mar-23')' at line 1
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-05-21 17:35:56 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2026-05-21 17:36:06 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql>  select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-05-21 17:36:22 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2026-05-21 17:36:23 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 17:36:47  |
++-----------+
+1 row in set (0.01 sec)
+
+mysql> select sessiontimezone();
+ERROR 1305 (42000): FUNCTION employee.sessiontimezone does not exist
+mysql> select session_time_zone;
+ERROR 1054 (42S22): Unknown column 'session_time_zone' in 'field list'
+mysql> select @@session.time_zone;
++---------------------+
+| @@session.time_zone |
++---------------------+
+| SYSTEM              |
++---------------------+
+1 row in set (0.01 sec)
+
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2026-05-21 17:46:54 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2026-05-21 17:47:00 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select sysdate;
+ERROR 1054 (42S22): Unknown column 'sysdate' in 'field list'
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2026-05-21 17:49:51 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2026-05-21 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select curtime();
++-----------+
+| curtime() |
++-----------+
+| 17:50:08  |
++-----------+
+1 row in set (0.00 sec)
+
+mysql> select sysdate();
++---------------------+
+| sysdate()           |
++---------------------+
+| 2026-05-21 17:50:33 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select systime();
+ERROR 1305 (42000): FUNCTION employee.systime does not exist
+mysql> select day(curdate());
++----------------+
+| day(curdate()) |
++----------------+
+|             21 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select monthname(curdate());
++----------------------+
+| monthname(curdate()) |
++----------------------+
+| May                  |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select yearname(curdate());
+ERROR 1305 (42000): FUNCTION employee.yearname does not exist
+mysql> select year(curdate());
++-----------------+
+| year(curdate()) |
++-----------------+
+|            2026 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select day(curdate());
++----------------+
+| day(curdate()) |
++----------------+
+|             21 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select dayname(curdate());
++--------------------+
+| dayname(curdate()) |
++--------------------+
+| Thursday           |
++--------------------+
+1 row in set (0.01 sec)
+
+mysql> select month(curdate());
++------------------+
+| month(curdate()) |
++------------------+
+|                5 |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select monthname(curdate());
++----------------------+
+| monthname(curdate()) |
++----------------------+
+| May                  |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select maketime(16-5-569)'
+    '> ^C
+mysql> select maketime(16-5-569);
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'maketime'
+mysql> select maketime(2023 6 14);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '6 14)' at line 1
+mysql> select maketime(10 11 2023);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '11 2023)' at line 1
+mysql>  select maketime(10,11,2023);
++----------------------+
+| maketime(10,11,2023) |
++----------------------+
+| NULL                 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select maketime(2023,4,4);
++--------------------+
+| maketime(2023,4,4) |
++--------------------+
+| 838:59:59          |
++--------------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select makedate(2023,4,4);
+ERROR 1582 (42000): Incorrect parameter count in the call to native function 'makedate'
+mysql> select makedate(2023,4);
++------------------+
+| makedate(2023,4) |
++------------------+
+| 2023-01-04       |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select adddate(curdate(), 7);
++-----------------------+
+| adddate(curdate(), 7) |
++-----------------------+
+| 2026-05-28            |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select adddate(curdate(), interval 2 month);
++--------------------------------------+
+| adddate(curdate(), interval 2 month) |
++--------------------------------------+
+| 2026-07-21                           |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select datediff(curdate(), '2026-05-28');
++-----------------------------------+
+| datediff(curdate(), '2026-05-28') |
++-----------------------------------+
+|                                -7 |
++-----------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select datediff('2026-05-28', '2026-05-08');
++--------------------------------------+
+| datediff('2026-05-28', '2026-05-08') |
++--------------------------------------+
+|                                   20 |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> select cast('2026-05-08', '%d-%m-%y');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', '%d-%m-%y')' at line 1
+mysql>  select cast(curdate(), %d-%m-%y');
+    '> ^C
+mysql>  select cast(curdate(), %d-%m-%y');
+    '> ^C
+mysql> SELECT CAST('2026-05-21' AS DATE);
++----------------------------+
+| CAST('2026-05-21' AS DATE) |
++----------------------------+
+| 2026-05-21                 |
++----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select cast('500' as signed);
++-----------------------+
+| cast('500' as signed) |
++-----------------------+
+|                   500 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> select cast(500 as char);
++-------------------+
+| cast(500 as char) |
++-------------------+
+| 500               |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT CAST(500 AS CHAR);
++-------------------+
+| CAST(500 AS CHAR) |
++-------------------+
+| 500               |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select max(sal) from emp;
++-------------+
+| max(sal)    |
++-------------+
+| 45500000.00 |
++-------------+
+1 row in set (0.01 sec)
+
+mysql> select min(sal) from emp;
++----------+
+| min(sal) |
++----------+
+| 15000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select count(sal) from emp;
++------------+
+| count(sal) |
++------------+
+|         12 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select count(id) from emp;
++-----------+
+| count(id) |
++-----------+
+|        12 |
++-----------+
+1 row in set (0.04 sec)
+
+mysql> select avg(sal) from emp;
++----------------+
+| avg(sal)       |
++----------------+
+| 4035750.000000 |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(id) from emp;
++---------+
+| sum(id) |
++---------+
+|      78 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select sum(sal) from emp where id in(1,2);
++------------+
+| sum(sal)   |
++------------+
+| 2545000.00 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(id) from emp where id in(1,2);
++---------+
+| sum(id) |
++---------+
+|       3 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select ifnull(hired, '2026-5-5') from emp;
++---------------------------+
+| ifnull(hired, '2026-5-5') |
++---------------------------+
+| 2026-2-2                  |
+| 2025-2-3                  |
+| 2026-5-5                  |
+| 2017-7-23                 |
+| 2026-5-5                  |
+| 2026-1-23                 |
+| 2026-5-5                  |
+| 2026-5-5                  |
+| 2016-5-27                 |
+| 2015-12-7                 |
+| 2022-5-13                 |
+| 2020-8-13                 |
++---------------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp;
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal         | age | hired     | loc          | job               | comm |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT         |  2500000.00 |  27 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
+|  2 | Kiran    | HR         |    45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance    |    55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT         |    50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts   |   100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social     |    45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  7 | Navya    | Compuetrs  |    15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  8 | Sandhya  | IT         | 45500000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  9 | Lohitha  | Electrical |    20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology    |    29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry  |    55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 12 | Rishi    | Botany     |    15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where sal=(select max(sal) from emp);
++----+---------+------+-------------+-----+-------+-----------+-------------------+------+
+| id | name    | dept | sal         | age | hired | loc       | job               | comm |
++----+---------+------+-------------+-----+-------+-----------+-------------------+------+
+|  8 | Sandhya | IT   | 45500000.00 |  40 | NULL  | Bangalore | Software Engineer |  300 |
++----+---------+------+-------------+-----+-------+-----------+-------------------+------+
+1 row in set (0.01 sec)
+
+mysql> select * from emp where sal=(select min(sal) from emp);
++----+-------+-----------+----------+-----+-----------+------------+-----------+------+
+| id | name  | dept      | sal      | age | hired     | loc        | job       | comm |
++----+-------+-----------+----------+-----+-----------+------------+-----------+------+
+|  7 | Navya | Compuetrs | 15000.00 |  25 | NULL      | Goa        | Associate |  300 |
+| 12 | Rishi | Botany    | 15000.00 |  30 | 2020-8-13 | Maharastra | Teacher   |  300 |
++----+-------+-----------+----------+-----+-----------+------------+-----------+------+
+2 rows in set (0.00 sec)
+
+mysql> select sal from emp where id in(select id from emp where id/2==0);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '==0)' at line 1
+mysql>  select sal from emp where id in(select id from emp where id/2=0);
+Empty set (0.00 sec)
+
+mysql> select sal from emp where id in(select id from emp where id%2=0);
++-------------+
+| sal         |
++-------------+
+|    45000.00 |
+|    50000.00 |
+|    45000.00 |
+| 45500000.00 |
+|    29000.00 |
+|    15000.00 |
++-------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from emp where id in(select id from emp where id%2=0);
++----+----------+---------+-------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept    | sal         | age | hired     | loc          | job               | comm |
++----+----------+---------+-------------+-----+-----------+--------------+-------------------+------+
+|  2 | Kiran    | HR      |    45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  4 | Charitha | IT      |    50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  6 | Vrunda   | Social  |    45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  8 | Sandhya  | IT      | 45500000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+| 10 | Narayan  | Biology |    29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 12 | Rishi    | Botany  |    15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
++----+----------+---------+-------------+-----+-----------+--------------+-------------------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from emp where sal>(select min(sal) from emp where sal>(select min(sal) from emp));
++----+----------+-----------+-------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept      | sal         | age | hired     | loc          | job               | comm |
++----+----------+-----------+-------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT        |  2500000.00 |  27 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
+|  2 | Kiran    | HR        |    45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance   |    55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT        |    50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts  |   100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social    |    45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  8 | Sandhya  | IT        | 45500000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+| 10 | Narayan  | Biology   |    29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry |    55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
++----+----------+-----------+-------------+-----+-----------+--------------+-------------------+------+
+9 rows in set (0.00 sec)
+
+mysql> select sal from emp where sal>(select min(sal) from emp where sal>(select min(sal) from emp));
++-------------+
+| sal         |
++-------------+
+|  2500000.00 |
+|    45000.00 |
+|    55000.00 |
+|    50000.00 |
+|   100000.00 |
+|    45000.00 |
+| 45500000.00 |
+|    29000.00 |
+|    55000.00 |
++-------------+
+9 rows in set (0.00 sec)
+
+mysql> select min(sal) from emp where sal>(select min(sal) from emp where sal>(select min(sal) from emp));
++----------+
+| min(sal) |
++----------+
+| 29000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select asc(sal) from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'asc(sal) from emp' at line 1
+mysql> select sal from emp where sal order by asc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'asc' at line 1
+mysql> select sal from emp where order by sal asc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'order by sal asc' at line 1
+mysql> select sal from emp order by sal asc;
++-------------+
+| sal         |
++-------------+
+|    15000.00 |
+|    15000.00 |
+|    20000.00 |
+|    29000.00 |
+|    45000.00 |
+|    45000.00 |
+|    50000.00 |
+|    55000.00 |
+|    55000.00 |
+|   100000.00 |
+|  2500000.00 |
+| 45500000.00 |
++-------------+
+12 rows in set (0.00 sec)
+
+mysql> select sal from emp order by sal desc;
++-------------+
+| sal         |
++-------------+
+| 45500000.00 |
+|  2500000.00 |
+|   100000.00 |
+|    55000.00 |
+|    55000.00 |
+|    50000.00 |
+|    45000.00 |
+|    45000.00 |
+|    29000.00 |
+|    20000.00 |
+|    15000.00 |
+|    15000.00 |
++-------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where limit=5;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'limit=5' at line 1
+mysql> SELECT * FROM emp LIMIT 5;
++----+----------+----------+------------+-----+-----------+-----------+-------------------+------+
+| id | name     | dept     | sal        | age | hired     | loc       | job               | comm |
++----+----------+----------+------------+-----+-----------+-----------+-------------------+------+
+|  1 | Vineetha | IT       | 2500000.00 |  27 | 2026-2-2  | Bangalore | Software Engineer |  300 |
+|  2 | Kiran    | HR       |   45000.00 |  50 | 2025-2-3  | Tirupathi | Manager           |  300 |
+|  3 | Ravi     | Finance  |   55000.00 |  45 | NULL      | Hyderabad | Associate         |  300 |
+|  4 | Charitha | IT       |   50000.00 |  30 | 2017-7-23 | Bangalore | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts |  100000.00 |  35 | NULL      | TamilNadu | Accountant        |  300 |
++----+----------+----------+------------+-----+-----------+-----------+-------------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from(select * from(select sal from emp order by sal desc) emp order by sal asc limit <=5) emp limit 1);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<=5) emp limit 1)' at line 1
+mysql>  select * from(select * from(select sal from emp order by sal desc) limit 5 order by sal asc) limit 1 ;
+ERROR 1248 (42000): Every derived table must have its own alias
+mysql> select * from(select * from(select sal from emp order by sal desc limit 5) order by sal asc limit 1) as result;
+ERROR 1248 (42000): Every derived table must have its own alias
+mysql> select sal from emp order by sal desc limit 4,1;
++----------+
+| sal      |
++----------+
+| 55000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sal from emp order by sal desc;
++-------------+
+| sal         |
++-------------+
+| 45500000.00 |
+|  2500000.00 |
+|   100000.00 |
+|    55000.00 |
+|    55000.00 |
+|    50000.00 |
+|    45000.00 |
+|    45000.00 |
+|    29000.00 |
+|    20000.00 |
+|    15000.00 |
+|    15000.00 |
++-------------+
+12 rows in set (0.00 sec)
+
+mysql> select sal from emp order by sal desc limit 1;
++-------------+
+| sal         |
++-------------+
+| 45500000.00 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select sal from emp order by sal desc limit 5,1;
++----------+
+| sal      |
++----------+
+| 50000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sal from emp order by sal asc limit 1;
++----------+
+| sal      |
++----------+
+| 15000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select  sal from emp order by sal asc limit 1,1;
++----------+
+| sal      |
++----------+
+| 15000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select  sal from emp order by sal asc limit 2,1;
++----------+
+| sal      |
++----------+
+| 20000.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sal from emp order by sal asc;
++-------------+
+| sal         |
++-------------+
+|    15000.00 |
+|    15000.00 |
+|    20000.00 |
+|    29000.00 |
+|    45000.00 |
+|    45000.00 |
+|    50000.00 |
+|    55000.00 |
+|    55000.00 |
+|   100000.00 |
+|  2500000.00 |
+| 45500000.00 |
++-------------+
+12 rows in set (0.00 sec)
+
+mysql> select id, count(*) from emp group by id;
++----+----------+
+| id | count(*) |
++----+----------+
+|  1 |        1 |
+|  2 |        1 |
+|  3 |        1 |
+|  4 |        1 |
+|  5 |        1 |
+|  6 |        1 |
+|  7 |        1 |
+|  8 |        1 |
+|  9 |        1 |
+| 10 |        1 |
+| 11 |        1 |
+| 12 |        1 |
++----+----------+
+12 rows in set (0.05 sec)
+
+mysql> select emp.name, class.name from emp cross join class;
++----------+----------+
+| name     | name     |
++----------+----------+
+| Vineetha | Lohitha  |
+| Vineetha | Bhargavi |
+| Vineetha | Sandhya  |
+| Vineetha | Mounika  |
+| Vineetha | Thanooja |
+| Vineetha | Kalyani  |
+| Vineetha | Hari     |
+| Vineetha | Hema     |
+| Vineetha | Rahul    |
+| Kiran    | Lohitha  |
+| Kiran    | Bhargavi |
+| Kiran    | Sandhya  |
+| Kiran    | Mounika  |
+| Kiran    | Thanooja |
+| Kiran    | Kalyani  |
+| Kiran    | Hari     |
+| Kiran    | Hema     |
+| Kiran    | Rahul    |
+| Ravi     | Lohitha  |
+| Ravi     | Bhargavi |
+| Ravi     | Sandhya  |
+| Ravi     | Mounika  |
+| Ravi     | Thanooja |
+| Ravi     | Kalyani  |
+| Ravi     | Hari     |
+| Ravi     | Hema     |
+| Ravi     | Rahul    |
+| Charitha | Lohitha  |
+| Charitha | Bhargavi |
+| Charitha | Sandhya  |
+| Charitha | Mounika  |
+| Charitha | Thanooja |
+| Charitha | Kalyani  |
+| Charitha | Hari     |
+| Charitha | Hema     |
+| Charitha | Rahul    |
+| Bhargavi | Lohitha  |
+| Bhargavi | Bhargavi |
+| Bhargavi | Sandhya  |
+| Bhargavi | Mounika  |
+| Bhargavi | Thanooja |
+| Bhargavi | Kalyani  |
+| Bhargavi | Hari     |
+| Bhargavi | Hema     |
+| Bhargavi | Rahul    |
+| Vrunda   | Lohitha  |
+| Vrunda   | Bhargavi |
+| Vrunda   | Sandhya  |
+| Vrunda   | Mounika  |
+| Vrunda   | Thanooja |
+| Vrunda   | Kalyani  |
+| Vrunda   | Hari     |
+| Vrunda   | Hema     |
+| Vrunda   | Rahul    |
+| Navya    | Lohitha  |
+| Navya    | Bhargavi |
+| Navya    | Sandhya  |
+| Navya    | Mounika  |
+| Navya    | Thanooja |
+| Navya    | Kalyani  |
+| Navya    | Hari     |
+| Navya    | Hema     |
+| Navya    | Rahul    |
+| Sandhya  | Lohitha  |
+| Sandhya  | Bhargavi |
+| Sandhya  | Sandhya  |
+| Sandhya  | Mounika  |
+| Sandhya  | Thanooja |
+| Sandhya  | Kalyani  |
+| Sandhya  | Hari     |
+| Sandhya  | Hema     |
+| Sandhya  | Rahul    |
+| Lohitha  | Lohitha  |
+| Lohitha  | Bhargavi |
+| Lohitha  | Sandhya  |
+| Lohitha  | Mounika  |
+| Lohitha  | Thanooja |
+| Lohitha  | Kalyani  |
+| Lohitha  | Hari     |
+| Lohitha  | Hema     |
+| Lohitha  | Rahul    |
+| Narayan  | Lohitha  |
+| Narayan  | Bhargavi |
+| Narayan  | Sandhya  |
+| Narayan  | Mounika  |
+| Narayan  | Thanooja |
+| Narayan  | Kalyani  |
+| Narayan  | Hari     |
+| Narayan  | Hema     |
+| Narayan  | Rahul    |
+| Megha    | Lohitha  |
+| Megha    | Bhargavi |
+| Megha    | Sandhya  |
+| Megha    | Mounika  |
+| Megha    | Thanooja |
+| Megha    | Kalyani  |
+| Megha    | Hari     |
+| Megha    | Hema     |
+| Megha    | Rahul    |
+| Rishi    | Lohitha  |
+| Rishi    | Bhargavi |
+| Rishi    | Sandhya  |
+| Rishi    | Mounika  |
+| Rishi    | Thanooja |
+| Rishi    | Kalyani  |
+| Rishi    | Hari     |
+| Rishi    | Hema     |
+| Rishi    | Rahul    |
++----------+----------+
+108 rows in set (0.02 sec)
+
+mysql> select emp.name, class.name from emp cross join dept where emp.name='vineetha';
+ERROR 1146 (42S02): Table 'employee.dept' doesn't exist
+mysql> select emp.name, class.name from emp cross join class  where emp.name='vineetha';
++----------+----------+
+| name     | name     |
++----------+----------+
+| Vineetha | Rahul    |
+| Vineetha | Hema     |
+| Vineetha | Hari     |
+| Vineetha | Kalyani  |
+| Vineetha | Thanooja |
+| Vineetha | Mounika  |
+| Vineetha | Sandhya  |
+| Vineetha | Bhargavi |
+| Vineetha | Lohitha  |
++----------+----------+
+9 rows in set (0.01 sec)
+
+mysql> select emp.name,class.name from emp, class where emp.id=class.rollno;
++----------+----------+
+| name     | name     |
++----------+----------+
+| Vineetha | Rahul    |
+| Kiran    | Hema     |
+| Ravi     | Hari     |
+| Charitha | Kalyani  |
+| Bhargavi | Thanooja |
+| Vrunda   | Mounika  |
+| Navya    | Sandhya  |
+| Sandhya  | Bhargavi |
+| Lohitha  | Lohitha  |
++----------+----------+
+9 rows in set (0.01 sec)
+
+mysql> select name from emp;
++----------+
+| name     |
++----------+
+| Vineetha |
+| Kiran    |
+| Ravi     |
+| Charitha |
+| Bhargavi |
+| Vrunda   |
+| Navya    |
+| Sandhya  |
+| Lohitha  |
+| Narayan  |
+| Megha    |
+| Rishi    |
++----------+
+12 rows in set (0.00 sec)
+
+mysql> select id, name from emp;
++----+----------+
+| id | name     |
++----+----------+
+|  1 | Vineetha |
+|  2 | Kiran    |
+|  3 | Ravi     |
+|  4 | Charitha |
+|  5 | Bhargavi |
+|  6 | Vrunda   |
+|  7 | Navya    |
+|  8 | Sandhya  |
+|  9 | Lohitha  |
+| 10 | Narayan  |
+| 11 | Megha    |
+| 12 | Rishi    |
++----+----------+
+12 rows in set (0.00 sec)
+
+mysql> select id, name from class;
+ERROR 1054 (42S22): Unknown column 'id' in 'field list'
+mysql> select rollno, name from class;
++--------+----------+
+| rollno | name     |
++--------+----------+
+|      1 | Rahul    |
+|      2 | Hema     |
+|      3 | Hari     |
+|      4 | Kalyani  |
+|      5 | Thanooja |
+|      6 | Mounika  |
+|      7 | Sandhya  |
+|      8 | Bhargavi |
+|      9 | Lohitha  |
++--------+----------+
+9 rows in set (0.00 sec)
+
+mysql> select emp.id, class.rollno from emp, class where emp.id=class.rollno;
++----+--------+
+| id | rollno |
++----+--------+
+|  1 |      1 |
+|  2 |      2 |
+|  3 |      3 |
+|  4 |      4 |
+|  5 |      5 |
+|  6 |      6 |
+|  7 |      7 |
+|  8 |      8 |
+|  9 |      9 |
++----+--------+
+9 rows in set (0.00 sec)
+
+mysql> select emp.name, class.name from emp cross join class;
++----------+----------+
+| name     | name     |
++----------+----------+
+| Vineetha | Lohitha  |
+| Vineetha | Bhargavi |
+| Vineetha | Sandhya  |
+| Vineetha | Mounika  |
+| Vineetha | Thanooja |
+| Vineetha | Kalyani  |
+| Vineetha | Hari     |
+| Vineetha | Hema     |
+| Vineetha | Rahul    |
+| Kiran    | Lohitha  |
+| Kiran    | Bhargavi |
+| Kiran    | Sandhya  |
+| Kiran    | Mounika  |
+| Kiran    | Thanooja |
+| Kiran    | Kalyani  |
+| Kiran    | Hari     |
+| Kiran    | Hema     |
+| Kiran    | Rahul    |
+| Ravi     | Lohitha  |
+| Ravi     | Bhargavi |
+| Ravi     | Sandhya  |
+| Ravi     | Mounika  |
+| Ravi     | Thanooja |
+| Ravi     | Kalyani  |
+| Ravi     | Hari     |
+| Ravi     | Hema     |
+| Ravi     | Rahul    |
+| Charitha | Lohitha  |
+| Charitha | Bhargavi |
+| Charitha | Sandhya  |
+| Charitha | Mounika  |
+| Charitha | Thanooja |
+| Charitha | Kalyani  |
+| Charitha | Hari     |
+| Charitha | Hema     |
+| Charitha | Rahul    |
+| Bhargavi | Lohitha  |
+| Bhargavi | Bhargavi |
+| Bhargavi | Sandhya  |
+| Bhargavi | Mounika  |
+| Bhargavi | Thanooja |
+| Bhargavi | Kalyani  |
+| Bhargavi | Hari     |
+| Bhargavi | Hema     |
+| Bhargavi | Rahul    |
+| Vrunda   | Lohitha  |
+| Vrunda   | Bhargavi |
+| Vrunda   | Sandhya  |
+| Vrunda   | Mounika  |
+| Vrunda   | Thanooja |
+| Vrunda   | Kalyani  |
+| Vrunda   | Hari     |
+| Vrunda   | Hema     |
+| Vrunda   | Rahul    |
+| Navya    | Lohitha  |
+| Navya    | Bhargavi |
+| Navya    | Sandhya  |
+| Navya    | Mounika  |
+| Navya    | Thanooja |
+| Navya    | Kalyani  |
+| Navya    | Hari     |
+| Navya    | Hema     |
+| Navya    | Rahul    |
+| Sandhya  | Lohitha  |
+| Sandhya  | Bhargavi |
+| Sandhya  | Sandhya  |
+| Sandhya  | Mounika  |
+| Sandhya  | Thanooja |
+| Sandhya  | Kalyani  |
+| Sandhya  | Hari     |
+| Sandhya  | Hema     |
+| Sandhya  | Rahul    |
+| Lohitha  | Lohitha  |
+| Lohitha  | Bhargavi |
+| Lohitha  | Sandhya  |
+| Lohitha  | Mounika  |
+| Lohitha  | Thanooja |
+| Lohitha  | Kalyani  |
+| Lohitha  | Hari     |
+| Lohitha  | Hema     |
+| Lohitha  | Rahul    |
+| Narayan  | Lohitha  |
+| Narayan  | Bhargavi |
+| Narayan  | Sandhya  |
+| Narayan  | Mounika  |
+| Narayan  | Thanooja |
+| Narayan  | Kalyani  |
+| Narayan  | Hari     |
+| Narayan  | Hema     |
+| Narayan  | Rahul    |
+| Megha    | Lohitha  |
+| Megha    | Bhargavi |
+| Megha    | Sandhya  |
+| Megha    | Mounika  |
+| Megha    | Thanooja |
+| Megha    | Kalyani  |
+| Megha    | Hari     |
+| Megha    | Hema     |
+| Megha    | Rahul    |
+| Rishi    | Lohitha  |
+| Rishi    | Bhargavi |
+| Rishi    | Sandhya  |
+| Rishi    | Mounika  |
+| Rishi    | Thanooja |
+| Rishi    | Kalyani  |
+| Rishi    | Hari     |
+| Rishi    | Hema     |
+| Rishi    | Rahul    |
++----------+----------+
+108 rows in set (0.00 sec)
