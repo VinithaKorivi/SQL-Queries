@@ -1,0 +1,398 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| employees          |
+| information_schema |
+| librarydb          |
+| mysql              |
+| performance_schema |
+| reservation_system |
+| sakila             |
+| school             |
+| sql_programs       |
+| sys                |
+| world              |
++--------------------+
+12 rows in set (0.26 sec)
+
+mysql> use employee;
+Database changed
+mysql> select * from emp;
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal         | age | hired     | loc          | job               | comm |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT         |  2500000.00 |  27 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
+|  2 | Kiran    | HR         |    45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance    |    55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT         |    50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts   |   100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social     |    45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  7 | Navya    | Compuetrs  |    15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  8 | Sandhya  | IT         | 45500000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  9 | Lohitha  | Electrical |    20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology    |    29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry  |    55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 12 | Rishi    | Botany     |    15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.11 sec)
+
+mysql> select emp.name,class.name, emp.sal*12 from emp,class where emp.name='Vrunda' and emp.id=6 on emp.id=class.rollno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on emp.id=class.rollno' at line 1
+mysql> elect emp.name,class.name, emp.sal*12 from emp join class on  emp.id=class.rollno where emp.name='Vrunda' and emp.id=6;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'elect emp.name,class.name, emp.sal*12 from emp join class on  emp.id=class.rolln' at line 1
+mysql> select  emp.name,class.name, emp.sal*12 from emp join class on  emp.id=class.rollno where emp.name='Vrunda' and emp.id=6;
++--------+---------+------------+
+| name   | name    | emp.sal*12 |
++--------+---------+------------+
+| Vrunda | Mounika |  540000.00 |
++--------+---------+------------+
+1 row in set (0.14 sec)
+
+mysql> select emp.name, emp.sal/2, class.name from emp, class on emp.id=class.rollno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on emp.id=class.rollno' at line 1
+mysql> select emp.name, emp.sal/2, class.name from emp join  class on emp.id=class.rollno;
++----------+-----------------+----------+
+| name     | emp.sal/2       | name     |
++----------+-----------------+----------+
+| Vineetha |  1250000.000000 | Rahul    |
+| Kiran    |    22500.000000 | Hema     |
+| Ravi     |    27500.000000 | Hari     |
+| Charitha |    25000.000000 | Kalyani  |
+| Bhargavi |    50000.000000 | Thanooja |
+| Vrunda   |    22500.000000 | Mounika  |
+| Navya    |     7500.000000 | Sandhya  |
+| Sandhya  | 22750000.000000 | Bhargavi |
+| Lohitha  |    10000.000000 | Lohitha  |
++----------+-----------------+----------+
+9 rows in set (0.01 sec)
+
+mysql> select * from class;
++--------+----------+------------+-------+------------+-----------+
+| rollno | name     | joindate   | marks | location   | cname     |
++--------+----------+------------+-------+------------+-----------+
+|      1 | Rahul    | 2025-12-02 |    80 | NEWYORK    | 2nd class |
+|      2 | Hema     | 2023-05-25 |    50 | Tirupathi  | 3rd class |
+|      3 | Hari     | 2022-02-02 |    60 | Chittoor   | 4rd class |
+|      4 | Kalyani  | 2001-08-30 |    90 | Bangalore  | 7rd class |
+|      5 | Thanooja | 2000-01-12 |    95 | Tirupathi  | UKG       |
+|      6 | Mounika  | 2003-05-30 |    95 | Chicago    | 9th class |
+|      7 | Sandhya  | 2026-02-02 |    92 | Hyderabada | 5th class |
+|      8 | Bhargavi | 2024-02-02 |    77 | Himalayas  | 8th class |
+|      9 | Lohitha  | 2028-02-25 |    71 | Uttarkhand | 1st class |
++--------+----------+------------+-------+------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> select emp.*, class.name from emp join class where emp.sal>15000 and emp.id=class.rollno;
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+----------+
+| id | name     | dept       | sal         | age | hired     | loc          | job               | comm | name     |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+----------+
+|  1 | Vineetha | IT         |  2500000.00 |  27 | 2026-2-2  | Bangalore    | Software Engineer |  300 | Rahul    |
+|  2 | Kiran    | HR         |    45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 | Hema     |
+|  3 | Ravi     | Finance    |    55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 | Hari     |
+|  4 | Charitha | IT         |    50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 | Kalyani  |
+|  5 | Bhargavi | Accounts   |   100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 | Thanooja |
+|  6 | Vrunda   | Social     |    45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 | Mounika  |
+|  8 | Sandhya  | IT         | 45500000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 | Bhargavi |
+|  9 | Lohitha  | Electrical |    20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 | Lohitha  |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+----------+
+8 rows in set (0.01 sec)
+
+mysql> select emp.*, class.name from emp equi join class where emp.sal>15000 and emp.id=class.rollno;
+ERROR 1051 (42S02): Unknown table 'emp'
+mysql> select emp.*, class.name from emp  join class where emp.sal>15000 and emp.id=class.rollno;
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+----------+
+| id | name     | dept       | sal         | age | hired     | loc          | job               | comm | name     |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+----------+
+|  1 | Vineetha | IT         |  2500000.00 |  27 | 2026-2-2  | Bangalore    | Software Engineer |  300 | Rahul    |
+|  2 | Kiran    | HR         |    45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 | Hema     |
+|  3 | Ravi     | Finance    |    55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 | Hari     |
+|  4 | Charitha | IT         |    50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 | Kalyani  |
+|  5 | Bhargavi | Accounts   |   100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 | Thanooja |
+|  6 | Vrunda   | Social     |    45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 | Mounika  |
+|  8 | Sandhya  | IT         | 45500000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 | Bhargavi |
+|  9 | Lohitha  | Electrical |    20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 | Lohitha  |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+----------+
+8 rows in set (0.00 sec)
+
+mysql> select emp.*, class.* from emp inner join class on emp.id=class.rollno;
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+--------+----------+------------+-------+------------+-----------+
+| id | name     | dept       | sal         | age | hired     | loc          | job               | comm | rollno | name     | joindate   | marks | location   | cname     |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+--------+----------+------------+-------+------------+-----------+
+|  1 | Vineetha | IT         |  2500000.00 |  27 | 2026-2-2  | Bangalore    | Software Engineer |  300 |      1 | Rahul    | 2025-12-02 |    80 | NEWYORK    | 2nd class |
+|  2 | Kiran    | HR         |    45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |      2 | Hema     | 2023-05-25 |    50 | Tirupathi  | 3rd class |
+|  3 | Ravi     | Finance    |    55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |      3 | Hari     | 2022-02-02 |    60 | Chittoor   | 4rd class |
+|  4 | Charitha | IT         |    50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |      4 | Kalyani  | 2001-08-30 |    90 | Bangalore  | 7rd class |
+|  5 | Bhargavi | Accounts   |   100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |      5 | Thanooja | 2000-01-12 |    95 | Tirupathi  | UKG       |
+|  6 | Vrunda   | Social     |    45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |      6 | Mounika  | 2003-05-30 |    95 | Chicago    | 9th class |
+|  7 | Navya    | Compuetrs  |    15000.00 |  25 | NULL      | Goa          | Associate         |  300 |      7 | Sandhya  | 2026-02-02 |    92 | Hyderabada | 5th class |
+|  8 | Sandhya  | IT         | 45500000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |      8 | Bhargavi | 2024-02-02 |    77 | Himalayas  | 8th class |
+|  9 | Lohitha  | Electrical |    20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |      9 | Lohitha  | 2028-02-25 |    71 | Uttarkhand | 1st class |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+--------+----------+------------+-------+------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> select class.*, emp.sal*12, emp.name  from emp inner join class on emp.hiredate=' 2026-1-23' and sal between 15000 and 50000 and emp.id=class.rollno;
+ERROR 1054 (42S22): Unknown column 'emp.hiredate' in 'on clause'
+mysql> select class.*, emp.sal*12, emp.name  from emp inner join class where emp.hiredate=' 2026-1-23' and sal between 15000 and 50000 on emp.id=class.rollno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on emp.id=class.rollno' at line 1
+mysql> select class.*, emp.sal*12, emp.name  from emp inner join classon emp.id=class.rollno  where emp.hiredate=' 2026-1-23' and sal between 15000 and 50000;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.id=class.rollno  where emp.hiredate=' 2026-1-23' and sal between 15000 and 5000' at line 1
+mysql>  select class.*, emp.sal*12, emp.name  from emp inner join class on emp.id=class.rollno  where emp.hiredate=' 2026-1-23' and emp.sal between 15000 and 50000;
+ERROR 1054 (42S22): Unknown column 'emp.hiredate' in 'where clause'
+mysql>  select class.*, emp.sal*12, emp.name  from emp inner join class on emp.id=class.rollno  where emp.hiredate='2026-1-23' and emp.sal between 15000 and 50000;
+ERROR 1054 (42S22): Unknown column 'emp.hiredate' in 'where clause'
+mysql> select class.*, emp.sal*12, emp.name  from emp inner join class on emp.id=class.rollno  where emp.hired='2026-1-23' and emp.sal between 15000 and 50000;
++--------+---------+------------+-------+----------+-----------+------------+--------+
+| rollno | name    | joindate   | marks | location | cname     | emp.sal*12 | name   |
++--------+---------+------------+-------+----------+-----------+------------+--------+
+|      6 | Mounika | 2003-05-30 |    95 | Chicago  | 9th class |  540000.00 | Vrunda |
++--------+---------+------------+-------+----------+-----------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select e1.name emp1.e2.name emp2, e1.sal=sal from emp e1 join emp e2 on e1.sal=e2.sal and e1.id<> e2.id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.e2.name emp2, e1.sal=sal from emp e1 join emp e2 on e1.sal=e2.sal and e1.id<> e' at line 1
+mysql> select * from emp;
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept       | sal         | age | hired     | loc          | job               | comm |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT         |  2500000.00 |  27 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
+|  2 | Kiran    | HR         |    45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance    |    55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT         |    50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts   |   100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social     |    45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  7 | Navya    | Compuetrs  |    15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  8 | Sandhya  | IT         | 45500000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  9 | Lohitha  | Electrical |    20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology    |    29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry  |    55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 12 | Rishi    | Botany     |    15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
++----+----------+------------+-------------+-----+-----------+--------------+-------------------+------+
+12 rows in set (0.00 sec)
+
+mysql> SELECT e1.name AS Employee1, e2.name AS Employee2,e1.sal AS Salary FROM emp e1 join emp e2 on e1.sal=e2.sal and e1.id<e2.id;
++-----------+-----------+----------+
+| Employee1 | Employee2 | Salary   |
++-----------+-----------+----------+
+| Kiran     | Vrunda    | 45000.00 |
+| Ravi      | Megha     | 55000.00 |
+| Navya     | Rishi     | 15000.00 |
++-----------+-----------+----------+
+3 rows in set (0.01 sec)
+
+mysql> insert into emp values(13,'Naina','Art&Culture',15000,19,'2022-8-18','Devprayg', 'Professor',400);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from emp;
++----+----------+-------------+-------------+-----+-----------+--------------+-------------------+------+
+| id | name     | dept        | sal         | age | hired     | loc          | job               | comm |
++----+----------+-------------+-------------+-----+-----------+--------------+-------------------+------+
+|  1 | Vineetha | IT          |  2500000.00 |  27 | 2026-2-2  | Bangalore    | Software Engineer |  300 |
+|  2 | Kiran    | HR          |    45000.00 |  50 | 2025-2-3  | Tirupathi    | Manager           |  300 |
+|  3 | Ravi     | Finance     |    55000.00 |  45 | NULL      | Hyderabad    | Associate         |  300 |
+|  4 | Charitha | IT          |    50000.00 |  30 | 2017-7-23 | Bangalore    | Software Engineer |  300 |
+|  5 | Bhargavi | Accounts    |   100000.00 |  35 | NULL      | TamilNadu    | Accountant        |  300 |
+|  6 | Vrunda   | Social      |    45000.00 |  25 | 2026-1-23 | Channai      | Teacher           |  300 |
+|  7 | Navya    | Compuetrs   |    15000.00 |  25 | NULL      | Goa          | Associate         |  300 |
+|  8 | Sandhya  | IT          | 45500000.00 |  40 | NULL      | Bangalore    | Software Engineer |  300 |
+|  9 | Lohitha  | Electrical  |    20000.00 |  30 | 2016-5-27 | UttarPradesh | Engineer          |  300 |
+| 10 | Narayan  | Biology     |    29000.00 |  31 | 2015-12-7 | UttarPradesh | Professor         |  300 |
+| 11 | Megha    | Chemistry   |    55000.00 |  35 | 2022-5-13 | Delhi        | Teacher           |  300 |
+| 12 | Rishi    | Botany      |    15000.00 |  30 | 2020-8-13 | Maharastra   | Teacher           |  300 |
+| 13 | Naina    | Art&Culture |    15000.00 |  19 | 2022-8-18 | Devprayg     | Professor         |  400 |
++----+----------+-------------+-------------+-----+-----------+--------------+-------------------+------+
+13 rows in set (0.00 sec)
+
+mysql> SELECT e1.name AS Employee1, e2.name AS Employee2,e1.sal AS Salary FROM emp e1 join emp e2 on e1.sal=e2.sal and e1.id<e2.id;
++-----------+-----------+----------+
+| Employee1 | Employee2 | Salary   |
++-----------+-----------+----------+
+| Kiran     | Vrunda    | 45000.00 |
+| Ravi      | Megha     | 55000.00 |
+| Navya     | Rishi     | 15000.00 |
+| Navya     | Naina     | 15000.00 |
+| Rishi     | Naina     | 15000.00 |
++-----------+-----------+----------+
+5 rows in set (0.00 sec)
+
+mysql>
+mysql> select emp.name,class.name from emp left outer join class on emp.id=class.rollno;
++----------+----------+
+| name     | name     |
++----------+----------+
+| Vineetha | Rahul    |
+| Kiran    | Hema     |
+| Ravi     | Hari     |
+| Charitha | Kalyani  |
+| Bhargavi | Thanooja |
+| Vrunda   | Mounika  |
+| Navya    | Sandhya  |
+| Sandhya  | Bhargavi |
+| Lohitha  | Lohitha  |
+| Narayan  | NULL     |
+| Megha    | NULL     |
+| Rishi    | NULL     |
+| Naina    | NULL     |
++----------+----------+
+13 rows in set (0.00 sec)
+
+mysql> select emp.name,class.name from class left outer join emp on emp.id=class.rollno;
++----------+----------+
+| name     | name     |
++----------+----------+
+| Vineetha | Rahul    |
+| Kiran    | Hema     |
+| Ravi     | Hari     |
+| Charitha | Kalyani  |
+| Bhargavi | Thanooja |
+| Vrunda   | Mounika  |
+| Navya    | Sandhya  |
+| Sandhya  | Bhargavi |
+| Lohitha  | Lohitha  |
++----------+----------+
+9 rows in set (0.00 sec)
+
+mysql> select emp.name,class.name from emp right outer join class on emp.id=class.rollno;
++----------+----------+
+| name     | name     |
++----------+----------+
+| Vineetha | Rahul    |
+| Kiran    | Hema     |
+| Ravi     | Hari     |
+| Charitha | Kalyani  |
+| Bhargavi | Thanooja |
+| Vrunda   | Mounika  |
+| Navya    | Sandhya  |
+| Sandhya  | Bhargavi |
+| Lohitha  | Lohitha  |
++----------+----------+
+9 rows in set (0.00 sec)
+
+mysql> select emp.name,class.name from emp full outer join class on emp.id=class.rollno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'outer join class on emp.id=class.rollno' at line 1
+mysql> select emp.name,class.name from emp full join class on emp.id=class.rollno;
+ERROR 1054 (42S22): Unknown column 'emp.name' in 'field list'
+mysql> select emp.name,class.name from class left outer join emp on emp.id=class.rollno; union select emp.name,class.name from emp right outer join class on emp.id=class.rollno;
++----------+----------+
+| name     | name     |
++----------+----------+
+| Vineetha | Rahul    |
+| Kiran    | Hema     |
+| Ravi     | Hari     |
+| Charitha | Kalyani  |
+| Bhargavi | Thanooja |
+| Vrunda   | Mounika  |
+| Navya    | Sandhya  |
+| Sandhya  | Bhargavi |
+| Lohitha  | Lohitha  |
++----------+----------+
+9 rows in set (0.00 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'union select emp.name,class.name from emp right outer join class on emp.id=class' at line 1
+mysql> select emp.name,class.name from class left outer join emp on emp.id=class.rollno union select emp.name,class.name from emp right outer join class on emp.id=class.rollno;
++----------+----------+
+| name     | name     |
++----------+----------+
+| Vineetha | Rahul    |
+| Kiran    | Hema     |
+| Ravi     | Hari     |
+| Charitha | Kalyani  |
+| Bhargavi | Thanooja |
+| Vrunda   | Mounika  |
+| Navya    | Sandhya  |
+| Sandhya  | Bhargavi |
+| Lohitha  | Lohitha  |
++----------+----------+
+9 rows in set (0.01 sec)
+
+mysql>  select max(sal), id from emp group by id;
++-------------+----+
+| max(sal)    | id |
++-------------+----+
+|  2500000.00 |  1 |
+|    45000.00 |  2 |
+|    55000.00 |  3 |
+|    50000.00 |  4 |
+|   100000.00 |  5 |
+|    45000.00 |  6 |
+|    15000.00 |  7 |
+| 45500000.00 |  8 |
+|    20000.00 |  9 |
+|    29000.00 | 10 |
+|    55000.00 | 11 |
+|    15000.00 | 12 |
+|    15000.00 | 13 |
++-------------+----+
+13 rows in set (0.02 sec)
+
+mysql> select max(sal), id from emp group by dept;
+ERROR 1055 (42000): Expression #2 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'employee.emp.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql>  select max(sal)  from emp group by dept;
++-------------+
+| max(sal)    |
++-------------+
+| 45500000.00 |
+|    45000.00 |
+|    55000.00 |
+|   100000.00 |
+|    45000.00 |
+|    15000.00 |
+|    20000.00 |
+|    29000.00 |
+|    55000.00 |
+|    15000.00 |
+|    15000.00 |
++-------------+
+11 rows in set (0.00 sec)
+
+mysql>  select dept, max(sal), id from emp group by dept;
+ERROR 1055 (42000): Expression #3 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'employee.emp.id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select dept, max(sal) from emp group by dept;
++-------------+-------------+
+| dept        | max(sal)    |
++-------------+-------------+
+| IT          | 45500000.00 |
+| HR          |    45000.00 |
+| Finance     |    55000.00 |
+| Accounts    |   100000.00 |
+| Social      |    45000.00 |
+| Compuetrs   |    15000.00 |
+| Electrical  |    20000.00 |
+| Biology     |    29000.00 |
+| Chemistry   |    55000.00 |
+| Botany      |    15000.00 |
+| Art&Culture |    15000.00 |
++-------------+-------------+
+11 rows in set (0.01 sec)
+
+mysql> select name, max(sal) from emp group by dept having max(sal)>50000;
+ERROR 1055 (42000): Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'employee.emp.name' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
+mysql> select max(sal) from emp group by dept having max(sal)>50000;
++-------------+
+| max(sal)    |
++-------------+
+| 45500000.00 |
+|    55000.00 |
+|   100000.00 |
+|    55000.00 |
++-------------+
+4 rows in set (0.02 sec)
+
+mysql> grant  privileges on employee.emp to 'john'@'localhost';
+ERROR 3619 (HY000): Illegal privilege level specified for emp
+mysql>  select LPAD('hi',9,'*');
++------------------+
+| LPAD('hi',9,'*') |
++------------------+
+| *******hi        |
++------------------+
+1 row in set (0.02 sec)
+
+mysql>  select RPAD('hi',9,'*');
++------------------+
+| RPAD('hi',9,'*') |
++------------------+
+| hi*******        |
++------------------+
+1 row in set (0.00 sec)
